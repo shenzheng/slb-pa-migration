@@ -1,0 +1,138 @@
+# Reconstructed from deploy log output in:
+# Deploy Package\4_Run go deploy Script.txt
+# This is a best-effort replay of the file content printed by the CD pipeline.
+
+imagePullSecrets: []
+tolerations:
+  - effect: NoSchedule
+    operator: Equal
+    key: kubernetes.azure.com/scalesetpriority
+    value: spot
+monitoring:
+  scrapeInterval: 30s
+  enabled: false
+secretRef: keyvault-secret
+autoscaling:
+  maxReplicas: 100
+  minReplicas: 1
+  targetCPUUtilizationPercentage: 80
+  enabled: false
+resources:
+  requests:
+    cpu: 125m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+service:
+  port: 80
+  type: ClusterIP
+securityContext: {}
+serviceAccount:
+  create: false
+  name: ""
+  annotations: {}
+worker:
+  image:
+    tag: 2.0.0-dapr-ci.15420467
+    repository: drillops.azurecr.io/rhapsody/hydraulicstransient
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - operator: In
+                key: rcis/nodetype
+                values:
+                  - apps
+  resources:
+    requests:
+      cpu: 125m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 512Mi
+  ingress:
+    enabled: false
+  environmentVariables:
+    - name: env
+      value: intrhapsody
+    - name: consulUri
+      value: https://13.91.47.250
+  replicaCount: 2
+  strategy:
+    tolerations: {}
+    nodeSelector: {}
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - operator: In
+                  key: rcis/nodetype
+                  values:
+                    - apps
+nodeSelector: {}
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - operator: In
+              key: rcis/nodetype
+              values:
+                - apps
+envType: dev
+nameOverride: ""
+strategy:
+  tolerations: {}
+  nodeSelector: {}
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - operator: In
+                key: rcis/nodetype
+                values:
+                  - apps
+livenessProbe:
+  periodSeconds: 30
+  timeoutSeconds: 20
+  tcpSocket:
+    port: 80
+  initialDelaySeconds: 15
+specStrategy:
+  rollingUpdate:
+    maxUnavailable: 25%
+    maxSurge: 50%
+  type: RollingUpdate
+podSecurityContext: {}
+environmentVariables:
+  - name: env
+    value: intrhapsody
+  - name: consulUri
+    value: https://13.91.47.250
+ingress:
+  annotations: {}
+  tls: []
+  enabled: false
+  className: ""
+  hosts:
+    - paths:
+        - path: /
+          pathType: ImplementationSpecific
+      host: chart-example.local
+minReadySeconds: 120
+image:
+  tag: 2.0.0-dapr-ci.15420467
+  repository: drillops.azurecr.io/rhapsody/hydraulicstransient
+fullnameOverride: ""
+readinessProbe:
+  periodSeconds: 10
+  timeoutSeconds: 20
+  tcpSocket:
+    port: 80
+  initialDelaySeconds: 15
+podAnnotations: {}
+replicaCount: 2

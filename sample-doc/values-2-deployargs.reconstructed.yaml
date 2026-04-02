@@ -1,0 +1,18 @@
+# Reconstructed from deploy log output in:
+# Deploy Package\4_Run go deploy Script.txt
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 10m
+    memory: 128Mi
+worker:
+  resources:
+    limits:
+      cpu: 250m
+      memory: 512Mi
+    requests:
+      cpu: 10m
+      memory: 128Mi

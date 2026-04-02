@@ -1,0 +1,13 @@
+Rhapsody.Computation.CementingHydraulics/
+Rhapsody.Computation.DepthJumpCorrection/
+Rhapsody.Computation.Flowback/
+rhapsody.computation.killsheet/
+Rhapsody.Computation.OperationKpi/
+Rhapsody.Computation.PackOff/
+Rhapsody.Computation.ProceduralAdherence/
+Rhapsody.Computation.Risk/
+Rhapsody.Computation.RtRheology/
+Rhapsody.Computation.TndBroomstick/
+Rhapsody.Computation.Udf/
+Rhapsody.Computation.WellBalanceRisks/
+Rhapsody.Service.PressureMonitoring/
