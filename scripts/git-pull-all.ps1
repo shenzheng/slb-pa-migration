@@ -14,6 +14,8 @@ $resolvedRoot = (Resolve-Path -LiteralPath $RootPath).Path
 $successes = New-Object System.Collections.Generic.List[object]
 $skips = New-Object System.Collections.Generic.List[object]
 $failures = New-Object System.Collections.Generic.List[object]
+$repositoryQueue = New-Object System.Collections.Generic.List[object]
+$processedCount = 0
 
 function ConvertTo-ProcessArgumentString {
     param(
@@ -43,6 +45,14 @@ function Add-Result {
             Repository = $Repository
             Message = $Message
         })
+}
+
+function Write-StepMessage {
+    param(
+        [string]$Message
+    )
+
+    Write-Host ("[{0}] {1}" -f (Get-Date -Format "HH:mm:ss"), $Message)
 }
 
 function Invoke-GitCommand {
@@ -109,52 +119,84 @@ foreach ($projectGroup in $ProjectGroups) {
     }
 
     Get-ChildItem -LiteralPath $groupPath -Directory | Sort-Object Name | ForEach-Object {
-        $repositoryPath = $_.FullName
-        $repositoryName = $_.Name
-        $gitDirectory = Join-Path $repositoryPath ".git"
-
-        if (-not (Test-Path -LiteralPath $gitDirectory)) {
-            Add-Result -Collection $skips -ProjectGroup $projectGroup -Repository $repositoryName -Message "Skipped because .git was not found."
-            return
-        }
-
-        $branchResult = Invoke-GitCommand -RepositoryPath $repositoryPath -Arguments @("rev-parse", "--abbrev-ref", "HEAD")
-
-        if ($branchResult.ExitCode -ne 0) {
-            Add-Result -Collection $failures -ProjectGroup $projectGroup -Repository $repositoryName -Message ("Failed to read current branch: {0}" -f (($branchResult.Output -join " ").Trim()))
-            return
-        }
-
-        $branchName = Get-FirstOutputLine -Output $branchResult.Output
-
-        if ([string]::IsNullOrWhiteSpace($branchName) -or $branchName -eq "HEAD") {
-            Add-Result -Collection $skips -ProjectGroup $projectGroup -Repository $repositoryName -Message "Skipped because repository is in detached HEAD state."
-            return
-        }
-
-        $upstreamResult = Invoke-GitCommand -RepositoryPath $repositoryPath -Arguments @("rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}")
-
-        if ($upstreamResult.ExitCode -ne 0) {
-            Add-Result -Collection $skips -ProjectGroup $projectGroup -Repository $repositoryName -Message ("Skipped because upstream is not configured for branch '{0}'." -f $branchName)
-            return
-        }
-
-        $upstreamName = Get-FirstOutputLine -Output $upstreamResult.Output
-        $pullResult = Invoke-GitCommand -RepositoryPath $repositoryPath -Arguments @("pull", "--ff-only")
-
-        if ($pullResult.ExitCode -ne 0) {
-            Add-Result -Collection $failures -ProjectGroup $projectGroup -Repository $repositoryName -Message ("git pull failed for '{0}': {1}" -f $branchName, (($pullResult.Output -join " ").Trim()))
-            return
-        }
-
-        $pullSummary = (($pullResult.Output | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }) -join " ").Trim()
-
-        if ([string]::IsNullOrWhiteSpace($pullSummary)) {
-            $pullSummary = "Pull completed successfully."
-        }
-
-        Add-Result -Collection $successes -ProjectGroup $projectGroup -Repository $repositoryName -Message ("Branch '{0}' from '{1}': {2}" -f $branchName, $upstreamName, $pullSummary)
+        $repositoryQueue.Add([PSCustomObject]@{
+                ProjectGroup = $projectGroup
+                RepositoryPath = $_.FullName
+                RepositoryName = $_.Name
+            })
     }
+}
+
+$totalCount = $repositoryQueue.Count
+
+Write-StepMessage ("Start pulling repositories from root '{0}'. Total repositories: {1}." -f $resolvedRoot, $totalCount)
+
+foreach ($repository in $repositoryQueue) {
+    $processedCount++
+    $projectGroup = $repository.ProjectGroup
+    $repositoryPath = $repository.RepositoryPath
+    $repositoryName = $repository.RepositoryName
+    $displayName = "[{0}] {1}" -f $projectGroup, $repositoryName
+    $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
+    $gitDirectory = Join-Path $repositoryPath ".git"
+
+    Write-StepMessage ("({0}/{1}) Processing {2}." -f $processedCount, $totalCount, $displayName)
+
+    if (-not (Test-Path -LiteralPath $gitDirectory)) {
+        Add-Result -Collection $skips -ProjectGroup $projectGroup -Repository $repositoryName -Message "Skipped because .git was not found."
+        Write-StepMessage ("({0}/{1}) Skipped {2}: .git was not found." -f $processedCount, $totalCount, $displayName)
+        continue
+    }
+
+    Write-StepMessage ("({0}/{1}) Reading current branch for {2}." -f $processedCount, $totalCount, $displayName)
+    $branchResult = Invoke-GitCommand -RepositoryPath $repositoryPath -Arguments @("rev-parse", "--abbrev-ref", "HEAD")
+
+    if ($branchResult.ExitCode -ne 0) {
+        $message = "Failed to read current branch: {0}" -f (($branchResult.Output -join " ").Trim())
+        Add-Result -Collection $failures -ProjectGroup $projectGroup -Repository $repositoryName -Message $message
+        Write-StepMessage ("({0}/{1}) Failed {2}: {3}" -f $processedCount, $totalCount, $displayName, $message)
+        continue
+    }
+
+    $branchName = Get-FirstOutputLine -Output $branchResult.Output
+
+    if ([string]::IsNullOrWhiteSpace($branchName) -or $branchName -eq "HEAD") {
+        Add-Result -Collection $skips -ProjectGroup $projectGroup -Repository $repositoryName -Message "Skipped because repository is in detached HEAD state."
+        Write-StepMessage ("({0}/{1}) Skipped {2}: detached HEAD." -f $processedCount, $totalCount, $displayName)
+        continue
+    }
+
+    Write-StepMessage ("({0}/{1}) Checking upstream for {2} on branch '{3}'." -f $processedCount, $totalCount, $displayName, $branchName)
+    $upstreamResult = Invoke-GitCommand -RepositoryPath $repositoryPath -Arguments @("rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}")
+
+    if ($upstreamResult.ExitCode -ne 0) {
+        $message = "Skipped because upstream is not configured for branch '{0}'." -f $branchName
+        Add-Result -Collection $skips -ProjectGroup $projectGroup -Repository $repositoryName -Message $message
+        Write-StepMessage ("({0}/{1}) Skipped {2}: upstream is not configured." -f $processedCount, $totalCount, $displayName)
+        continue
+    }
+
+    $upstreamName = Get-FirstOutputLine -Output $upstreamResult.Output
+
+    Write-StepMessage ("({0}/{1}) Pulling {2} from '{3}'." -f $processedCount, $totalCount, $displayName, $upstreamName)
+    $pullResult = Invoke-GitCommand -RepositoryPath $repositoryPath -Arguments @("pull", "--ff-only")
+
+    if ($pullResult.ExitCode -ne 0) {
+        $message = "git pull failed for '{0}': {1}" -f $branchName, (($pullResult.Output -join " ").Trim())
+        Add-Result -Collection $failures -ProjectGroup $projectGroup -Repository $repositoryName -Message $message
+        Write-StepMessage ("({0}/{1}) Failed {2}: {3}" -f $processedCount, $totalCount, $displayName, $message)
+        continue
+    }
+
+    $pullSummary = (($pullResult.Output | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }) -join " ").Trim()
+
+    if ([string]::IsNullOrWhiteSpace($pullSummary)) {
+        $pullSummary = "Pull completed successfully."
+    }
+
+    $stopwatch.Stop()
+    Add-Result -Collection $successes -ProjectGroup $projectGroup -Repository $repositoryName -Message ("Branch '{0}' from '{1}': {2}" -f $branchName, $upstreamName, $pullSummary)
+    Write-StepMessage ("({0}/{1}) Completed {2} in {3:N1}s." -f $processedCount, $totalCount, $displayName, $stopwatch.Elapsed.TotalSeconds)
 }
 
 Write-Host "Git pull summary"
