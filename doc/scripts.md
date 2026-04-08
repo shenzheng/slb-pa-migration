@@ -94,3 +94,39 @@
 ```powershell
 .\scripts\export-repo-to-nuget-map.ps1 -ProjectGroups Actors,Shared -OutputPath .\doc\actors-shared-repo-to-nuget.md
 ```
+
+## export-package-versions.ps1
+
+`export-package-versions.ps1` 用于扫描 `Actors` 和 `Shared` 下的工程依赖，收集 NuGet 包版本，并生成带有依赖关系明细的 Markdown 文档。
+
+### 脚本行为
+
+- 默认扫描 `Actors`、`Shared` 两个顶层分组目录。
+- 递归分析工程文件中的 `PackageReference`，并兼容 `packages.config`。
+- 支持读取工程目录链上的 `Directory.Build.props` 和 `Directory.Packages.props` 中的版本属性。
+- 生成 `Package Version Summary`：按包名和版本排序的汇总表。
+- 生成 `Package Dependency Details`：按包名、版本列出引用它的仓库和工程。
+- 自动识别由 `Actors` 或 `Shared` 仓库自身产出的包，并在 `Source` 列中标记对应 repository 名称。
+- 自动跳过 `.git`、`bin`、`obj`、`packages`、`artifacts` 等常见无关目录。
+
+### 参数
+
+| 参数 | 说明 | 默认值 |
+| --- | --- | --- |
+| `RootPath` | 仓库根目录路径。 | `scripts` 目录的上一级目录 |
+| `ProjectGroups` | 需要扫描的顶层目录。 | `Actors`, `Shared` |
+| `OutputPath` | 输出 Markdown 文件路径，可传相对路径或绝对路径。 | `doc\package-versions.md` |
+
+### 示例
+
+```powershell
+.\scripts\export-package-versions.ps1
+```
+
+```powershell
+.\scripts\export-package-versions.ps1 -RootPath D:\SLB\Prism\PA
+```
+
+```powershell
+.\scripts\export-package-versions.ps1 -ProjectGroups Actors,Shared -OutputPath .\doc\package-versions.md
+```
