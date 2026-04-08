@@ -20,10 +20,10 @@
 
 ### 参数
 
-| 参数            | 说明                 | 默认值                     |
-| --------------- | -------------------- | -------------------------- |
-| `RootPath`      | 仓库根目录路径。     | `scripts` 目录的上一级目录 |
-| `ProjectGroups` | 需要扫描的顶层目录。 | `Actors`, `Shared`         |
+| 参数 | 说明 | 默认值 |
+| --- | --- | --- |
+| `RootPath` | 仓库根目录路径。 | `scripts` 目录的上一级目录 |
+| `ProjectGroups` | 需要扫描的顶层目录。 | `Actors`, `Shared` |
 
 ### 示例
 
@@ -51,12 +51,46 @@
 
 ### 参数
 
-| 参数       | 说明               | 默认值   |
-| ---------- | ------------------ | -------- |
+| 参数 | 说明 | 默认值 |
+| --- | --- | --- |
 | `RootPath` | 递归扫描的根目录。 | 当前目录 |
 
 ### 示例
 
 ```powershell
 .\scripts\normalize-crlf.ps1 -RootPath D:\SLB\Prism\PA
+```
+
+## export-repo-to-nuget-map.ps1
+
+`export-repo-to-nuget-map.ps1` 用于扫描一级仓库目录中的 `.nuspec` 文件，并生成 repository 与 NuGet 包名、版本号的 Markdown 对照文档。
+
+### 脚本行为
+
+- 默认从仓库根目录扫描 `Actors`、`Shared`、`Pipeline` 三个顶层分组目录。
+- 在每个一级仓库目录下递归查找 `.nuspec` 文件。
+- 解析每个 `.nuspec` 的 `metadata/id` 和 `metadata/version`。
+- 生成包含 `Project Group`、`Repository`、`Package Id`、`Version`、`Nuspec Path` 的 Markdown 表格。
+- 自动跳过 `.git`、`bin`、`obj`、`packages`、`artifacts` 等常见无关目录。
+
+### 参数
+
+| 参数 | 说明 | 默认值 |
+| --- | --- | --- |
+| `RootPath` | 仓库根目录路径。 | `scripts` 目录的上一级目录 |
+| `ProjectGroups` | 需要扫描的顶层目录。 | `Actors`, `Shared`, `Pipeline` |
+| `OutputPath` | 输出 Markdown 文件路径，可传相对路径或绝对路径。 | `doc\repo-to-nuget-map.md` |
+
+### 示例
+
+```powershell
+.\scripts\export-repo-to-nuget-map.ps1
+```
+
+```powershell
+.\scripts\export-repo-to-nuget-map.ps1 -RootPath D:\SLB\Prism\PA
+```
+
+```powershell
+.\scripts\export-repo-to-nuget-map.ps1 -ProjectGroups Actors,Shared -OutputPath .\doc\actors-shared-repo-to-nuget.md
 ```
