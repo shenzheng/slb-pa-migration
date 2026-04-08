@@ -89,9 +89,23 @@ flowchart LR
    - 输入 Channels / TimeSeries / CriticalChannels
 5. `RegisterActor(...)` 通过 `IActorDirectorService.Register(actor)` 把算法注册到 `ActorDirector`。
 6. `ActorDirectorService.Register(...)` 最终调用 `ActorDirector` 的 `actortype` 接口。
-7. `ActorDirector` 侧通过 `ActorTypeAccessor` 落到 Mongo 集合 `ActorTypes_V3`，供后续激活与查询使用。
+7. `ActorDirector` 侧由 `ActorTypeController.Register(...)` 接收该请求，再调用 `IActorTypeAccessor.Upsert(model)`。
+8. `ActorTypeAccessor` 最终把注册信息写入 Mongo 集合 `ActorTypes_V3`；如果当前环境带有 `Debugger` 后缀，则实际集合名会变成 `ActorTypes_V3_<Debugger>`。
 
 这条链路的关键点是：算法 Actor 启动后会反向注册自己，所以 `ActorDirector` 激活算法 Actor 之前，必须先有可用的注册信息。
+
+注册成功后，存下去的核心字段包括：
+
+- `Name`
+- `Version`
+- `ActorUri`
+- `Container`
+- `StartFrom`
+- `Channels`
+- `TimeSeries`
+- `CriticalChannels`
+
+后续 `AlgorithmConfigurationProvider` 周期性从这个集合重新同步，因此这里是算法“是否存在、如何被激活、应该订阅什么输入”的控制面事实源。
 
 ### 3.2 激活链路
 
@@ -149,7 +163,12 @@ sequenceDiagram
 
 ### 3.3 运行链路
 
-运行链路发生在算法 Actor 被首次调用或被 `StartAsync()` 显式启动之后。
+运行链路需要区分两层触发：
+
+- `StartAsync()` 触发的是“Actor 进入运行状态并开始监听输入”
+- 真正触发算法执行的是“输入消息进入 pipeline”
+
+也就是说，`ActorDirector` 负责把算法 Actor 拉起来，但算法真正开始计算，通常是由队列消息驱动的。
 
 1. Dapr Actor Runtime 激活 `ComputationActor`。
 2. `ComputationActor` 继承 `ComputationActorBase`，实际运行逻辑主要在基类。
@@ -169,7 +188,16 @@ sequenceDiagram
 9. `ComputationActor.GetComputationInstance(...)` 返回 `HydraulicsTransientSimulation` 实例。
 10. 基类通过 `PipelineBuilder.BuildPipeline(...)` 创建 `ComputationPipeline`。
 11. `ComputationActor.OnPipelineCreated(...)` 添加 `HydraulicStatePublishStage` 这一算法特有输出阶段。
-12. `_PipelineEngine.Start()` 启动计算。
+12. `_PipelineEngine.Start()` 启动输入监听与 pipeline。
+13. `ComputationPipeline.Start()` 调用 `InputStream.Start()`。
+14. `InputStream` 在实时模式下通过 `MessageReceiver.CreateRmqReceiver(...)` 创建 RabbitMQ receiver。
+15. RabbitMQ 收到消息后，`InputStream.InitializeStreamDataReceiver(...)` 中注册的 `OnMessageReceived` 回调开始执行：
+    - 首次补查上下文
+    - `ProcessMessages(...)`
+    - `DoProcess(...)`
+    - 各类 `IInputMessageHandler`
+    - `ProcessNextStage(...)`
+16. 对齐后的输入再进入计算阶段，最终调用具体算法实例，也就是 `HydraulicsTransientSimulation`。
 
 ```mermaid
 flowchart TD
@@ -186,9 +214,32 @@ flowchart TD
     K --> L["ComputationActor.OnPipelineCreated(...)"]
     L --> M["HydraulicStatePublishStage"]
     M --> N["_PipelineEngine.Start()"]
+    N --> O["InputStream.Start()"]
+    O --> P["RabbitMQ / Recomputer 输入"]
+    P --> Q["InputMessageHandler"]
+    Q --> R["HydraulicsTransientSimulation"]
 ```
 
 这里最重要的判断是：`ComputationActor` 只是算法 Actor 的薄包装层，真正把“Actor 调用”转换成“计算引擎启动”的是 `ComputationActorBase`。
+
+### 3.4 自检与旁路停机链路
+
+除了主链路之外，算法 Actor 还有一条“自检自己是否已经不是当前活跃实例”的旁路。
+
+`ComputationActorBase` 在激活时会启动 `pipelineMonitorTimer`，每 15 秒执行一次 `CheckActiveInstance(...)`：
+
+1. 基类根据算法名和主版本重新拼出当前 `actorUri`
+2. 通过 `ProxyFactory.CreateActorProxy<IAlgorithmActor>(this.Id, actorUri)` 调用同一个 Actor Id
+3. 读取对端 `InstanceId()`
+4. 如果返回的 `activeInstanceId` 与当前实例保存的 `instanceId` 不一致，说明自己已经不是活跃实例
+5. 当前实例执行 `StopComputationPipeline(false, $"By active instance {activeInstanceId}")`
+
+这条旁路的作用是：
+
+- 避免同一个 `ActorId` 下出现两个实例同时跑 pipeline
+- 在重平衡、重建或重复激活后，旧实例能够自停
+
+所以，“Actor 是否已经被 deactivated”并不只靠外部 `PauseAsync()`，还会靠这条自检链路兜底。
 
 ## 4. 主调用链分步说明
 
@@ -285,7 +336,7 @@ proxyFactory.CreateActorProxy<T>(new ActorId(actorId), serviceUri)
 - 可被 Dapr 访问的 Actor 端点
 - 已注册到 `ActorDirector` 的算法元数据
 
-### Step 6: 基类启动计算引擎
+### Step 6: 基类启动计算引擎并接上消息入口
 
 `ComputationActorBase` 做了绝大部分通用工作：
 
@@ -298,11 +349,14 @@ proxyFactory.CreateActorProxy<T>(new ActorId(actorId), serviceUri)
 - 创建 `AzureComputationContext`
 - 组装 pipeline
 - 启动 `_PipelineEngine`
+- 启动 `InputStream`
+- 在实时模式下接入 RabbitMQ，在重算模式下接入 `Recomputer`
 
 产出：
 
 - 处于运行中的计算 pipeline
 - 带 `well`、`container`、`instanceId` 的结构化日志
+- 已经订阅并等待输入消息的算法 Actor
 
 ### Step 7: 具体算法接管
 
@@ -319,6 +373,28 @@ proxyFactory.CreateActorProxy<T>(new ActorId(actorId), serviceUri)
 
 - 告诉基类“真正的算法实例是什么”
 - 告诉基类“额外的输出阶段或专属接口是什么”
+
+### Step 8: 实际消息如何触发算法执行
+
+以实时模式为例，算法不是在 `StartAsync()` 里直接算一遍，而是按下面顺序被动触发：
+
+1. `InputStream.Start()` 启动 RabbitMQ receiver
+2. 消息到达后，`OnMessageReceived` 回调进入
+3. `DefaultMessageHandlerFactory.GetHandlers(...)` 创建的一组消息处理器按对象类型解析消息
+4. 这些 handler 把原始消息转成统一的输入字典，例如：
+   - channel
+   - wellbore
+   - trajectory
+   - fluid report
+   - time series
+5. 解析后的输入推进到下一 stage
+6. pipeline 调用具体算法对象 `HydraulicsTransientSimulation`
+
+所以“算法被触发”的本质是：
+
+- 外部：`ActorDirector` 先把 Actor 激活起来
+- 内部：RabbitMQ 或 Recompute 输入把数据送进 `InputStream`
+- 算法：只有拿到输入后才真正执行
 
 ## 5. StreamSampling 与算法 Actor 的关系
 
@@ -446,11 +522,44 @@ Actor 是否激活还会受到以下因素影响：
 
 ## 8. 日志与排障
 
-推荐按“入口日志 -> 激活日志 -> Actor 激活日志 -> pipeline 配置日志”的顺序排查。
+推荐按“注册日志 -> 入口日志 -> 激活日志 -> Actor 激活日志 -> 消息日志 -> 算法日志 -> 输出日志”的顺序排查。
 
-### 8.1 入口日志
+## 8.1 关键路径点与日志对照
 
-先看 `ActorDirector`：
+下面这张表可以把“看到哪些日志”直接对应到“代码大概已经执行到哪里”。
+
+| 路径点 | 代表日志关键词 | 说明 |
+| --- | --- | --- |
+| 算法向 ActorDirector 注册 | `Succeed to register actor` | 算法服务启动，`BuildApplication<TActor>()` 已执行到注册环节 |
+| ActorDirector 落库注册信息 | `Registered actor configuration for` | `ActorTypeController.Register(...)` 已接收并写入 `ActorTypes_V3` |
+| ActorDirector 开始激活 | `Begin start actor:` | `ComputationActorHelper.ActivateContainerAsync(...)` 已开始 |
+| ActorDirector 激活成功 | `Start actor succeed:` | Dapr Proxy 调用 `StartAsync()` 成功返回 |
+| Actor 激活开始 | `begin activate actor` | `ComputationActorBase.OnActivateAsync()` 已进入 |
+| ActorInfor 已拿到 | `Succeed to get actorinfor` | `LoadActorInfor()` 成功 |
+| Pipeline 已构建 | `Build pipeline for algorithm` | `PipelineBuilder.InitializeVersion(...)` 已执行 |
+| Pipeline 配置完成 | `Succeed to config computation pipeline` | `ConfigPipeline()` 已完成 |
+| InputStream 已开始处理初始化上下文 | `Query initial inputs:` / `set initial inputs:` | Actor 已开始拉取初始上下文 |
+| 实时消息已进来 | `Processed initial inputs` / `message ... cannot be handled` / `Save state when InputStream receives context data` | `InputStream.ProcessMessages(...)` 已执行 |
+| 算法 stage 已开始执行 | `pressure profile computation stage start` | `HydraulicsProfileComputation.ProcessMandatory(...)` 已进入 |
+| 算法实际产出成功 | `RT simulation output successfully` | 一次实时液压计算成功完成 |
+| 输出阶段已发消息 | `HydraulicStatePublish Stage Enter` / `HydraulicStatePublish message` | `HydraulicStatePublishStage` 已把结果发出 |
+| Actor 自检活跃实例 | `Succeed to check active instance` | `CheckActiveInstance()` 自检已执行 |
+| 旧实例自停 | `deactivate actor succeed. By active instance` | 当前实例发现自己不是活跃实例并停止 pipeline |
+
+## 8.2 注册日志
+
+先看两边是否完成注册：
+
+- 算法 Actor 服务：
+  - `Succeed to register actor ...`
+- `ActorDirector`：
+  - `Registered actor configuration for ...`
+
+如果前者有、后者没有，优先看 `ActorDirectorService.Register(...)` 到 `actortype` 的网络链路。
+
+## 8.3 入口日志
+
+再看 `ActorDirector`：
 
 - `ActorController`
 - `ActorManager`
@@ -471,7 +580,7 @@ Actor 是否激活还会受到以下因素影响：
 - `containerId` 不对
 - 过滤条件导致未被选中
 
-### 8.2 Actor 激活日志
+## 8.4 Actor 激活日志
 
 再看算法 Actor 服务：
 
@@ -481,19 +590,53 @@ Actor 是否激活还会受到以下因素影响：
 
 这些日志主要来自 `ComputationActorBase.OnActivateAsync()`。
 
-### 8.3 Pipeline 配置日志
+## 8.5 Pipeline 与消息日志
 
 如果 Actor 已被调起，但计算没跑起来，继续看：
 
 - `Succeed to get actorinfor`
 - `Succeed to config computation pipeline`
+- `Query initial inputs`
+- `set initial inputs`
+- `Processed initial inputs`
+- `Messages handlers initialized`
 - `Failed to get tenant`
 - `Cannot find module`
 - `Cannot find type`
 
-这些日志集中在 `ComputationActorBase.LoadActorInfor()` 和 `ConfigPipeline()`。
+这些日志分别对应：
 
-### 8.4 常见问题清单
+- `ComputationActorBase.LoadActorInfor()`
+- `ComputationActorBase.ConfigPipeline()`
+- `InputStream.QueryInitialInputs()`
+- `DefaultMessageHandlerFactory.GetHandlers(...)`
+- `InputStream.ProcessMessages(...)`
+
+如果激活日志成功、但没有消息相关日志，优先怀疑：
+
+- 队列没有输入
+- `StreamSampling` 没有把数据喂进来
+- RabbitMQ receiver 没有真正收到消息
+
+## 8.6 算法执行日志
+
+对 `HydraulicsTransient`，最关键的算法日志来自 `HydraulicsProfileComputation`：
+
+- `pressure profile computation stage start`
+- `trying to create RT Simulator`
+- `trying to simulate real time data`
+- `RT simulation output successfully`
+- `RT simulator is null`
+- `RT input content is null`
+
+这组日志能帮助判断：
+
+- 引擎是否已创建
+- 这次时间步是否真的进了计算
+- 输出是否成功
+- 是“没有输入”还是“引擎没建起来”
+
+## 8.7 常见问题清单
 
 #### 问题 1：算法未注册
 
@@ -557,7 +700,68 @@ Actor 是否激活还会受到以下因素影响：
 - `EntryPoint` 是否与实际类型名一致
 - 版本或包内容是否正确
 
-## 9. 推荐阅读代码路径
+#### 问题 6：Actor 已启动，但没有真正执行算法
+
+现象：
+
+- 看得到 `Start actor succeed`
+- 看得到 `activate actor succeed`
+- 但看不到算法 stage 日志
+
+优先检查：
+
+- 是否有 `Query initial inputs`、`Processed initial inputs`
+- 是否有 `Messages handlers initialized`
+- RabbitMQ 是否真的有消息
+- `StreamSampling` 是否已启动并订阅对应算法
+
+#### 问题 7：当前实例被旁路停掉
+
+现象：
+
+- 周期性看到 `Succeed to check active instance`
+- 随后出现 `deactivate actor succeed. By active instance ...`
+
+说明：
+
+- 当前实例检测到另一个同 `ActorId` 的实例已经成为活跃实例
+- 当前实例主动停止 pipeline，这是预期保护行为，不一定是故障
+
+## 9. 算法实际执行示例
+
+以 `HydraulicsTransientSimulation` 为例，实际执行的不是一个单函数，而是一组顺序 stage：
+
+- `BhaRunHandler`
+- `ContextInputHandler`
+- `RealTimeInputOrganizer`
+- `HydraulicsProfileComputation`
+- `HCIAlarmNotification`
+- `TransientTrippingStage`
+
+其中最值得关注的是 `HydraulicsProfileComputation`。一次典型的实时计算大致会做下面这些事：
+
+1. 检查上下文是否已经完整，例如 tubular、wellbore geometry、fluid、trajectory 等
+2. 如果实时模拟器还没创建，或者上下文变化导致需要重建，就创建或重建 RT simulator
+3. 如果轨迹、泥浆、摩阻系数、surface cooling 等配置变化，就更新引擎内部状态
+4. 如果当前时间步有实时输入，则调用液压引擎执行瞬态模拟
+5. 从引擎输出中提取关键结果，例如：
+   - `ECDAtBit`
+   - `ESDAtBit`
+   - `StandPipePressure`
+   - `HoleCleaningIndex`
+   - 温度剖面
+   - 压力剖面
+6. 把结果写回 `Output`
+7. `HydraulicStatePublishStage` 再把其中的液压状态消息发到路由：
+   - `p3.{WellId}.HydraulicState.{ContainerId}`
+
+换句话说，`HydraulicsTransient` 并不是“收到消息就直接吐一个值”，而是：
+
+- 先做上下文和实时输入整理
+- 再驱动液压瞬态模拟引擎
+- 再整理成压力剖面、hole cleaning profile、状态消息等多种输出
+
+## 10. 推荐阅读代码路径
 
 - `Actors/Rhapsody.Service.ActorDirector/Slb.Prism.Rhapsody.Service.ActorDirector/Controllers/ActorController.cs`
 - `Actors/Rhapsody.Service.ActorDirector/Slb.Prism.Rhapsody.Service.ActorDirector/ActorManager.cs`
@@ -570,10 +774,14 @@ Actor 是否激活还会受到以下因素影响：
 - `Actors/Rhapsody.Computation.HydraulicsTransient/Slb.Prism.Rhapsody.Computation.HydraulicsTransientActor/appsettings.json`
 - `Shared/Rhapsody.Library.ComputationDaprAdapter/ComputationDaprAdapter/Extensions/WebApplicationBuilderExtensions.cs`
 - `Shared/Rhapsody.Library.ComputationDaprAdapter/ComputationDaprAdapter/ComputationActorBase.cs`
+- `Shared/Rhapsody.Library.ComputationDaprAdapter/ComputationDaprAdapter/InputStream/InputStream.cs`
+- `Shared/Rhapsody.Library.ComputationDaprAdapter/ComputationDaprAdapter/InputStream/DefaultMessageHandlerFactory.cs`
 - `Shared/Rhapsody.Library.ComputationDaprAdapter/ComputationDaprAdapter/RemoteServices/ActorDirectorService.cs`
 - `Shared/Rhapsody.Library.ComputationDaprAdapter/ComputationDaprAdapter/RemoteServices/ServiceHub.cs`
+- `Shared/Shared.Algorithm.HydraulicsTransientSimulation/Slb.Prism.Shared.Algorithm.HydraulicsTransientSimulation/HydraulicsTransientSimulation.cs`
+- `Shared/Shared.Algorithm.HydraulicsTransientSimulation/Slb.Prism.Shared.Algorithm.HydraulicsTransientSimulation/Framework/HydraulicsProfileComputation.cs`
 
-## 10. 术语表
+## 11. 术语表
 
 - `ActorDirector`
   - 控制面服务，负责注册、查询、激活辅助、上下文和状态相关 API
@@ -589,8 +797,10 @@ Actor 是否激活还会受到以下因素影响：
   - 统一封装 Actor 生命周期、配置、上下文、pipeline、状态与日志的通用基类
 - `StreamSamplingActor`
   - 为算法提供实时输入流或订阅管理的上游 Actor
+- `InputStream`
+  - pipeline 的输入入口，负责从 RabbitMQ 或重算输入中取消息并推进到后续 stage
 
-## 11. 小结
+## 12. 小结
 
 把整条链路压缩成一句话，就是：
 
