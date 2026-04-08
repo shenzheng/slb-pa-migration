@@ -31,6 +31,79 @@
 
 ## 目录结构
 
+```pre
+├─ Actors
+|  ├─ Rhapsody.Computation.CementingHydraulics
+|  └─ ...
+|
+├─ Pipeline
+|  ├─ CD
+|  ├─ DevOps.Service.SSS
+|  └─ rcis-devops-template
+|
+└─ Shared
+   ├─ Rhapsody.Algorithm.ChannelProjection
+   └─ ...
+```
+
+### Actors
+
+本次改造涉及到的所有Actors，下面的目录名和对应的Repository以及Pipeline是一样的。
+
+| 目录                                     | Repository | 说明 |
+| ---------------------------------------- | ---------- | ---- |
+| Rhapsody.Computation.CementingHydraulics | 与目录同名 |      |
+| Rhapsody.Computation.ChannelProjection   | 与目录同名 |      |
+| Rhapsody.Computation.CoreComputation     | 与目录同名 |      |
+| Rhapsody.Computation.DataGenerator       | 与目录同名 |      |
+| Rhapsody.Computation.DepthJumpCorrection | 与目录同名 |      |
+| Rhapsody.Computation.Flowback            | 与目录同名 |      |
+| Rhapsody.Computation.HydraulicsTransient | 与目录同名 |      |
+| rhapsody.computation.killsheet           | 与目录同名 |      |
+| Rhapsody.Computation.OperationKpi        | 与目录同名 |      |
+| Rhapsody.Computation.PackOff             | 与目录同名 |      |
+| Rhapsody.Computation.ProceduralAdherence | 与目录同名 |      |
+| Rhapsody.Computation.Risk                | 与目录同名 |      |
+| Rhapsody.Computation.RtRheology          | 与目录同名 |      |
+| Rhapsody.Computation.TndBroomstick       | 与目录同名 |      |
+| Rhapsody.Computation.Udf                 | 与目录同名 |      |
+| Rhapsody.Computation.WellBalanceRisks    | 与目录同名 |      |
+| Rhapsody.Service.ActorDirector           | 与目录同名 |      |
+| Rhapsody.Service.DrillingKpi             | 与目录同名 |      |
+| Rhapsody.Service.PressureMonitoring      | 与目录同名 |      |
+| Rhapsody.Service.StreamSampling          | 与目录同名 |      |
+
+### Pipeline
+
+| 目录                 | Repository | 说明 |
+| -------------------- | ---------- | ---- |
+| CD                   | 与目录同名 |      |
+| rcis-devops-template | 与目录同名 |      |
+
+### Shared
+
+| 目录                                           | Repository | 说明 |
+| ---------------------------------------------- | ---------- | ---- |
+| Rhapsody.Library.ComputationDaprAdapter        |            |      |
+| Shared.Library.Computation.Common              |            |      |
+| Rhapsody.Algorithm.ChannelProjection           |            |      |
+| Shared.Algorithm.CementingHydraulics           |            |      |
+| Shared.Algorithm.CoreComputation               |            |      |
+| Rhapsody.Algorithm.DataGenerator               |            |      |
+| Rhapsody.Algorithm.DepthJumpCorrection         |            |      |
+| Shared.Algorithm.Flowback                      |            |      |
+| Shared.Algorithm.HydraulicsTransientSimulation |            |      |
+| Shared.Algorithm.KillSheet                     |            |      |
+| Shared.Algorithm.OperationKpi                  |            |      |
+| Shared.Algorithm.PackOff                       |            |      |
+| Shared.Algorithm.ParameterAdherence            |            |      |
+| Shared.Algorithm.PressureMonitoring            |            |      |
+| Shared.Algorithm.RtRheology                    |            |      |
+| Shared.Algorithm.TnDBroomstick                 |            |      |
+| Shared.Library.WellBalanceRisks                |            |      |
+| Rhapsody.Algorithm.Udf                         |            |      |
+| Shared.Library.DrillingKpi                     |            |      |
+
 - `../Rhapsody.Computation.DataGenerator/` — 已经改造完的Actor。用途：参考
 - `../Rhapsody.Computation.DataGenerator.Master/` — 改造前的Actor。用途：参考
 - `../Rhapsody.Service.DrillingKpi/` — 已经改造完的Actor。用途：参考

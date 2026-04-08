@@ -1,0 +1,4 @@
+# 任务描述
+
+早scripts目录下生成一个脚本，可以拉取Actors和Shared工程目录下当前分支的最新版本。
+并且在doc目录下生成一个关于scripts功能的markdown文件，用于说明各脚本的用法。
