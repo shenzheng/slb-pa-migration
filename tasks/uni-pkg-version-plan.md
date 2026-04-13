@@ -135,7 +135,7 @@
 ### Actor 回灌规则
 
 - Actor 改造提交前，所有内部 `PackageReference` 必须引用 Shared Pipeline 已发布的真实版本。
-- Actor 的 `.nuspec`、`IntegrationTests.nuspec`、工程文件中的版本号必须同步更新，避免编译引用与发布引用不一致。
+- Actor 提交前，应优先确保内部 `PackageReference` 已回灌 Shared pipeline 产出的真实版本；如对应 `.nuspec` 声明了 `metadata/dependencies`，则这些依赖版本也必须同步更新。
 
 ## Upgrade Batches
 
@@ -213,7 +213,7 @@
 - `dotnet restore` 成功
 - `dotnet build` 成功
 - 仓库现有单元测试全部通过
-- `.nuspec` 与工程引用版本一致
+- `.csproj` / `Directory.Packages.props` / `packages.config` 与 `.nuspec metadata/dependencies` 中的依赖版本一致
 - `appsettings.json` 的 `LoggerSetup:EnricherConfiguration:Properties:ProviderName` 与服务名一致
 - 文本文件换行为 CRLF
 
@@ -255,7 +255,7 @@
 - `scripts/update-actor-internal-package-refs.ps1`
   - 把 Shared 新产出的包版本批量回写到 Actor 仓库
 - `scripts/verify-package-upgrade.ps1`
-  - 聚合 restore、build、test、nuspec/version consistency、CRLF 检查
+  - 聚合 restore、build、test、依赖版本一致性、CRLF 检查
 
 ## Script-First Roadmap
 
@@ -364,7 +364,7 @@ README / 文档修改：
   - `dotnet restore`
   - `dotnet build`
   - 测试执行
-  - `.nuspec`/工程版本一致性检查
+  - 项目包引用 / `.nuspec metadata/dependencies` 依赖版本一致性检查
   - CRLF 检查
 
 验证：

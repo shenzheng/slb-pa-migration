@@ -1,0 +1,178 @@
+{
+    "GeneratedAt":  "2026-04-09T15:48:06.3107189+08:00",
+    "Tool":  "verify-package-upgrade.ps1",
+    "ReportKind":  "Framework",
+    "Repositories":  [
+                         {
+                             "RepositoryPath":  "D:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring",
+                             "InputPath":  "D:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring",
+                             "PrimaryEntryPoint":  "D:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring.sln",
+                             "EntryPointKind":  "Solution",
+                             "PrimaryEntryPointSearchDepth":  0,
+                             "Restore":  {
+                                             "CheckName":  "Restore",
+                                             "Command":  "C:\\Program Files\\dotnet\\dotnet.exe restore D:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring.sln",
+                                             "WorkingDirectory":  "D:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring",
+                                             "Status":  "Failed",
+                                             "ExitCode":  1,
+                                             "StartedAt":  "2026-04-09T15:47:02.7914311+08:00",
+                                             "CompletedAt":  "2026-04-09T15:47:11.8902672+08:00",
+                                             "DurationMs":  9099,
+                                             "OutputLineCount":  7,
+                                             "OutputExcerpt":  "正在确定要还原的项目…\r\nD:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring.csproj : error NU1301: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/wbi-packages/nuget/v3/index.json 的服务索引。 [D:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring.sln]\r\nD:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring.csproj : error NU1301:   Response status code does not indicate success: 401 (Unauthorized). [D:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring.sln]\r\nD:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring.Test\\Slb.Prism.Shared.Algorithm.PressureMonitoring.Test.csproj : error NU1301: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/wbi-packages/nuget/v3/index.json 的服务索引。 [D:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring.sln]\r\nD:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring.Test\\Slb.Prism.Shared.Algorithm.PressureMonitoring.Test.csproj : error NU1301:   Response status code does not indicate success: 401 (Unauthorized). [D:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring.sln]\r\n  未能还原 D:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring.csproj (用时 8.47 秒)。\r\n  未能还原 D:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring.Test\\Slb.Prism.Shared.Algorithm.PressureMonitoring.Test.csproj (用时 8.47 秒)。",
+                                             "Summary":  "Exit code 1"
+                                         },
+                             "Build":  {
+                                           "CheckName":  "Build",
+                                           "Command":  "dotnet build D:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring.sln --no-restore",
+                                           "WorkingDirectory":  "D:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring",
+                                           "Status":  "Skipped",
+                                           "ExitCode":  null,
+                                           "StartedAt":  null,
+                                           "CompletedAt":  null,
+                                           "DurationMs":  0,
+                                           "OutputLineCount":  0,
+                                           "OutputExcerpt":  "",
+                                           "Summary":  "Build skipped because restore failed.",
+                                           "Reason":  "Restore failed."
+                                       },
+                             "Tests":  {
+                                           "Status":  "Skipped",
+                                           "Reason":  "RunTest switch was not set.",
+                                           "Targets":  [
+
+                                                       ]
+                                       },
+                             "CrLf":  {
+                                          "Status":  "Passed",
+                                          "InspectedFileCount":  31,
+                                          "OffendingFileCount":  0,
+                                          "OffendingFiles":  [
+
+                                                             ]
+                                      },
+                             "VersionConsistency":  {
+                                                        "Status":  "Skipped",
+                                                        "Note":  "Version consistency checks did not produce a definitive result.",
+                                                        "NuspecFileCount":  1,
+                                                        "ProjectFileCount":  2,
+                                                        "NuspecFiles":  [
+                                                                            "D:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring.nuspec"
+                                                                        ],
+                                                        "ProjectFiles":  [
+                                                                             "D:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring.Test\\Slb.Prism.Shared.Algorithm.PressureMonitoring.Test.csproj",
+                                                                             "D:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring.csproj"
+                                                                         ],
+                                                        "Checks":  [
+                                                                       {
+                                                                           "NuspecPath":  "D:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring.nuspec",
+                                                                           "PackageId":  "Slb.Prism.Shared.Algorithm.PressureMonitoring",
+                                                                           "NuspecVersion":  "1.0.0",
+                                                                           "ProjectPath":  "D:\\SLB\\Prism\\PA\\Shared\\Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring\\Slb.Prism.Shared.Algorithm.PressureMonitoring.csproj",
+                                                                           "ProjectVersion":  null,
+                                                                           "Status":  "Skipped",
+                                                                           "Reason":  "No comparable project version was found."
+                                                                       }
+                                                                   ],
+                                                        "PassedCheckCount":  0,
+                                                        "FailedCheckCount":  0,
+                                                        "SkippedCheckCount":  1,
+                                                        "ReservedCheckCount":  0
+                                                    }
+                         },
+                         {
+                             "RepositoryPath":  "D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring",
+                             "InputPath":  "D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring",
+                             "PrimaryEntryPoint":  "D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Rhapsody.Service.PressureMonitoring.slnx",
+                             "EntryPointKind":  "Solution",
+                             "PrimaryEntryPointSearchDepth":  0,
+                             "Restore":  {
+                                             "CheckName":  "Restore",
+                                             "Command":  "C:\\Program Files\\dotnet\\dotnet.exe restore D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Rhapsody.Service.PressureMonitoring.slnx",
+                                             "WorkingDirectory":  "D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring",
+                                             "Status":  "Passed",
+                                             "ExitCode":  0,
+                                             "StartedAt":  "2026-04-09T15:47:12.6501417+08:00",
+                                             "CompletedAt":  "2026-04-09T15:47:46.0488895+08:00",
+                                             "DurationMs":  33399,
+                                             "OutputLineCount":  20,
+                                             "OutputExcerpt":  "正在确定要还原的项目…\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\UnitTests\\UnitTests.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/wbi-packages/nuget/v3/index.json 的服务索引。 [D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Rhapsody.Service.PressureMonitoring.slnx]\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\ComputationActor\\Slb.Prism.Rhapsody.Service.PressureMonitoringActor.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/wbi-packages/nuget/v3/index.json 的服务索引。 [D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Rhapsody.Service.PressureMonitoring.slnx]\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\IntegrationTests\\IntegrationTests.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/wbi-packages/nuget/v3/index.json 的服务索引。 [D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Rhapsody.Service.PressureMonitoring.slnx]\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\UnitTests\\UnitTests.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/WellboreInsights/_packaging/wbi-ref-packages/nuget/v3/index.json 的服务索引。 [D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Rhapsody.Service.PressureMonitoring.slnx]\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\ComputationActor\\Slb.Prism.Rhapsody.Service.PressureMonitoringActor.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/WellboreInsights/_packaging/wbi-ref-packages/nuget/v3/index.json 的服务索引。 [D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Rhapsody.Service.PressureMonitoring.slnx]\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\IntegrationTests\\IntegrationTests.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/WellboreInsights/_packaging/wbi-ref-packages/nuget/v3/index.json 的服务索引。 [D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Rhapsody.Service.PressureMonitoring.slnx]\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\UnitTests\\UnitTests.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/PrismService/nuget/v3/index.json 的服务索引。 [D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Rhapsody.Service.PressureMonitoring.slnx]\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\ComputationActor\\Slb.Prism.Rhapsody.Service.PressureMonitoringActor.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/PrismService/nuget/v3/index.json 的服务索引。 [D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Rhapsody.Service.PressureMonitoring.slnx]\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\UnitTests\\UnitTests.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/PrismLibrary/nuget/v3/index.json 的服务索引。 [D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Rhapsody.Service.PressureMonitoring.slnx]\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\IntegrationTests\\IntegrationTests.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/PrismService/nuget/v3/index.json 的服务索引。 [D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Rhapsody.Service.PressureMonitoring.slnx]\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\ComputationActor\\Slb.Prism.Rhapsody.Service.PressureMonitoringActor.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/PrismLibrary/nuget/v3/index.json 的服务索引。 [D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Rhapsody.Service.PressureMonitoring.slnx]\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\IntegrationTests\\IntegrationTests.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/PrismLibrary/nuget/v3/index.json 的服务索引。 [D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Rhapsody.Service.PressureMonitoring.slnx]\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\ComputationActor\\Slb.Prism.Rhapsody.Service.PressureMonitoringActor.csproj : warning NU1903: 包 \"AutoMapper\" 9.0.0 具有已知的 高 严重性漏洞，https://github.com/advisories/GHSA-rvv3-g6hj-g44x [D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Rhapsody.Service.PressureMonitoring.slnx]\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\UnitTests\\UnitTests.csproj : warning NU1903: 包 \"AutoMapper\" 9.0.0 具有已知的 高 严重性漏洞，https://github.com/advisories/GHSA-rvv3-g6hj-g44x [D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Rhapsody.Service.PressureMonitoring.slnx]\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\UnitTests\\UnitTests.csproj : warning NU1902: 包 \"Microsoft.Rest.ClientRuntime\" 2.3.8 具有已知的 中 严重性漏洞，https://github.com/advisories/GHSA-whph-446h-6m9v [D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Rhapsody.Service.PressureMonitoring.slnx]\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\ComputationActor\\Slb.Prism.Rhapsody.Service.PressureMonitoringActor.csproj : warning NU1902: 包 \"Microsoft.Rest.ClientRuntime\" 2.3.8 具有已知的 中 严重性漏洞，https://github.com/advisories/GHSA-whph-446h-6m9v [D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Rhapsody.Service.PressureMonitoring.slnx]\r\n  已还原 D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\IntegrationTests\\IntegrationTests.csproj (用时 31.92 秒)。\r\n  已还原 D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\ComputationActor\\Slb.Prism.Rhapsody.Service.PressureMonitoringActor.csproj (用时 32.46 秒)。\r\n  已还原 D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\UnitTests\\UnitTests.csproj (用时 32.46 秒)。",
+                                             "Summary":  "Passed"
+                                         },
+                             "Build":  {
+                                           "CheckName":  "Build",
+                                           "Command":  "C:\\Program Files\\dotnet\\dotnet.exe build D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Rhapsody.Service.PressureMonitoring.slnx --no-restore",
+                                           "WorkingDirectory":  "D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring",
+                                           "Status":  "Passed",
+                                           "ExitCode":  0,
+                                           "StartedAt":  "2026-04-09T15:47:46.0488895+08:00",
+                                           "CompletedAt":  "2026-04-09T15:48:06.0466594+08:00",
+                                           "DurationMs":  19998,
+                                           "OutputLineCount":  42,
+                                           "OutputExcerpt":  "D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\IntegrationTests\\IntegrationTests.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/wbi-packages/nuget/v3/index.json 的服务索引。\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\IntegrationTests\\IntegrationTests.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/WellboreInsights/_packaging/wbi-ref-packages/nuget/v3/index.json 的服务索引。\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\IntegrationTests\\IntegrationTests.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/PrismService/nuget/v3/index.json 的服务索引。\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\IntegrationTests\\IntegrationTests.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/PrismLibrary/nuget/v3/index.json 的服务索引。\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\UnitTests\\UnitTests.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/wbi-packages/nuget/v3/index.json 的服务索引。\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\UnitTests\\UnitTests.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/WellboreInsights/_packaging/wbi-ref-packages/nuget/v3/index.json 的服务索引。\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\UnitTests\\UnitTests.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/PrismService/nuget/v3/index.json 的服务索引。\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\UnitTests\\UnitTests.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/PrismLibrary/nuget/v3/index.json 的服务索引。\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\UnitTests\\UnitTests.csproj : warning NU1903: 包 \"AutoMapper\" 9.0.0 具有已知的 高 严重性漏洞，https://github.com/advisories/GHSA-rvv3-g6hj-g44x\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\UnitTests\\UnitTests.csproj : warning NU1902: 包 \"Microsoft.Rest.ClientRuntime\" 2.3.8 具有已知的 中 严重性漏洞，https://github.com/advisories/GHSA-whph-446h-6m9v\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\ComputationActor\\Slb.Prism.Rhapsody.Service.PressureMonitoringActor.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/wbi-packages/nuget/v3/index.json 的服务索引。\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\ComputationActor\\Slb.Prism.Rhapsody.Service.PressureMonitoringActor.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/WellboreInsights/_packaging/wbi-ref-packages/nuget/v3/index.json 的服务索引。\r\n...\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\UnitTests\\UnitTests.csproj : warning NU1903: 包 \"AutoMapper\" 9.0.0 具有已知的 高 严重性漏洞，https://github.com/advisories/GHSA-rvv3-g6hj-g44x\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\UnitTests\\UnitTests.csproj : warning NU1902: 包 \"Microsoft.Rest.ClientRuntime\" 2.3.8 具有已知的 中 严重性漏洞，https://github.com/advisories/GHSA-whph-446h-6m9v\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\ComputationActor\\Slb.Prism.Rhapsody.Service.PressureMonitoringActor.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/wbi-packages/nuget/v3/index.json 的服务索引。\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\ComputationActor\\Slb.Prism.Rhapsody.Service.PressureMonitoringActor.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/WellboreInsights/_packaging/wbi-ref-packages/nuget/v3/index.json 的服务索引。\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\ComputationActor\\Slb.Prism.Rhapsody.Service.PressureMonitoringActor.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/PrismService/nuget/v3/index.json 的服务索引。\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\ComputationActor\\Slb.Prism.Rhapsody.Service.PressureMonitoringActor.csproj : warning NU1900: 获取包漏洞数据时出错: 无法加载源 https://pkgs.dev.azure.com/slb1-swt/_packaging/PrismLibrary/nuget/v3/index.json 的服务索引。\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\ComputationActor\\Slb.Prism.Rhapsody.Service.PressureMonitoringActor.csproj : warning NU1903: 包 \"AutoMapper\" 9.0.0 具有已知的 高 严重性漏洞，https://github.com/advisories/GHSA-rvv3-g6hj-g44x\r\nD:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\ComputationActor\\Slb.Prism.Rhapsody.Service.PressureMonitoringActor.csproj : warning NU1902: 包 \"Microsoft.Rest.ClientRuntime\" 2.3.8 具有已知的 中 严重性漏洞，https://github.com/advisories/GHSA-whph-446h-6m9v\r\n    16 个警告\r\n    0 个错误\r\n\r\n已用时间 00:00:19.70",
+                                           "Summary":  "Passed"
+                                       },
+                             "Tests":  {
+                                           "Status":  "Skipped",
+                                           "Reason":  "RunTest switch was not set.",
+                                           "Targets":  [
+
+                                                       ]
+                                       },
+                             "CrLf":  {
+                                          "Status":  "Passed",
+                                          "InspectedFileCount":  28,
+                                          "OffendingFileCount":  0,
+                                          "OffendingFiles":  [
+
+                                                             ]
+                                      },
+                             "VersionConsistency":  {
+                                                        "Status":  "Reserved",
+                                                        "Note":  "Some nuspec files require manual review because the project match is ambiguous or tokenized.",
+                                                        "NuspecFileCount":  2,
+                                                        "ProjectFileCount":  3,
+                                                        "NuspecFiles":  [
+                                                                            "D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\IntegrationTests\\Slb.Prism.Rhapsody.Service.PressureMonitoring.IntegrationTests.nuspec",
+                                                                            "D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Slb.Prism.Rhapsody.Service.PressureMonitoring.nuspec"
+                                                                        ],
+                                                        "ProjectFiles":  [
+                                                                             "D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\ComputationActor\\Slb.Prism.Rhapsody.Service.PressureMonitoringActor.csproj",
+                                                                             "D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\IntegrationTests\\IntegrationTests.csproj",
+                                                                             "D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\UnitTests\\UnitTests.csproj"
+                                                                         ],
+                                                        "Checks":  [
+                                                                       {
+                                                                           "NuspecPath":  "D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\IntegrationTests\\Slb.Prism.Rhapsody.Service.PressureMonitoring.IntegrationTests.nuspec",
+                                                                           "PackageId":  "Slb.Prism.Rhapsody.Service.PressureMonitoring.IntegrationTests",
+                                                                           "NuspecVersion":  "1.0.0.0",
+                                                                           "ProjectPath":  null,
+                                                                           "ProjectVersion":  null,
+                                                                           "Status":  "Reserved",
+                                                                           "Reason":  "Multiple project candidates matched this nuspec."
+                                                                       },
+                                                                       {
+                                                                           "NuspecPath":  "D:\\SLB\\Prism\\PA\\Actors\\Rhapsody.Service.PressureMonitoring\\Slb.Prism.Rhapsody.Service.PressureMonitoring.nuspec",
+                                                                           "PackageId":  "Slb.Prism.Rhapsody.Service.PressureMonitoring",
+                                                                           "NuspecVersion":  "1.0.0.0",
+                                                                           "ProjectPath":  null,
+                                                                           "ProjectVersion":  null,
+                                                                           "Status":  "Reserved",
+                                                                           "Reason":  "Multiple project candidates matched this nuspec."
+                                                                       }
+                                                                   ],
+                                                        "PassedCheckCount":  0,
+                                                        "FailedCheckCount":  0,
+                                                        "SkippedCheckCount":  0,
+                                                        "ReservedCheckCount":  2
+                                                    }
+                         }
+                     ],
+    "Summary":  {
+                    "TotalRepositories":  2,
+                    "PassedRepositories":  1,
+                    "FailedRepositories":  1,
+                    "SkippedRepositories":  0,
+                    "RunTest":  false
+                }
+}
