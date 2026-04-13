@@ -1,0 +1,12 @@
+{
+    "mcpServers": {
+      "slb-ado-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@azure-devops/mcp@next",
+          "slb1-swt"
+        ]
+      }
+    }
+  }
