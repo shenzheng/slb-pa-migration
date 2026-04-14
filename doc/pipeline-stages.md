@@ -9,11 +9,13 @@ Pipeline 在 stage 级别上的输入、依赖和产出：
 - 模板仓库 `../Pipeline/rcis-devops-template`
 - 成功运行样本 `Rhapsody.Computation.RtRheology_15507955`
 
-本文的目标是回答三个问题：
+本文的目标是回答下列问题：
 
 1. 每个 stage 依赖仓库中的哪些非代码文件
 2. 每个 stage 依赖哪些上游 stage 的输出
 3. 每个 stage 会产出什么结果，供后续 stage 或外部系统使用
+4. `pipeline.json` 各字段与 **Azure DevOps Repository 名称** 如何影响打包、镜像与部署侧参数（见 **第 3.1～3.3 节**）
+5. 常见配置与版本疑问（见 **第 15 节 Q&A**）
 
 ## 2. Pipeline 类型与入口
 
@@ -100,6 +102,47 @@ FIT
 - `fit.filter = TestCategory~RtRheology`
 - `codescan.sourceDirs = ComputationActor`
 - `pipelineTemplateVersion = v3`
+
+### 3.1 `pipeline.json` 字段与下游影响（概要）
+
+平台脚本（`go.ps1`、`go_pipeline.ps1`）会将 `pipeline.json` 与 CD 包内 `default.*.json` **合并**后再执行，因此下列字段不仅影响「是否跑某任务」，还影响 **包名、环境注册键、镜像基路径** 等。
+
+| 字段（示例） | 典型作用 | 对后续 stage / 外部系统的直接影响 |
+| ------------ | -------- | ----------------------------------- |
+| `type` | 选择 Pipeline 类型配置块（如 `InternalImageDotNetCloud`） | 决定默认任务集、Agent 能力、是否走镜像/Helm 路径；与 `azure-pipelines-ci.yml` 引用的模板需一致 |
+| `name` | 逻辑服务名（点分，**不等同于 Git 仓库名**） | 合并后生成 `serviceName = Slb.Prism.<name>`：**PKG** 阶段 `Inject-NuspecFile` 将主包/IT 包 **`<id>`** 写成该前缀；**Deploy** 阶段用其在 **环境 JSON（SSS）** 中查找服务条目、计算 Helm release 短名、**内部镜像基路径**（见 3.2）；本地开发时还曾用于 `LocalNugetPackageVersion_<name>` 等环境变量键 |
+| `pkg.nuspecPath` / `pkg.nuspecIntPath` | 磁盘上的 nuspec 路径 | 决定打包入口；**包 ID 仍以注入后的 `serviceName` 为准**，文件名可与历史保持一致 |
+| `pipelineTemplateVersion` | 与 CD/模板契约版本对齐 | 与 `Create-Pipeline`、schema 校验等相关；升级时需与模板仓库约定一致 |
+| `it.runs` / `fit.filter` / `qc.*` / `codescan.*` / `ut.namingPattern` | 跳过或约束测试、扫描、UT 匹配 | 控制 **IT/FIT/QC/UT** 是否执行及范围；不参与镜像仓库字符串拼接 |
+| `buildAgent.template` / `buildAgent.queue` | Agent 能力 | 影响 **PKG/QC** 等 Windows Job 的池与工具链 |
+
+**要点**：`name` 与环境里注册的服务主键必须一致，否则 **Deploy** 在解析环境配置时会报错（查不到 `Slb.Prism.<name>` 对应条目）；这与仓库在 ADO 中的显示名称无关。
+
+### 3.2 Repository 名称与 `pipeline.json.name` 的分工
+
+二者在脚本中的用途 **分离**，需成对核对，尤其在 **Actor+Worker** 仓库中。
+
+| 来源 | 典型值（HydraulicsTransient） | 在脚本中的用途 |
+| ---- | ----------------------------- | -------------- |
+| **ADO `Build.Repository.Name`**（Git 仓库名） | `Rhapsody.Computation.HydraulicsTransient` | **Image** 阶段 `go_linux.ps1`：用 **第一段 + 最后一段** 拼 `imageName`（如 `rhapsody/hydraulicstransient`），再按 `Dockerfile*` 规则追加 `-webapi`、`-worker` 等后缀，**push 到 ACR** |
+| **`pipeline.json` 的 `name`** | `Rhapsody.Service.HydraulicsTransient` | 经 `Get-FullNameOfPipelineName` 得到 `serviceName = Slb.Prism.Rhapsody.Service.HydraulicsTransient`；**Deploy** 侧 `Get-ImageRepository` 默认使用 `serviceName` 点分段的 **第 3、5 段**（`Rhapsody`、`HydraulicsTransient`）拼 **镜像基路径** `…/rhapsody/hydraulicstransient`（不含组件后缀） |
+
+**一致性约定（InternalImageDotNetCloud + 多 Dockerfile）**：
+
+- **Push**：`drillops.azurecr.io/rhapsody/hydraulicstransient-webapi:<tag>`（及 `…-worker` 等），由 **仓库名** 推导基路径 + Dockerfile 后缀。
+- **Pull（Helm）**：CD 写入 `image.repository` 为 **带 registry 的基路径**；Chart 模板再拼 **`-webapi` / `-worker`**（如 `deploy/templates/deployment.yaml` 中 `repository` + `-webapi`），与 Image 阶段产物对齐。
+
+若仅修改 `name` 而不调整 **环境注册** 或导致 `arr[2]`/`arr[4]` 与 **仓库名推导的基路径** 不一致，会出现 **已 push 的镜像路径与 Helm 要拉的路径不一致**。
+
+### 3.3 有效配置来源（合并顺序）
+
+运行时行为由多源合并，排查「为何与本地预期不同」时按顺序核对即可：
+
+1. **仓库** `pipeline.json`
+2. **Agent 上** `C:\Pipeline\default.<stable|latest>.json`（由 `CodeChange` 输出的 `defaultPipelineConfig` 与参数 `CDPkgVersion` 选择）
+3. **指定版本** `Slb.Prism.CD.Pipeline` NuGet 包内脚本与模块
+
+**结论**：仅改仓库内 `pipeline.json` 而未改 CD 包版本时，默认键仍可能来自 `default.*.json`；与 **第 14.2 节** 表述一致，此处不重复展开。
 
 ## 4. Stage 级别说明
 
@@ -618,9 +661,11 @@ helm upgrade --install rtrheology-2 <package>\deploy -n rhapsody
 | `FIT`        | `pipeline.json`                                                               | 已部署环境、上游版本信息                     | FIT `.trx` 或跳过结果                                         |
 | `Publish`    | `pipeline.json`                                                               | 上游版本信息                                 | 发布 JSON、Blob 记录                                          |
 
+**说明**：`pipeline.json` 各字段与 **Repository 名称** 对包名、环境键、镜像基路径的影响，见 **第 3.1～3.2 节**；合并顺序见 **第 3.3 节**。
+
 ## 6. 对 HydraulicsTransient 改造最有用的结论
 
-从 `RtRheology` 这个参考项目可以提炼出以下约束：
+从 `RtRheology` 这个参考项目可以提炼出以下约束（**`pipeline.json` / 仓库名对参数的影响见第 3.1～3.2 节；常见问题见第 15 节**）：
 
 1. `PKG` 阶段必须能同时产出主服务包和 IntegrationTests 包
 2. 主服务 `.nuspec` 必须把 `deploy/**` 和 `CustomizeValues.ps1` 打进包中
@@ -1002,7 +1047,7 @@ Actor+Worker 则不同：
 
 ## 12. 对 HydraulicsTransient 改造最有用的补充结论
 
-相对 `RtRheology`，`HydraulicsTransient` 不是“换了另一套 Pipeline”，而是在同一套 Pipeline 下引入了多组件部署契约：
+相对 `RtRheology`，`HydraulicsTransient` 不是“换了另一套 Pipeline”，而是在同一套 Pipeline 下引入了多组件部署契约（**与 `name`/仓库名相关的参数链见第 3.2 节**）：
 
 1. `Image` 阶段必须能识别并构建多个 Dockerfile
 2. 主 Chart 需要负责 actor/webapi，子 Chart 需要负责 worker
@@ -1213,7 +1258,7 @@ worker:
 
 本次未生效但被创建的候选层：
 
-5. `values-3-customized.yaml`
+- `values-3-customized.yaml`
 
 ### 13.8 对排查问题最有用的结论
 
@@ -1397,3 +1442,56 @@ Run Customize Value Script: ...\CustomizeValues.ps1 <chartPath> <values-3-custom
 - 仓库里的 `azure-pipelines-ci.yml` 主要负责“调哪个平台脚本”
 - 平台脚本负责“怎么执行”
 - 服务仓库脚本只负责少量服务级扩展点
+
+## 15. 常见问题（Q&A）
+
+下列问题均针对 **`InternalImageDotNetCloud`** 及本仓库文档涉及的 **RtRheology / HydraulicsTransient** 形态；其他 `pipeline.json` `type` 可能另有约定。
+
+### Q1：修改 `pipeline.json` 里的 `name`，但不改 ADO Repository 名称，会怎样？
+
+- **检出**：仍拉取 Pipeline 绑定的仓库，**不受** `name` 影响。
+- **打包**：`PKG` 会把 nuspec 中 **包 ID** 注入为 `Slb.Prism.<name>`，与旧包 ID 不同则 **下游引用需同步**。
+- **部署**：环境 JSON 里服务键需与 **`Slb.Prism.<name>`**（及主版本后缀规则）一致；仅改名而未在 SSS/环境侧注册对应服务时，**Deploy 会失败**。
+- **镜像**：若 `name` 导致 `serviceName` 点分第 3、5 段与 **按 Repository 名推导的镜像基名** 不一致，而 Chart 仍按「基路径 + `-webapi`/`-worker`」拉取，则可能出现 **ImagePullBackOff**（见第 3.2 节）。
+
+### Q2：`CDPkgVersion`（`stable` / `latest` / 固定版本）影响什么？
+
+- 决定 **本次 Job 使用的 `Slb.Prism.CD.Pipeline` NuGet 版本** 及默认合并的 **`default.<stable|latest>.json`**（见 `CodeChange` 与第 14.2 节）。
+- **不改变** 业务代码版本；业务包版本仍来自 `SharedAssemblyInfo` / 编译与 **BuildId** 等规则。
+
+### Q3：`SharedAssemblyInfo.cs`（或等效版本源）变更对流水线的影响？
+
+- 影响 **NuGet 包版本、镜像 tag、Helm sentinel** 等一串与 **版本号** 相关的产物；与 **镜像仓库路径字符串** 无直接关系。
+- 若版本号跳变涉及 **主版本**，需与环境配置中 **按主版本绑定的服务名**（如 `…-2`）规则一致。
+
+### Q4：为什么同一服务里 **Image push** 用 Repository 推导路径，**Deploy** 却用 `pipeline.json.name`？
+
+- 历史分工：**Linux Image Job** 的 `go_linux.ps1` 只接收 `taskArgs.Repos`（即仓库名）以通用方式拼镜像名；**Windows Deploy** 路径与 **已发布 NuGet 包身份、`serviceName`** 一致，故用 `Slb.Prism.<name>` 推导 **基路径** 并与 **环境注册** 对齐。
+- **Actor+Worker** 时，Chart 在 **基路径** 上再拼 **`-webapi`/`-worker`**，需与 **Dockerfile 命名** 一致（见第 11.2、12 节）。
+
+### Q5：`Dockerfile` / `Dockerfile-webapi` / `Dockerfile-worker` 命名会带来哪些差异？
+
+- **仅根目录 `Dockerfile`**：单镜像，一般对应 **单一 Actor** 部署。
+- **存在 `Dockerfile-webapi` + `Dockerfile-worker` 等**：`go_linux.ps1` 按文件名生成多个 tag；Helm 侧必须有 **对应后缀** 的镜像引用（见第 11.3～11.5 节）。
+- `DockerfileLocal` 多为本地调试镜像，**通常不进入**正式 Helm 依赖链（见第 11.2 节）。
+
+### Q6：`CustomizeValues.ps1` 为空或只打日志时，部署用哪些 values？
+
+- 仍以 **包内 `deploy/values.yaml`** + CD 生成的 **`values-1-calculated.yaml`** + **`values-2-deployargs.yaml`** 及 **`--set envType`** 等为主（见第 13 节）；自定义文件可为空。
+- 若需覆盖镜像或副本，应在该脚本中写入 **`values-3-customized.yaml`** 逻辑并确保与平台 **最终 `helm` 命令** 的 `-f` 列表一致（以当前模板为准）。
+
+### Q7：`pipelineTemplateVersion`（如 `v3`）填错会怎样？
+
+- 与 **模板仓库、CD 包内 schema / Create-Pipeline** 契约相关；版本不匹配可能导致 **YAML 生成失败** 或 **任务入口不一致**，需与组织内升级说明同步。
+
+### Q8：只改 `pipeline.json` 会触发完整 CI 吗？
+
+- 以平台 **`go.ps1`** 行为为准：若某次提交 **仅** 变更 `pipeline.json`，历史逻辑中曾存在 **中止构建** 的分支（避免无意义全量）；实际以 **当前 CD 包版本** 为准。需要「只改配置也跑全链路」时，应查阅所用 **`Slb.Prism.CD.Pipeline`** 版本说明或加非 `pipeline.json` 变更。
+
+### Q9：`deploy/values.yaml` 里的 `image.repository` 占位符与线上不一致？
+
+- **Deploy** 阶段通常会由 CD **覆盖/计算** `image.repository` 与 `tag`；占位符仅作本地或默认渲染。**以 Deploy 日志中打印的合并后 values 为准**。
+
+### Q10：`fit.filter`、`it.runs` 等不写或写错会怎样？
+
+- 可能导致 **FIT/IT 跳过**、测试范围错误或用例 **0 执行**；不改变镜像构建与部署主路径，但影响 **质量门禁与发布信心**。
