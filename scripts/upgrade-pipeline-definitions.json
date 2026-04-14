@@ -1,0 +1,25 @@
+{
+  "comment": "Prism 升级相关 ADO Pipeline。Definition ID 与 doc/rhapsody-service-to-ado-pipeline-mapping.md 对齐，并含参考工程 DataGenerator / ActorDirector / StreamSampling。",
+  "organization": "slb1-swt",
+  "project": "Prism",
+  "pipelines": [
+    { "definitionId": 15249, "pipelineName": "Rhapsody.Service.ActorDirector" },
+    { "definitionId": 15250, "pipelineName": "Rhapsody.Service.StreamSampling" },
+    { "definitionId": 15814, "pipelineName": "Rhapsody.Service.DrillingKpi" },
+    { "definitionId": 15950, "pipelineName": "Rhapsody.Computation.WellBalanceRisks" },
+    { "definitionId": 16278, "pipelineName": "Rhapsody.Computation.TnDBroomstick" },
+    { "definitionId": 16279, "pipelineName": "Rhapsody.Computation.ChannelProjection" },
+    { "definitionId": 16280, "pipelineName": "Rhapsody.Computation.DataGenerator" },
+    { "definitionId": 17736, "pipelineName": "Rhapsody.Computation.Flowback" },
+    { "definitionId": 18561, "pipelineName": "Rhapsody.Computation.ProceduralAdherence" },
+    { "definitionId": 19674, "pipelineName": "Rhapsody.Computation.Udf" },
+    { "definitionId": 20447, "pipelineName": "Rhapsody.Computation.Risk" },
+    { "definitionId": 21265, "pipelineName": "Rhapsody.Computation.HydraulicsTransient" },
+    { "definitionId": 24402, "pipelineName": "Rhapsody.Computation.OperationKpi" },
+    { "definitionId": 28565, "pipelineName": "Rhapsody.Computation.DepthJumpCorrection" },
+    { "definitionId": 28971, "pipelineName": "Rhapsody.Computation.PackOff" },
+    { "definitionId": 30676, "pipelineName": "Rhapsody.Computation.RtRheology" },
+    { "definitionId": 33868, "pipelineName": "rhapsody.computation.killsheet" },
+    { "definitionId": 34094, "pipelineName": "rhapsody.computation.pressuremonitoring" }
+  ]
+}

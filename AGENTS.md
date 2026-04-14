@@ -66,24 +66,29 @@ alwaysApply: true
 | 目录                                     | Repository | 说明     |
 | ---------------------------------------- | ---------- | -------- |
 | Rhapsody.Computation.CementingHydraulics | 与目录同名 | 本次跳过 |
-| Rhapsody.Computation.ChannelProjection   | 与目录同名 |          |
+| Rhapsody.Computation.ChannelProjection   | 与目录同名 | 本次升级 |
 | Rhapsody.Computation.DataGenerator       | 与目录同名 | 参考工程 |
-| Rhapsody.Computation.DepthJumpCorrection | 与目录同名 |          |
-| Rhapsody.Computation.Flowback            | 与目录同名 |          |
-| Rhapsody.Computation.HydraulicsTransient | 与目录同名 |          |
-| rhapsody.computation.killsheet           | 与目录同名 |          |
-| Rhapsody.Computation.OperationKpi        | 与目录同名 |          |
-| Rhapsody.Computation.PackOff             | 与目录同名 |          |
-| Rhapsody.Computation.ProceduralAdherence | 与目录同名 |          |
-| Rhapsody.Computation.Risk                | 与目录同名 |          |
-| Rhapsody.Computation.RtRheology          | 与目录同名 |          |
-| Rhapsody.Computation.TndBroomstick       | 与目录同名 |          |
-| Rhapsody.Computation.Udf                 | 与目录同名 |          |
-| Rhapsody.Computation.WellBalanceRisks    | 与目录同名 |          |
+| Rhapsody.Computation.DepthJumpCorrection | 与目录同名 | 本次升级 |
+| Rhapsody.Computation.Flowback            | 与目录同名 | 本次升级 |
+| Rhapsody.Computation.HydraulicsTransient | 与目录同名 | 本次升级 |
+| rhapsody.computation.killsheet           | 与目录同名 | 本次升级 |
+| Rhapsody.Computation.OperationKpi        | 与目录同名 | 本次升级 |
+| Rhapsody.Computation.PackOff             | 与目录同名 | 本次升级 |
+| Rhapsody.Computation.ProceduralAdherence | 与目录同名 | 本次升级 |
+| Rhapsody.Computation.Risk                | 与目录同名 | 本次升级 |
+| Rhapsody.Computation.RtRheology          | 与目录同名 | 本次升级 |
+| Rhapsody.Computation.TndBroomstick       | 与目录同名 | 本次升级 |
+| Rhapsody.Computation.Udf                 | 与目录同名 | 本次升级 |
+| Rhapsody.Computation.WellBalanceRisks    | 与目录同名 | 本次升级 |
 | Rhapsody.Service.ActorDirector           | 与目录同名 | 参考工程 |
-| Rhapsody.Service.DrillingKpi             | 与目录同名 |          |
-| Rhapsody.Service.PressureMonitoring      | 与目录同名 |          |
+| Rhapsody.Service.DrillingKpi             | 与目录同名 | 本次升级 |
+| Rhapsody.Service.PressureMonitoring      | 与目录同名 | 本次升级 |
 | Rhapsody.Service.StreamSampling          | 与目录同名 | 参考工程 |
+
+
+### Actor和 Azure DevOps的Pipeline的对应关系
+
+[Service和ADO Pipeline对应关系](./doc/rhapsody-service-to-ado-pipeline-mapping.md)
 
 ### Pipeline
 
@@ -126,6 +131,12 @@ alwaysApply: true
 - `../Rhapsody.Library.ComputationDaprAdapter/` - Actor依赖的底层包。用途：参考
 - `../Core.Service.FileExportManager/` - Stateless Work的样例。用途：参考
 - `../Pipeline/rcis-devops-template` - Pipeline底层包。用途：参考
+
+## 升级 Pipeline 状态（ADO）
+
+- **脚本**：`scripts/get-upgrade-pipeline-status.ps1` — 查询 **Prism** 项目中本次升级相关 Pipeline 在指定分支（默认 `refs/heads/dapr`）上的最近一次构建，输出 **构建结果** 与 **最后 Stage 日志** 链接；定义列表见 `scripts/upgrade-pipeline-definitions.json`（与 `doc/rhapsody-service-to-ado-pipeline-mapping.md` 对齐）。
+- **认证（无 PAT）**：先执行 `az login`（AAD），脚本通过 `az account get-access-token --resource 499b84ac-1321-4277-86b9-215fbc768055` 获取 Azure DevOps 访问令牌。
+- **Cursor 说明**：`.cursor/skills/prism-ado-pipeline-status/SKILL.md`。
 
 ## 代码要求
 

@@ -8,23 +8,27 @@
 
 ## 主映射表
 
-| 服务 / 仓库（常用称呼） | ADO Pipeline 名称 | Definition ID |
-|-------------------------|-------------------|---------------|
-| Rhapsody.Service.DrillingKpi | Rhapsody.Service.DrillingKpi | 15814 |
-| Rhapsody.Service.ChannelProjection | Rhapsody.Computation.ChannelProjection | 16279 |
-| Rhapsody.Service.HydraulicsTransient | Rhapsody.Computation.HydraulicsTransient | 21265 |
-| Rhapsody.Service.DepthJumpCorrection | Rhapsody.Computation.DepthJumpCorrection | 28565 |
-| Rhapsody.Service.RtRheology | Rhapsody.Computation.RtRheology | 30676 |
-| Rhapsody.Service.WellBalanceRisks | Rhapsody.Computation.WellBalanceRisks | 15950 |
-| Rhapsody.Service.TndBroomstick | Rhapsody.Computation.TnDBroomstick | 16278 |
-| Rhapsody.Service.PressureMonitoring | rhapsody.computation.pressuremonitoring | 34094 |
-| Rhapsody.Service.Udf | Rhapsody.Computation.Udf | 19674 |
-| Rhapsody.Service.Flowback | Rhapsody.Computation.Flowback | 17736 |
-| Rhapsody.Service.Killsheet | rhapsody.computation.killsheet | 33868 |
-| Rhapsody.Service.Operationkpi | Rhapsody.Computation.OperationKpi | 24402 |
-| Rhapsody.Service.ProceduralAdherence | Rhapsody.Computation.ProceduralAdherence | 18561 |
-| Rhapsody.Service.Risk | Rhapsody.Computation.Risk | 20447 |
-| Rhapsody.Service.PackOff | Rhapsody.Computation.PackOff | 28971 |
+| 服务 / 仓库（常用称呼）              | ADO Pipeline 名称                        | Definition ID |
+| ------------------------------------ | ---------------------------------------- | ------------- |
+| Rhapsody.Service.DrillingKpi         | Rhapsody.Service.DrillingKpi             | 15814         |
+| Rhapsody.Service.ChannelProjection   | Rhapsody.Computation.ChannelProjection   | 16279         |
+| Rhapsody.Service.HydraulicsTransient | Rhapsody.Computation.HydraulicsTransient | 21265         |
+| Rhapsody.Service.DepthJumpCorrection | Rhapsody.Computation.DepthJumpCorrection | 28565         |
+| Rhapsody.Service.RtRheology          | Rhapsody.Computation.RtRheology          | 30676         |
+| Rhapsody.Service.WellBalanceRisks    | Rhapsody.Computation.WellBalanceRisks    | 15950         |
+| Rhapsody.Service.TndBroomstick       | Rhapsody.Computation.TnDBroomstick       | 16278         |
+| Rhapsody.Service.PressureMonitoring  | rhapsody.computation.pressuremonitoring  | 34094         |
+| Rhapsody.Service.Udf                 | Rhapsody.Computation.Udf                 | 19674         |
+| Rhapsody.Service.Flowback            | Rhapsody.Computation.Flowback            | 17736         |
+| Rhapsody.Service.Killsheet           | rhapsody.computation.killsheet           | 33868         |
+| Rhapsody.Service.Operationkpi        | Rhapsody.Computation.OperationKpi        | 24402         |
+| Rhapsody.Service.ProceduralAdherence | Rhapsody.Computation.ProceduralAdherence | 18561         |
+| Rhapsody.Service.Risk                | Rhapsody.Computation.Risk                | 20447         |
+| Rhapsody.Service.PackOff             | Rhapsody.Computation.PackOff             | 28971         |
+
+## 批量查询最近一次构建（dapr）
+
+可使用仓库脚本（AAD / `az login`，无 PAT）：`scripts/get-upgrade-pipeline-status.ps1`（定义列表见同目录 `upgrade-pipeline-definitions.json`）。
 
 ## Pipeline 链接格式
 
@@ -44,19 +48,19 @@ https://dev.azure.com/slb1-swt/Prism/_build?definitionId=15814
 
 以下能力在 **`\rhapsody`** 下同时存在 **Algorithm** 与 **Computation** 两套定义；若只关心 Actor/Computation 镜像构建，通常以 **Computation** 一行（主映射表）为准。
 
-| 能力 | Rhapsody.Algorithm.*（ID） | Rhapsody.Computation.*（主表） |
-|------|----------------------------|--------------------------------|
-| DepthJumpCorrection | 28564 | 28565 |
-| Risk | 20432 | 20447 |
-| Udf | 19673 | 19674 |
+| 能力                | Rhapsody.Algorithm.*（ID） | Rhapsody.Computation.*（主表） |
+| ------------------- | -------------------------- | ------------------------------ |
+| DepthJumpCorrection | 28564                      | 28565                          |
+| Risk                | 20432                      | 20447                          |
+| Udf                 | 19673                      | 19674                          |
 
 ## 启动Pipeline参数
 
 启动Pipeline，都是选择dapr分支。然后参数设置如下：
 
-|参数名| 值|说明|
-|--|--|--|
-|CDPkgVersion|latest||
+| 参数名       | 值     | 说明 |
+| ------------ | ------ | ---- |
+| CDPkgVersion | latest |      |
 
 ## 备注
 
