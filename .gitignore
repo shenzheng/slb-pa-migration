@@ -1,7 +1,4 @@
-Actors/
-Pipeline/
-Rhapsody.Computation.Flowback/
-Shared/
+# Actors/, Pipeline/, Shared/: tracked as git submodules (see .gitmodules).
 Tools/
 .azure-validation/
 Log/

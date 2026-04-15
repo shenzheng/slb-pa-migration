@@ -1,0 +1,168 @@
+[submodule "Actors/Rhapsody.Computation.CoreComputation"]
+	path = Actors/Rhapsody.Computation.CoreComputation
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Computation.CoreComputation
+	branch = dapr
+[submodule "Actors/Rhapsody.Computation.DataGenerator"]
+	path = Actors/Rhapsody.Computation.DataGenerator
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Computation.DataGenerator
+	branch = dapr
+[submodule "Actors/Rhapsody.Computation.DepthJumpCorrection"]
+	path = Actors/Rhapsody.Computation.DepthJumpCorrection
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Computation.DepthJumpCorrection
+	branch = dapr
+[submodule "Actors/Rhapsody.Computation.Flowback"]
+	path = Actors/Rhapsody.Computation.Flowback
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Computation.Flowback
+	branch = dapr
+[submodule "Actors/Rhapsody.Computation.HydraulicsTransient"]
+	path = Actors/Rhapsody.Computation.HydraulicsTransient
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Computation.HydraulicsTransient
+	branch = dapr
+[submodule "Actors/rhapsody.computation.killsheet"]
+	path = Actors/rhapsody.computation.killsheet
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/rhapsody.computation.killsheet
+	branch = dapr
+[submodule "Actors/Rhapsody.Computation.OperationKpi"]
+	path = Actors/Rhapsody.Computation.OperationKpi
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Computation.OperationKpi
+	branch = dapr
+[submodule "Actors/Rhapsody.Computation.PackOff"]
+	path = Actors/Rhapsody.Computation.PackOff
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Computation.PackOff
+	branch = dapr
+[submodule "Actors/Rhapsody.Computation.ProceduralAdherence"]
+	path = Actors/Rhapsody.Computation.ProceduralAdherence
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Computation.ProceduralAdherence
+	branch = dapr
+[submodule "Actors/Rhapsody.Computation.Risk"]
+	path = Actors/Rhapsody.Computation.Risk
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Computation.Risk
+	branch = dapr
+[submodule "Actors/Rhapsody.Computation.RtRheology"]
+	path = Actors/Rhapsody.Computation.RtRheology
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Computation.RtRheology
+	branch = dapr
+[submodule "Actors/Rhapsody.Computation.TndBroomstick"]
+	path = Actors/Rhapsody.Computation.TndBroomstick
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Computation.TndBroomstick
+	branch = dapr
+[submodule "Actors/Rhapsody.Computation.Udf"]
+	path = Actors/Rhapsody.Computation.Udf
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Computation.Udf
+	branch = dapr
+[submodule "Actors/Rhapsody.Computation.WellBalanceRisks"]
+	path = Actors/Rhapsody.Computation.WellBalanceRisks
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Computation.WellBalanceRisks
+	branch = dapr
+[submodule "Actors/Rhapsody.Service.ActorDirector"]
+	path = Actors/Rhapsody.Service.ActorDirector
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Service.ActorDirector
+	branch = v3
+[submodule "Actors/Rhapsody.Service.DrillingKpi"]
+	path = Actors/Rhapsody.Service.DrillingKpi
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Service.DrillingKpi
+	branch = dapr
+[submodule "Actors/Rhapsody.Service.PressureMonitoring"]
+	path = Actors/Rhapsody.Service.PressureMonitoring
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/rhapsody.computation.pressuremonitoring
+	branch = dapr
+[submodule "Actors/Rhapsody.Service.StreamSampling"]
+	path = Actors/Rhapsody.Service.StreamSampling
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Service.StreamSampling
+	branch = v3
+[submodule "Pipeline/CD"]
+	path = Pipeline/CD
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/CD
+	branch = master
+[submodule "Pipeline/DevOps.Service.SSS"]
+	path = Pipeline/DevOps.Service.SSS
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/DevOps.Service.SSS
+	branch = master
+[submodule "Pipeline/rcis-devops-template"]
+	path = Pipeline/rcis-devops-template
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/rcis-devops-template
+	branch = zhshen-dapr
+[submodule "Shared/Rhapsody.Algorithm.ChannelProjection"]
+	path = Shared/Rhapsody.Algorithm.ChannelProjection
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Algorithm.ChannelProjection
+	branch = master
+[submodule "Shared/Rhapsody.Algorithm.DataGenerator"]
+	path = Shared/Rhapsody.Algorithm.DataGenerator
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Algorithm.DataGenerator
+	branch = master
+[submodule "Shared/Rhapsody.Algorithm.DepthJumpCorrection"]
+	path = Shared/Rhapsody.Algorithm.DepthJumpCorrection
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Algorithm.DepthJumpCorrection
+	branch = master
+[submodule "Shared/Rhapsody.Algorithm.Risk"]
+	path = Shared/Rhapsody.Algorithm.Risk
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Algorithm.Risk
+	branch = master
+[submodule "Shared/Rhapsody.Algorithm.Udf"]
+	path = Shared/Rhapsody.Algorithm.Udf
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Algorithm.Udf
+	branch = master
+[submodule "Shared/Rhapsody.Library.ComputationDaprAdapter"]
+	path = Shared/Rhapsody.Library.ComputationDaprAdapter
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Library.ComputationDaprAdapter
+	branch = master
+[submodule "Shared/Shared.Algorithm.CementingHydraulics"]
+	path = Shared/Shared.Algorithm.CementingHydraulics
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Shared.Algorithm.CementingHydraulics
+	branch = master
+[submodule "Shared/Shared.Algorithm.CoreComputation"]
+	path = Shared/Shared.Algorithm.CoreComputation
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Shared.Algorithm.CoreComputation
+	branch = master
+[submodule "Shared/Shared.Algorithm.Flowback"]
+	path = Shared/Shared.Algorithm.Flowback
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Shared.Algorithm.Flowback
+	branch = master
+[submodule "Shared/Shared.Algorithm.HydraulicsTransientSimulation"]
+	path = Shared/Shared.Algorithm.HydraulicsTransientSimulation
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Shared.Algorithm.HydraulicsTransientSimulation
+	branch = master
+[submodule "Shared/Shared.Algorithm.KillSheet"]
+	path = Shared/Shared.Algorithm.KillSheet
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Shared.Algorithm.KillSheet
+	branch = master
+[submodule "Shared/Shared.Algorithm.OperationKpi"]
+	path = Shared/Shared.Algorithm.OperationKpi
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Shared.Algorithm.OperationKpi
+	branch = master
+[submodule "Shared/Shared.Algorithm.PackOff"]
+	path = Shared/Shared.Algorithm.PackOff
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Shared.Algorithm.PackOff
+	branch = master
+[submodule "Shared/Shared.Algorithm.ParameterAdherence"]
+	path = Shared/Shared.Algorithm.ParameterAdherence
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Shared.Algorithm.ParameterAdherence
+	branch = master
+[submodule "Shared/Shared.Algorithm.PressureMonitoring"]
+	path = Shared/Shared.Algorithm.PressureMonitoring
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Shared.Algorithm.PressureMonitoring
+	branch = master
+[submodule "Shared/Shared.Algorithm.RtRheology"]
+	path = Shared/Shared.Algorithm.RtRheology
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Shared.Algorithm.RtRheology
+	branch = master
+[submodule "Shared/Shared.Algorithm.TnDBroomstick"]
+	path = Shared/Shared.Algorithm.TnDBroomstick
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Shared.Algorithm.TnDBroomstick
+	branch = master
+[submodule "Shared/Shared.Library.Computation.Common"]
+	path = Shared/Shared.Library.Computation.Common
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Shared.Library.Computation.Common
+	branch = master
+[submodule "Shared/Shared.Library.DrillingKpi"]
+	path = Shared/Shared.Library.DrillingKpi
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Shared.Library.DrillingKpi
+	branch = master
+[submodule "Shared/Shared.Library.WellBalanceRisks"]
+	path = Shared/Shared.Library.WellBalanceRisks
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Shared.Library.WellBalanceRisks
+	branch = master
+[submodule "Actors/Rhapsody.Computation.ChannelProjection"]
+	path = Actors/Rhapsody.Computation.ChannelProjection
+	url = https://slb1-swt@dev.azure.com/slb1-swt/Prism/_git/Rhapsody.Computation.ChannelProjection
+	branch = dapr
