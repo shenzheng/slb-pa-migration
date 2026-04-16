@@ -85,7 +85,6 @@ alwaysApply: true
 | Rhapsody.Service.PressureMonitoring      | 与目录同名 | 本次升级 |
 | Rhapsody.Service.StreamSampling          | 与目录同名 | 参考工程 |
 
-
 ### Actor和 Azure DevOps的Pipeline的对应关系
 
 [Service和ADO Pipeline对应关系](./doc/rhapsody-service-to-ado-pipeline-mapping.md)
@@ -147,3 +146,4 @@ alwaysApply: true
 
 - 格式均为Markdown文档
 - Markdown文档需要符合markdownlint要求
+- ActorDirector 与算法 Actor 调用链、**ActorTypes 与 ActorInfor 的区别**、写入/读取与关键日志见 `doc/actor-director-call-chain.md`（§3.1.1）

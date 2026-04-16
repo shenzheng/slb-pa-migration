@@ -107,6 +107,55 @@ flowchart LR
 
 后续 `AlgorithmConfigurationProvider` 周期性从这个集合重新同步，因此这里是算法“是否存在、如何被激活、应该订阅什么输入”的控制面事实源。
 
+#### 3.1.1 ActorInfor：与 ActorTypes 的区别、何时写入、写什么、何处读取
+
+本节与上一节 **3.1 注册链路（ActorTypes_V3）** 并列，但描述的是 **另一张控制面数据**：**按容器（井 / 活跃井筒）存放的运行时上下文**，不是“算法类型定义”。
+
+| 对比项 | `ActorTypes_V3`（算法注册） | `ActorInfo_Dapr` 集合中的 `ActorInfor`（实例上下文） |
+| --- | --- | --- |
+| 含义 | 某算法是否已向 ActorDirector 注册、`ActorUri`、输入通道、`StartFrom` 等 | 某个 **容器 Id**（Dapr `ActorId`）下，井与容器关系、实时/重算类型等 |
+| 典型写入 | 各算法服务启动时 `PUT actortype` | 井/井筒生命周期与事件处理中 **Upsert** |
+| 典型读取 | `AlgorithmConfigurationProvider`、激活前选算法 | 算法 Actor 构造时、`GET actor/recompute/get` / `GET actor/infor` |
+
+Mongo 集合名在 `ActorInforAccessor` 中默认为 `ActorInfo_Dapr`（若配置 `Debugger` 后缀则集合名带后缀）。
+
+##### 何时触发写入（Upsert）
+
+以下路径均调用 `IActorInforAccessor.Upsert`，成功落库前由 `ActorInforAccessor` 打 **Information** 日志（见下文「关键日志」）：
+
+1. **井创建（单井筒场景）**  
+   `MessageHandlers/WellOrWellboreCreateMessageHandler.cs` 中 `ProcessWellCreateEventMessage`：在 **`!IsMultiWellbore(wellId)`** 时，先 Upsert 一条 **`Id = WellId = ContainerId`** 的实时 ActorInfor，再 **`ActivateAllComputations(wellId, true)`**。
+2. **多井筒：活跃井筒确定**  
+   `WellboreActivator.cs`：当前井筒被判定为 active 等逻辑后，Upsert **`Id = wellboreId`，`WellId = wellId`，`ContainerId = wellboreId`**，再 **`ActivateAllComputations`**。
+3. **井状态类事件**  
+   `MessageHandlers/EventMessageHandler.cs` 中 `ManageActors`：根据 **`actorManager.GetActiveContainerId(wellId)`** 得到 `activeContainerId`，先 Upsert **`Id = ContainerId = activeContainerId`**，再按活跃/暂停等分支调用 **`StartStreamingAsync`** 或 **`StopStreamingAsync`** 等（与暂停逻辑配合）。
+4. **对外 API**  
+   `Controllers/ActorController.cs` 的 **`POST actor/infor`**（`UpsertActorInfor`）：运维或调用方显式写入/更新。
+
+##### 写入内容（核心字段）
+
+文档以代码中常见 Upsert 为准：`Id`（与 Dapr **`ActorId`**、后续查询键一致）、`WellId`、`ContainerId`、`Type`（如 `ActorType.RealTime`）等；完整结构见 Contract 中 `ActorInfor` / `ActorInforDocument`。  
+**要点**：算法激活时使用的 **`containerId`**（见 `ComputationActorHelper.ActivateContainerAsync(containerId, actorUri)`）必须与 **`ActorInfor.Id`** 所代表的容器一致，否则算法侧按 `ActorId` 拉取 ActorInfor 会得到空。
+
+##### 何处读取
+
+1. **算法 Actor 侧（运行时）**  
+   `ComputationActorBase` 构造函数中 `LoadActorInfor()`：`StringId` 为当前 Actor 的 **`Id` 字符串**，调用 `IActorDirectorService.GetActorInfor(StringId)`，对应 HTTP **`GET actor/recompute/get?id={actorId}`**（实现见 `ComputationDaprAdapter/RemoteServices/ActorDirectorService.cs`）。成功后才进入 `OnActivateAsync` 中 `ConfigPipeline()` 等；若始终为 null，则 `OnActivateAsync` 开头即返回（无「begin activate actor」日志）。
+2. **ActorDirector 侧（API）**  
+   `ActorController` 的 **`GET actor/recompute/get`**（Obsolete 标注）与 **`GET actor/infor`**：均通过 `_actorInforAccessor.Get(id)` 按 **主键 `id`** 读 Mongo。
+
+##### 关键日志（检索关键词）
+
+| 位置 | 关键词 / 含义 |
+| --- | --- |
+| ActorDirector，写入 Mongo | **`Upsert ActorInfor`** + 序列化后的文档 JSON（`ActorInforAccessor.Upsert`） |
+| ActorDirector，`appsettings` 中 `ProviderName` | 一般为 **`Slb.Prism.Rhapsody.Service.ActorDirector-{实例号}`**（与部署一致） |
+| ActorDirector，激活算法 | **`Begin start actor:`**、`**Start actor succeed:**`（与 ActorInfor 是否已存在无直接日志绑定，但常与同一口井时间线相邻） |
+| 算法服务，拉取成功 | **`Succeed to get actorinfor`**（`LoadActorInfor` 成功） |
+| 算法服务，拉取失败 | **Warning `No actorinfor found for {id}`**；常伴随对 ActorDirector 的 HTTP **404**（无文档） |
+
+**注意**：**`Succeed to register actor` / `Registered actor configuration for`** 属于 **3.1 算法类型注册**，与 **`Upsert ActorInfor`** 不是同一条链路；排查「有注册无 ActorInfor」时应分开看。
+
 ### 3.2 激活链路
 
 激活链路是本文的主线，核心路径如下：
@@ -638,7 +687,7 @@ Actor 是否激活还会受到以下因素影响：
 
 ## 8.7 常见问题清单
 
-#### 问题 1：算法未注册
+### 问题 1：算法未注册
 
 现象：
 
@@ -651,7 +700,7 @@ Actor 是否激活还会受到以下因素影响：
 - `BuildApplication<TActor>()` 是否执行了注册
 - `ActorDirectorService.Register(...)` 是否成功
 
-#### 问题 2：无法激活
+### 问题 2：无法激活
 
 现象：
 
@@ -664,7 +713,7 @@ Actor 是否激活还会受到以下因素影响：
 - whitelist / blacklist
 - Feature Setting 黑名单
 
-#### 问题 3：拿不到 `ActorInfor`
+### 问题 3：拿不到 `ActorInfor`
 
 现象：
 
@@ -676,7 +725,7 @@ Actor 是否激活还会受到以下因素影响：
 - `actorId` 是否正确
 - `ActorInfor` 是否已提前写入
 
-#### 问题 4：租户解析失败
+### 问题 4：租户解析失败
 
 现象：
 
@@ -687,7 +736,7 @@ Actor 是否激活还会受到以下因素影响：
 - `ResourceDiscoveryService`
 - `wellId` / `containerId` 是否传错
 
-#### 问题 5：算法 DLL 或类型找不到
+### 问题 5：算法 DLL 或类型找不到
 
 现象：
 
@@ -700,7 +749,7 @@ Actor 是否激活还会受到以下因素影响：
 - `EntryPoint` 是否与实际类型名一致
 - 版本或包内容是否正确
 
-#### 问题 6：Actor 已启动，但没有真正执行算法
+### 问题 6：Actor 已启动，但没有真正执行算法
 
 现象：
 
@@ -715,7 +764,7 @@ Actor 是否激活还会受到以下因素影响：
 - RabbitMQ 是否真的有消息
 - `StreamSampling` 是否已启动并订阅对应算法
 
-#### 问题 7：当前实例被旁路停掉
+### 问题 7：当前实例被旁路停掉
 
 现象：
 
@@ -763,6 +812,10 @@ Actor 是否激活还会受到以下因素影响：
 
 ## 10. 推荐阅读代码路径
 
+- `Actors/Rhapsody.Service.ActorDirector/Slb.Prism.Rhapsody.Service.ActorDirector/Database/ActorInforAccessor.cs`（`Upsert ActorInfor` 日志）
+- `Actors/Rhapsody.Service.ActorDirector/Slb.Prism.Rhapsody.Service.ActorDirector/MessageHandlers/WellOrWellboreCreateMessageHandler.cs`（井创建时 Upsert）
+- `Actors/Rhapsody.Service.ActorDirector/Slb.Prism.Rhapsody.Service.ActorDirector/WellboreActivator.cs`（多井筒活跃井筒 Upsert）
+- `Actors/Rhapsody.Service.ActorDirector/Slb.Prism.Rhapsody.Service.ActorDirector/MessageHandlers/EventMessageHandler.cs`（`ManageActors` 中 Upsert）
 - `Actors/Rhapsody.Service.ActorDirector/Slb.Prism.Rhapsody.Service.ActorDirector/Controllers/ActorController.cs`
 - `Actors/Rhapsody.Service.ActorDirector/Slb.Prism.Rhapsody.Service.ActorDirector/ActorManager.cs`
 - `Actors/Rhapsody.Service.ActorDirector/Slb.Prism.Rhapsody.Service.ActorDirector/Helper/ComputationActorHelper.cs`
@@ -790,7 +843,7 @@ Actor 是否激活还会受到以下因素影响：
 - `ActorUri`
   - Actor 的逻辑服务名，通常是“算法名 + 主版本号”
 - `ActorInfor`
-  - Actor 实例运行所需的上下文信息，例如 `WellId`、`ContainerId`、运行模式等
+  - Actor 实例运行所需的上下文信息，例如 `WellId`、`ContainerId`、运行模式等；写入时机与读取路径见 **§3.1.1**
 - `Container`
   - 算法运行绑定的数据容器层级，常见为 `well` 或 `wellbore`
 - `ComputationActorBase`
