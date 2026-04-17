@@ -1,7 +1,8 @@
 param(
     [string]$RootPath,
     [string[]]$ProjectGroups = @("Actors", "Shared"),
-    [string]$OutputPath
+    [string]$OutputPath,
+    [string]$JsonOutputPath
 )
 
 $ErrorActionPreference = "Stop"
@@ -19,6 +20,13 @@ elseif (-not [System.IO.Path]::IsPathRooted($OutputPath)) {
     $OutputPath = Join-Path $resolvedRoot $OutputPath
 }
 
+if ([string]::IsNullOrWhiteSpace($JsonOutputPath)) {
+    $JsonOutputPath = [System.IO.Path]::ChangeExtension($OutputPath, ".json")
+}
+elseif (-not [System.IO.Path]::IsPathRooted($JsonOutputPath)) {
+    $JsonOutputPath = Join-Path $resolvedRoot $JsonOutputPath
+}
+
 $resolvedOutputDirectory = [System.IO.Path]::GetDirectoryName($OutputPath)
 
 if ([string]::IsNullOrWhiteSpace($resolvedOutputDirectory)) {
@@ -26,6 +34,11 @@ if ([string]::IsNullOrWhiteSpace($resolvedOutputDirectory)) {
 }
 
 [System.IO.Directory]::CreateDirectory($resolvedOutputDirectory) | Out-Null
+
+$resolvedJsonOutputDirectory = [System.IO.Path]::GetDirectoryName($JsonOutputPath)
+if (-not [string]::IsNullOrWhiteSpace($resolvedJsonOutputDirectory)) {
+    [System.IO.Directory]::CreateDirectory($resolvedJsonOutputDirectory) | Out-Null
+}
 
 $excludedDirectoryNames = @(
     ".git",
@@ -433,6 +446,26 @@ function Get-NuspecPackageMap {
     return $records
 }
 
+function Get-HighestVersionPerPackage {
+    param(
+        [object[]]$SummaryRows
+    )
+
+    $byPackage = [ordered]@{}
+
+    if ($null -eq $SummaryRows -or $SummaryRows.Count -eq 0) {
+        return $byPackage
+    }
+
+    foreach ($pkgGroup in ($SummaryRows | Group-Object PackageId | Sort-Object Name)) {
+        $sorted = $pkgGroup.Group | Sort-Object @{ Expression = { Get-VersionSortKey -Version $_.Version } }
+        $highestRow = $sorted[-1]
+        $byPackage[$pkgGroup.Name] = $highestRow.Version
+    }
+
+    return $byPackage
+}
+
 $allReferences = New-Object System.Collections.Generic.List[object]
 $internalPackageSources = @{}
 $warnings = New-Object System.Collections.Generic.List[string]
@@ -596,5 +629,23 @@ $content = ($lines -join "`r`n") + "`r`n"
 $utf8NoBom = [System.Text.UTF8Encoding]::new($false)
 [System.IO.File]::WriteAllText($OutputPath, $content, $utf8NoBom)
 
+$highestByPackage = Get-HighestVersionPerPackage -SummaryRows @($partOneRows)
+$packagesForJson = [ordered]@{}
+foreach ($packageKey in ($highestByPackage.Keys | Sort-Object)) {
+    $packagesForJson[$packageKey] = $highestByPackage[$packageKey]
+}
+
+$jsonRoot = [ordered]@{
+    generatedAt          = $generatedAt
+    scannedProjectGroups = @($ProjectGroups)
+    warnings             = @($warnings)
+    packages             = [PSCustomObject]$packagesForJson
+}
+
+$jsonText = ($jsonRoot | ConvertTo-Json -Depth 10)
+$jsonText = $jsonText -replace '(?<!\r)\n', "`r`n"
+[System.IO.File]::WriteAllText($JsonOutputPath, $jsonText, $utf8NoBom)
+
 Write-Host ("Scanned {0} package references across {1} repositories." -f $orderedReferences.Count, (($orderedReferences | Select-Object -ExpandProperty Repository -Unique).Count))
 Write-Host ("Markdown written to '{0}'." -f $OutputPath)
+Write-Host ("JSON written to '{0}'." -f $JsonOutputPath)
