@@ -1,0 +1,5 @@
+{
+  "comment": "通过 Azure DevOps Packaging REST 查询包列表。默认 Prism 使用的 NuGet feed 名称与 Pipeline 中 PrismService 一致。",
+  "organizationUrl": "https://dev.azure.com/slb1-swt",
+  "feedName": "PrismService"
+}

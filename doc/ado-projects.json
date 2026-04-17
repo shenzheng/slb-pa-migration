@@ -1,0 +1,29 @@
+﻿{
+    "continuationToken": null,
+    "value": [
+        {
+            "abbreviation": null,
+            "defaultTeamImageUrl": null,
+            "description": "Wellbore Insight  is A collaborative software platform to drive digitally enabled revenue for RP and WCM with automated data processing, interpretation and contextualization, enabling customer decisions in an operational timeframe",
+            "id": "eebf2c16-7d03-42da-aaad-9acf7a217907",
+            "lastUpdateTime": "2026-04-16T09:32:32.327000+00:00",
+            "name": "WellboreInsights",
+            "revision": 25153420,
+            "state": "wellFormed",
+            "url": "https://dev.azure.com/slb1-swt/_apis/projects/eebf2c16-7d03-42da-aaad-9acf7a217907",
+            "visibility": "private"
+        },
+        {
+            "abbreviation": null,
+            "defaultTeamImageUrl": null,
+            "description": "Project Administrator: Yan Li\nProcess Template: SLM PT 2.0 CTP\nVersion Control: Git",
+            "id": "7eea94a5-dba7-4d3c-8484-0477294d3e9e",
+            "lastUpdateTime": "2026-04-14T17:01:01.633000+00:00",
+            "name": "Prism",
+            "revision": 25153268,
+            "state": "wellFormed",
+            "url": "https://dev.azure.com/slb1-swt/_apis/projects/7eea94a5-dba7-4d3c-8484-0477294d3e9e",
+            "visibility": "private"
+        }
+    ]
+}
