@@ -18,6 +18,13 @@
 
 **范围约定**：一次只选定 **一个** 仓库根下的 Actor/Service 目录（例如 `Actors\Rhapsody.Computation.ChannelProjection`）。目标是将该目录内所有 `PackageReference`（含直接引用；可选含传递依赖报告）对齐到「已知最新版」集合，本地 `restore`/`build`/（可选）`test` 通过后，再在 ADO 上排队 **当前 Git 分支** 的 CI/CD，由 Pipeline 完成 **打包与发布**（与手改 csproj 后推分支再由 ADO 发布一致）。
 
+### 开始前：与远端同步
+
+在改依赖、写回 `csproj`、刷新或提交 `doc/` 下合并表之前，**先拉取远端最新提交**，避免在过时基线上改版本或产生难合并的冲突：
+
+- **PA 聚合仓库根**：执行 `git pull`（或 `git pull --rebase`）；若有未提交本地改动，请先 `git stash`、提交到临时分支，或先处理完再拉取。
+- **若选定工程为 git submodule**（多数 `Actors\...` 为独立仓库）：进入该子模块目录，检出团队约定分支（多为 `dapr`），再执行 `git pull origin <branch>`；也可在仓库根先 `git submodule update --init --recursive`，再进入子模块目录拉取。**签入顺序**：通常先在**子模块仓库** `commit` / `push`，再在 PA 根目录更新子模块指针（`git add Actors\...`）并 `commit` / `push`。
+
 ### 步骤一：依赖清单 `dependences`
 
 **目的**：列出该工程下出现的所有包 ID 及当前声明版本（含公共 NuGet 与内部包）。
@@ -121,8 +128,10 @@
 以下以 `Actors\Rhapsody.Computation.ChannelProjection` 为例。
 
 ```powershell
-# 0）仓库根
+# 0）仓库根；并与远端同步（见上文「开始前：与远端同步」）
 Set-Location D:\SLB\Prism\PA
+git pull
+# 若目标为 submodule，例如：cd Actors\Rhapsody.Computation.ChannelProjection; git checkout dapr; git pull
 
 # 1）刷新「最新版」数据源（可先跳过若文件已新）
 .\scripts\export-package-versions.ps1
