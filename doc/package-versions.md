@@ -1,6 +1,6 @@
 # Package Versions and Dependencies
 
-Generated at: 2026-04-17 09:19:04
+Generated at: 2026-04-18 14:07:44
 
 Scanned project groups: Actors, Shared
 
@@ -19,17 +19,13 @@ Scanned project groups: Actors, Shared
 | Azure.Storage.Blobs | 12.23.0 | External |
 | Azure.Storage.Common | 12.22.0 | External |
 | CommunityToolkit.Aspire.Hosting.Dapr | 13.0.0 | External |
-| coverlet.collector | 1.3.0 | External |
-| coverlet.collector | 3.0.2 | External |
 | coverlet.collector | 3.1.2 | External |
-| coverlet.collector | 6.0.0 | External |
-| coverlet.collector | 6.0.4 | External |
 | coverlet.collector | 8.0.0 | External |
+| coverlet.collector | 8.0.1 | External |
 | Dapr.Actors | 1.17.0 | External |
 | Dapr.Actors | 1.17.8 | External |
 | Dapr.Actors.AspNetCore | 1.17.8 | External |
 | DrillingSharedComponent.DrillingFluidDataObject | 2020.3.0.3 | External |
-| DrillingSharedComponent.HydraulicsEngine | 2024.4.0.6 | External |
 | DrillingSharedComponent.HydraulicsEngine | 2025.5.1.3 | External |
 | DrillingSharedComponent.HydraulicsEngine | 2025.10.0.4 | External |
 | DrillingSharedComponent.PackOff | 2025.1.0.11 | External |
@@ -41,8 +37,6 @@ Scanned project groups: Actors, Shared
 | EnergisticsDevKit | 2.1.0 | External |
 | FluentAssertions | 6.7.0 | External |
 | FluentAssertions | 6.12.0 | External |
-| MathNet.Numerics | 4.12.0 | External |
-| MathNet.Numerics | 4.15.0 | External |
 | MathNet.Numerics | 5.0.0 | External |
 | Microsoft.AspNet.WebApi.Client | 5.2.7 | External |
 | Microsoft.AspNet.WebApi.Client | 6.0.0 | External |
@@ -53,13 +47,9 @@ Scanned project groups: Actors, Shared
 | Microsoft.CSharp | 4.7.0 | External |
 | Microsoft.Extensions.Hosting.Abstractions | 9.0.0 | External |
 | Microsoft.ML.Probabilistic.Compiler | 0.4.2403.801 | External |
-| Microsoft.NET.Test.Sdk | 16.7.1 | External |
-| Microsoft.NET.Test.Sdk | 16.8.3 | External |
-| Microsoft.NET.Test.Sdk | 16.9.4 | External |
 | Microsoft.NET.Test.Sdk | 16.* | External |
 | Microsoft.NET.Test.Sdk | 17.1.0 | External |
 | Microsoft.NET.Test.Sdk | 17.3.1 | External |
-| Microsoft.NET.Test.Sdk | 17.8.0 | External |
 | Microsoft.NET.Test.Sdk | 17.11.1 | External |
 | Microsoft.NET.Test.Sdk | 17.12.0 | External |
 | Microsoft.NET.Test.Sdk | 17.13.0 | External |
@@ -71,26 +61,22 @@ Scanned project groups: Actors, Shared
 | Moq | 4.20.72 | External |
 | MSTest | 3.6.4 | External |
 | MSTest.TestAdapter | 1.3.2 | External |
-| MSTest.TestAdapter | 2.1.1 | External |
 | MSTest.TestAdapter | 2.1.2 | External |
 | MSTest.TestAdapter | 2.2.3 | External |
 | MSTest.TestAdapter | 2.2.8 | External |
 | MSTest.TestAdapter | 2.2.10 | External |
-| MSTest.TestAdapter | 3.1.1 | External |
+| MSTest.TestAdapter | 3.11.1 | External |
 | MSTest.TestAdapter | 4.1.0 | External |
 | MSTest.TestFramework | 1.3.2 | External |
-| MSTest.TestFramework | 2.1.1 | External |
 | MSTest.TestFramework | 2.1.2 | External |
 | MSTest.TestFramework | 2.2.3 | External |
 | MSTest.TestFramework | 2.2.8 | External |
 | MSTest.TestFramework | 2.2.10 | External |
-| MSTest.TestFramework | 3.1.1 | External |
+| MSTest.TestFramework | 3.11.1 | External |
 | MSTest.TestFramework | 4.1.0 | External |
-| Newtonsoft.Json | 13.0.1 | External |
 | Newtonsoft.Json | 13.0.3 | External |
 | Newtonsoft.Json | 13.0.4 | External |
 | NJsonSchema | 10.8.0 | External |
-| NodaTime | 3.0.1 | External |
 | NodaTime | 3.1.10 | External |
 | OpenTelemetry.Exporter.OpenTelemetryProtocol | 1.13.1 | External |
 | OpenTelemetry.Extensions.Hosting | 1.13.1 | External |
@@ -112,20 +98,21 @@ Scanned project groups: Actors, Shared
 | Slb.Prism.Core.Library.WitsmlModel.Unit | 1.2.11 | External |
 | Slb.Prism.Core.Library.WitsmlModel.Well | 1.2.6 | External |
 | Slb.Prism.Core.Library.WitsmlModel.Well | 1.2.32 | External |
-| Slb.Prism.Rhapsody.Algorithm.ChannelProjection | 2.0.0.13909616 | Rhapsody.Algorithm.ChannelProjection |
-| Slb.Prism.Rhapsody.Algorithm.DataGenerator | 1.0.0.14533726 | Rhapsody.Algorithm.DataGenerator |
-| Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection | 1.0.0.11904448 | Rhapsody.Algorithm.DepthJumpCorrection |
+| Slb.Prism.Rhapsody.Algorithm.ChannelProjection | 2.0.0.15730546 | Rhapsody.Algorithm.ChannelProjection |
+| Slb.Prism.Rhapsody.Algorithm.DataGenerator | 1.0.0.15730549 | Rhapsody.Algorithm.DataGenerator |
+| Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection | 2.0.0.11724927 | Rhapsody.Algorithm.DepthJumpCorrection |
 | Slb.Prism.Rhapsody.Algorithm.Risk | 1.0.0-channelfix.15638411 | Rhapsody.Algorithm.Risk |
 | Slb.Prism.Rhapsody.Algorithm.Udf | 1.0.0.12580827 | Rhapsody.Algorithm.Udf |
 | Slb.Prism.Rhapsody.Algorithm.Udf | 1.0.0.14533750 | Rhapsody.Algorithm.Udf |
 | Slb.Prism.Rhapsody.Contract.DaprActor | 0.1.0.15636617 | Rhapsody.Library.ComputationDaprAdapter |
 | Slb.Prism.Rhapsody.Library.ComputationDaprAdapter | 0.1.0.15391072 | Rhapsody.Library.ComputationDaprAdapter |
 | Slb.Prism.Rhapsody.Library.ComputationDaprAdapter | 0.1.0.15636617 | Rhapsody.Library.ComputationDaprAdapter |
+| Slb.Prism.Rhapsody.Library.ComputationDaprAdapter | 0.1.0.15723341 | Rhapsody.Library.ComputationDaprAdapter |
 | Slb.Prism.Rhapsody.Library.ContextSanitizer | 1.0.0.14554683 | External |
 | Slb.Prism.Rhapsody.Library.TestDataSetPreparator | 1.1.0-netstandard.14522678 | External |
 | Slb.Prism.Rhapsody.Library.TestDataSetPreparator | 1.1.0-netstandard.15545669 | External |
 | Slb.Prism.Shared.Algorithm.CoreComputation | 7.9.1.15483973 | Shared.Algorithm.CoreComputation |
-| Slb.Prism.Shared.Algorithm.Flowback | 1.0.0.15544531 | Shared.Algorithm.Flowback |
+| Slb.Prism.Shared.Algorithm.Flowback | 1.0.0.15730589 | Shared.Algorithm.Flowback |
 | Slb.Prism.Shared.Algorithm.HydraulicsTransientSimulation | 1.0.0.14727081 | Shared.Algorithm.HydraulicsTransientSimulation |
 | Slb.Prism.Shared.Algorithm.KillSheet | 1.0.0.15633012 | Shared.Algorithm.KillSheet |
 | Slb.Prism.Shared.Algorithm.OperationKpi | 1.0.0.15543348 | Shared.Algorithm.OperationKpi |
@@ -139,14 +126,9 @@ Scanned project groups: Actors, Shared
 | Slb.Prism.Shared.Library.CircuitBreaker.WebAPI | 3.2.0.13569523 | External |
 | Slb.Prism.Shared.Library.CircuitBreaker.WebAPI | 6.0.1 | External |
 | Slb.Prism.Shared.Library.Computation.Common | 1.2.1-HciAsInput.10273166 | Shared.Library.Computation.Common |
-| Slb.Prism.Shared.Library.Computation.Common | 1.2.1.14190443 | Shared.Library.Computation.Common |
-| Slb.Prism.Shared.Library.Computation.Common | 1.2.1.14450271 | Shared.Library.Computation.Common |
-| Slb.Prism.Shared.Library.Computation.Common | 1.2.1.14600193 | Shared.Library.Computation.Common |
 | Slb.Prism.Shared.Library.Computation.Common | 1.2.1.14601914 | Shared.Library.Computation.Common |
 | Slb.Prism.Shared.Library.Computation.Common | 1.2.1.15591313 | Shared.Library.Computation.Common |
 | Slb.Prism.Shared.Library.ComputationEngine | 4.1.0.10142759 | External |
-| Slb.Prism.Shared.Library.ComputationEngine | 4.1.0.11761377 | External |
-| Slb.Prism.Shared.Library.ComputationEngine | 4.1.0.11972753 | External |
 | Slb.Prism.Shared.Library.ComputationEngine | 4.1.0.13859494 | External |
 | Slb.Prism.Shared.Library.ComputationEngine | 4.1.0.14188343 | External |
 | Slb.Prism.Shared.Library.ComputationEngine | 4.1.0.15250531 | External |
@@ -165,7 +147,6 @@ Scanned project groups: Actors, Shared
 | Slb.Prism.Shared.Library.Logging.Http | 6.0.1 | External |
 | Slb.Prism.Shared.Library.MongoDB | 2.5.1.14525918 | External |
 | Slb.Prism.Shared.Library.MongoDB | 6.0.1 | External |
-| Slb.Prism.Shared.Library.Numerics | 3.0.2.2414353 | External |
 | Slb.Prism.Shared.Library.Numerics | 3.0.3.9849028 | External |
 | Slb.Prism.Shared.Library.Numerics.Drilling | 3.0.2.3297474 | External |
 | Slb.Prism.Shared.Library.Protocol | 3.5.0 | External |
@@ -179,7 +160,6 @@ Scanned project groups: Actors, Shared
 | Slb.Prism.Shared.Library.Units | 6.0.1 | External |
 | Slb.Prism.Shared.Library.WellBalanceRisks | 2.0.0.15405187 | Shared.Library.WellBalanceRisks |
 | Standards.DevKit-Rebuild-SLB | 1.3.1 | External |
-| Standards.DevKit-Rebuild-SLB | 1.3.11 | External |
 | Standards.DevKit-Rebuild-SLB | 1.3.13 | External |
 | Stateless | 4.2.1 | External |
 | Svg | 3.4.0 | External |
@@ -314,7 +294,22 @@ Scanned project groups: Actors, Shared
 
 ### coverlet.collector
 
-#### Version 1.3.0
+#### Version 3.1.2
+
+| Repository | Project | Reference Type | Path |
+| --- | --- | --- | --- |
+| Shared.Algorithm.PackOff | Slb.Prism.Shared.Algorithm.PackOffTest | PackageReference | `Shared\Shared.Algorithm.PackOff\Slb.Prism.Shared.Algorithm.PackOffTest\Slb.Prism.Shared.Algorithm.PackOffTest.csproj` |
+| Shared.Library.Computation.Common | Slb.Prism.Shared.Library.Computation.Common.Demo.Tests | PackageReference | `Shared\Shared.Library.Computation.Common\Slb.Prism.Shared.Library.Computation.Common.Demo.Tests\Slb.Prism.Shared.Library.Computation.Common.Demo.Tests.csproj` |
+| Shared.Library.Computation.Common | Slb.Prism.Shared.Library.Computation.Common.Tests | PackageReference | `Shared\Shared.Library.Computation.Common\Slb.Prism.Shared.Library.Computation.Common.Test\Slb.Prism.Shared.Library.Computation.Common.Tests.csproj` |
+
+#### Version 8.0.0
+
+| Repository | Project | Reference Type | Path |
+| --- | --- | --- | --- |
+| Shared.Algorithm.PressureMonitoring | Slb.Prism.Shared.Algorithm.PressureMonitoring.Test | PackageReference | `Shared\Shared.Algorithm.PressureMonitoring\Slb.Prism.Shared.Algorithm.PressureMonitoring.Test\Slb.Prism.Shared.Algorithm.PressureMonitoring.Test.csproj` |
+| Shared.Library.DrillingKpi | Slb.Prism.Shared.Computation.KpiComputation.UnitTest | PackageReference | `Shared\Shared.Library.DrillingKpi\UnitTest\KpiComputation.UnitTest\Slb.Prism.Shared.Computation.KpiComputation.UnitTest.csproj` |
+
+#### Version 8.0.1
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
@@ -324,41 +319,12 @@ Scanned project groups: Actors, Shared
 | Rhapsody.Algorithm.Risk | Slb.Prism.Rhapsody.Algorithm.Risk.Tests | PackageReference | `Shared\Rhapsody.Algorithm.Risk\Slb.Prism.Rhapsody.Algorithm.Risk.Tests\Slb.Prism.Rhapsody.Algorithm.Risk.Tests.csproj` |
 | Rhapsody.Algorithm.Udf | Slb.Prism.Rhapsody.Algorithm.Udf.Tests | PackageReference | `Shared\Rhapsody.Algorithm.Udf\Slb.Prism.Rhapsody.Algorithm.Udf.Tests\Slb.Prism.Rhapsody.Algorithm.Udf.Tests.csproj` |
 | Shared.Algorithm.Flowback | Slb.Prism.Shared.Algorithm.Flowback.Tests | PackageReference | `Shared\Shared.Algorithm.Flowback\Slb.Prism.Shared.Algorithm.Flowback.Tests\Slb.Prism.Shared.Algorithm.Flowback.Tests.csproj` |
-| Shared.Algorithm.TnDBroomstick | Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests | PackageReference | `Shared\Shared.Algorithm.TnDBroomstick\Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests\Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests.csproj` |
-
-#### Version 3.0.2
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
 | Shared.Algorithm.HydraulicsTransientSimulation | Slb.Prism.Shared.HydraulicsTransient.Tests | PackageReference | `Shared\Shared.Algorithm.HydraulicsTransientSimulation\Slb.Prism.Shared.HydraulicsTransient.Tests\Slb.Prism.Shared.HydraulicsTransient.Tests.csproj` |
-
-#### Version 3.1.2
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
+| Shared.Algorithm.KillSheet | Slb.Prism.Shared.Algorithm.KillSheet.UnitTests | PackageReference | `Shared\Shared.Algorithm.KillSheet\UnitTests\KillSheet.Tests.csproj` |
 | Shared.Algorithm.OperationKpi | Slb.Prism.Shared.Algorithm.OperationKpiTest | PackageReference | `Shared\Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpiTest\Slb.Prism.Shared.Algorithm.OperationKpiTest.csproj` |
-| Shared.Algorithm.PackOff | Slb.Prism.Shared.Algorithm.PackOffTest | PackageReference | `Shared\Shared.Algorithm.PackOff\Slb.Prism.Shared.Algorithm.PackOffTest\Slb.Prism.Shared.Algorithm.PackOffTest.csproj` |
 | Shared.Algorithm.ParameterAdherence | Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests | PackageReference | `Shared\Shared.Algorithm.ParameterAdherence\Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests\Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests.csproj` |
-| Shared.Library.Computation.Common | Slb.Prism.Shared.Library.Computation.Common.Demo.Tests | PackageReference | `Shared\Shared.Library.Computation.Common\Slb.Prism.Shared.Library.Computation.Common.Demo.Tests\Slb.Prism.Shared.Library.Computation.Common.Demo.Tests.csproj` |
-| Shared.Library.Computation.Common | Slb.Prism.Shared.Library.Computation.Common.Tests | PackageReference | `Shared\Shared.Library.Computation.Common\Slb.Prism.Shared.Library.Computation.Common.Test\Slb.Prism.Shared.Library.Computation.Common.Tests.csproj` |
-
-#### Version 6.0.0
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Library.DrillingKpi | Slb.Prism.Shared.Computation.KpiComputation.UnitTest | PackageReference | `Shared\Shared.Library.DrillingKpi\UnitTest\KpiComputation.UnitTest\Slb.Prism.Shared.Computation.KpiComputation.UnitTest.csproj` |
-
-#### Version 6.0.4
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
 | Shared.Algorithm.RtRheology | Slb.Prism.Shared.Algorithm.RtRheologyTest | PackageReference | `Shared\Shared.Algorithm.RtRheology\Slb.Prism.Shared.Algorithm.RtRheologyTest\Slb.Prism.Shared.Algorithm.RtRheologyTest.csproj` |
-
-#### Version 8.0.0
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Algorithm.PressureMonitoring | Slb.Prism.Shared.Algorithm.PressureMonitoring.Test | PackageReference | `Shared\Shared.Algorithm.PressureMonitoring\Slb.Prism.Shared.Algorithm.PressureMonitoring.Test\Slb.Prism.Shared.Algorithm.PressureMonitoring.Test.csproj` |
+| Shared.Algorithm.TnDBroomstick | Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests | PackageReference | `Shared\Shared.Algorithm.TnDBroomstick\Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests\Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests.csproj` |
 
 ### Dapr.Actors
 
@@ -397,18 +363,13 @@ Scanned project groups: Actors, Shared
 
 ### DrillingSharedComponent.HydraulicsEngine
 
-#### Version 2024.4.0.6
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Library.WellBalanceRisks | Slb.Prism.Shared.Library.WellBalanceRisks | PackageReference | `Shared\Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks.csproj` |
-| Shared.Library.WellBalanceRisks | Slb.Prism.Shared.WellBalanceRisks.UnitTest | PackageReference | `Shared\Shared.Library.WellBalanceRisks\Slb.Prism.Shared.WellBalanceRisks.UnitTest\Slb.Prism.Shared.WellBalanceRisks.UnitTest.csproj` |
-
 #### Version 2025.5.1.3
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
 | Shared.Algorithm.TnDBroomstick | Slb.Prism.Shared.Algorithm.TnDBroomstick | PackageReference | `Shared\Shared.Algorithm.TnDBroomstick\Slb.Prism.Shared.Algorithm.TnDBroomstick\Slb.Prism.Shared.Algorithm.TnDBroomstick.csproj` |
+| Shared.Library.WellBalanceRisks | Slb.Prism.Shared.Library.WellBalanceRisks | PackageReference | `Shared\Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks.csproj` |
+| Shared.Library.WellBalanceRisks | Slb.Prism.Shared.WellBalanceRisks.UnitTest | PackageReference | `Shared\Shared.Library.WellBalanceRisks\Slb.Prism.Shared.WellBalanceRisks.UnitTest\Slb.Prism.Shared.WellBalanceRisks.UnitTest.csproj` |
 
 #### Version 2025.10.0.4
 
@@ -488,27 +449,17 @@ Scanned project groups: Actors, Shared
 
 ### MathNet.Numerics
 
-#### Version 4.12.0
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Library.WellBalanceRisks | Slb.Prism.Shared.Library.WellBalanceRisks | PackageReference | `Shared\Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks.csproj` |
-| Shared.Library.WellBalanceRisks | Slb.Prism.Shared.WellBalanceRisks.UnitTest | PackageReference | `Shared\Shared.Library.WellBalanceRisks\Slb.Prism.Shared.WellBalanceRisks.UnitTest\Slb.Prism.Shared.WellBalanceRisks.UnitTest.csproj` |
-
-#### Version 4.15.0
+#### Version 5.0.0
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
 | Shared.Algorithm.Flowback | Slb.Prism.Shared.Algorithm.Flowback | PackageReference | `Shared\Shared.Algorithm.Flowback\Slb.Prism.Shared.Algorithm.Flowback\Slb.Prism.Shared.Algorithm.Flowback.csproj` |
 | Shared.Algorithm.Flowback | Slb.Prism.Shared.Algorithm.Flowback.Tests | PackageReference | `Shared\Shared.Algorithm.Flowback\Slb.Prism.Shared.Algorithm.Flowback.Tests\Slb.Prism.Shared.Algorithm.Flowback.Tests.csproj` |
-
-#### Version 5.0.0
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
 | Shared.Algorithm.HydraulicsTransientSimulation | Slb.Prism.Shared.Algorithm.HydraulicsTransientSimulation | PackageReference | `Shared\Shared.Algorithm.HydraulicsTransientSimulation\Slb.Prism.Shared.Algorithm.HydraulicsTransientSimulation\Slb.Prism.Shared.Algorithm.HydraulicsTransientSimulation.csproj` |
 | Shared.Algorithm.OperationKpi | Slb.Prism.Shared.Algorithm.OperationKpi | PackageReference | `Shared\Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpi.csproj` |
 | Shared.Algorithm.PackOff | Slb.Prism.Shared.Algorithm.PackOff | PackageReference | `Shared\Shared.Algorithm.PackOff\Slb.Prism.Shared.Algorithm.PackOff\Slb.Prism.Shared.Algorithm.PackOff.csproj` |
+| Shared.Library.WellBalanceRisks | Slb.Prism.Shared.Library.WellBalanceRisks | PackageReference | `Shared\Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks.csproj` |
+| Shared.Library.WellBalanceRisks | Slb.Prism.Shared.WellBalanceRisks.UnitTest | PackageReference | `Shared\Shared.Library.WellBalanceRisks\Slb.Prism.Shared.WellBalanceRisks.UnitTest\Slb.Prism.Shared.WellBalanceRisks.UnitTest.csproj` |
 
 ### Microsoft.AspNet.WebApi.Client
 
@@ -585,31 +536,6 @@ Scanned project groups: Actors, Shared
 
 ### Microsoft.NET.Test.Sdk
 
-#### Version 16.7.1
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Algorithm.Flowback | Slb.Prism.Shared.Algorithm.Flowback.Tests | PackageReference | `Shared\Shared.Algorithm.Flowback\Slb.Prism.Shared.Algorithm.Flowback.Tests\Slb.Prism.Shared.Algorithm.Flowback.Tests.csproj` |
-
-#### Version 16.8.3
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Rhapsody.Algorithm.ChannelProjection | Slb.Prism.Rhapsody.Algorithm.ChannelProjection.Tests | PackageReference | `Shared\Rhapsody.Algorithm.ChannelProjection\Slb.Prism.Rhapsody.Algorithm.ChannelProjection.Tests\Slb.Prism.Rhapsody.Algorithm.ChannelProjection.Tests.csproj` |
-| Rhapsody.Algorithm.DataGenerator | Slb.Prism.Rhapsody.Algorithm.DataGenerator.Tests | PackageReference | `Shared\Rhapsody.Algorithm.DataGenerator\Slb.Prism.Rhapsody.Algorithm.DataGenerator.Tests\Slb.Prism.Rhapsody.Algorithm.DataGenerator.Tests.csproj` |
-| Rhapsody.Algorithm.DepthJumpCorrection | Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests | PackageReference | `Shared\Rhapsody.Algorithm.DepthJumpCorrection\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests.csproj` |
-| Rhapsody.Algorithm.Risk | Slb.Prism.Rhapsody.Algorithm.Risk.Tests | PackageReference | `Shared\Rhapsody.Algorithm.Risk\Slb.Prism.Rhapsody.Algorithm.Risk.Tests\Slb.Prism.Rhapsody.Algorithm.Risk.Tests.csproj` |
-| Rhapsody.Algorithm.Udf | Slb.Prism.Rhapsody.Algorithm.Udf.Tests | PackageReference | `Shared\Rhapsody.Algorithm.Udf\Slb.Prism.Rhapsody.Algorithm.Udf.Tests\Slb.Prism.Rhapsody.Algorithm.Udf.Tests.csproj` |
-| Shared.Algorithm.TnDBroomstick | SharedComponents.Common.Test | PackageReference | `Shared\Shared.Algorithm.TnDBroomstick\SharedComponents.Common.Test\SharedComponents.Common.Test.csproj` |
-| Shared.Algorithm.TnDBroomstick | SharedComponents.TnDModeling.Test | PackageReference | `Shared\Shared.Algorithm.TnDBroomstick\SharedComponents.TnDSimulation.Test\SharedComponents.TnDModeling.Test.csproj` |
-| Shared.Algorithm.TnDBroomstick | Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests | PackageReference | `Shared\Shared.Algorithm.TnDBroomstick\Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests\Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests.csproj` |
-
-#### Version 16.9.4
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Algorithm.HydraulicsTransientSimulation | Slb.Prism.Shared.HydraulicsTransient.Tests | PackageReference | `Shared\Shared.Algorithm.HydraulicsTransientSimulation\Slb.Prism.Shared.HydraulicsTransient.Tests\Slb.Prism.Shared.HydraulicsTransient.Tests.csproj` |
-
 #### Version 16.*
 
 | Repository | Project | Reference Type | Path |
@@ -620,22 +546,14 @@ Scanned project groups: Actors, Shared
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
-| Shared.Algorithm.OperationKpi | Slb.Prism.Shared.Algorithm.OperationKpiTest | PackageReference | `Shared\Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpiTest\Slb.Prism.Shared.Algorithm.OperationKpiTest.csproj` |
 | Shared.Algorithm.PackOff | Slb.Prism.Shared.Algorithm.PackOffTest | PackageReference | `Shared\Shared.Algorithm.PackOff\Slb.Prism.Shared.Algorithm.PackOffTest\Slb.Prism.Shared.Algorithm.PackOffTest.csproj` |
 
 #### Version 17.3.1
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
-| Shared.Algorithm.ParameterAdherence | Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests | PackageReference | `Shared\Shared.Algorithm.ParameterAdherence\Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests\Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests.csproj` |
 | Shared.Library.Computation.Common | Slb.Prism.Shared.Library.Computation.Common.Demo.Tests | PackageReference | `Shared\Shared.Library.Computation.Common\Slb.Prism.Shared.Library.Computation.Common.Demo.Tests\Slb.Prism.Shared.Library.Computation.Common.Demo.Tests.csproj` |
 | Shared.Library.Computation.Common | Slb.Prism.Shared.Library.Computation.Common.Tests | PackageReference | `Shared\Shared.Library.Computation.Common\Slb.Prism.Shared.Library.Computation.Common.Test\Slb.Prism.Shared.Library.Computation.Common.Tests.csproj` |
-
-#### Version 17.8.0
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Library.DrillingKpi | Slb.Prism.Shared.Computation.KpiComputation.UnitTest | PackageReference | `Shared\Shared.Library.DrillingKpi\UnitTest\KpiComputation.UnitTest\Slb.Prism.Shared.Computation.KpiComputation.UnitTest.csproj` |
 
 #### Version 17.11.1
 
@@ -647,8 +565,6 @@ Scanned project groups: Actors, Shared
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
-| Rhapsody.Computation.DataGenerator | Slb.Prism.Rhapsody.Service.DataGenerator.IntegrationTests | PackageReference | `Actors\Rhapsody.Computation.DataGenerator\IntegrationTests\IntegrationTests.csproj` |
-| Rhapsody.Computation.DataGenerator | UnitTests | PackageReference | `Actors\Rhapsody.Computation.DataGenerator\UnitTests\UnitTests.csproj` |
 | Rhapsody.Computation.ProceduralAdherence | Slb.Prism.Rhapsody.Service.ProceduralAdherence.IntegrationTests | PackageReference | `Actors\Rhapsody.Computation.ProceduralAdherence\IntegrationTests\IntegrationTests.csproj` |
 | Rhapsody.Computation.ProceduralAdherence | UnitTests | PackageReference | `Actors\Rhapsody.Computation.ProceduralAdherence\UnitTests\UnitTests.csproj` |
 | Rhapsody.Library.ComputationDaprAdapter | Slb.Prism.Rhapsody.Library.ComputationDaprAdapter.UnitTests | PackageReference | `Shared\Rhapsody.Library.ComputationDaprAdapter\UnitTests\Slb.Prism.Rhapsody.Library.ComputationDaprAdapter.UnitTests.csproj` |
@@ -659,7 +575,20 @@ Scanned project groups: Actors, Shared
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
+| Rhapsody.Algorithm.ChannelProjection | Slb.Prism.Rhapsody.Algorithm.ChannelProjection.Tests | PackageReference | `Shared\Rhapsody.Algorithm.ChannelProjection\Slb.Prism.Rhapsody.Algorithm.ChannelProjection.Tests\Slb.Prism.Rhapsody.Algorithm.ChannelProjection.Tests.csproj` |
+| Rhapsody.Algorithm.DataGenerator | Slb.Prism.Rhapsody.Algorithm.DataGenerator.Tests | PackageReference | `Shared\Rhapsody.Algorithm.DataGenerator\Slb.Prism.Rhapsody.Algorithm.DataGenerator.Tests\Slb.Prism.Rhapsody.Algorithm.DataGenerator.Tests.csproj` |
+| Rhapsody.Algorithm.DepthJumpCorrection | Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests | PackageReference | `Shared\Rhapsody.Algorithm.DepthJumpCorrection\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests.csproj` |
+| Rhapsody.Algorithm.Risk | Slb.Prism.Rhapsody.Algorithm.Risk.Tests | PackageReference | `Shared\Rhapsody.Algorithm.Risk\Slb.Prism.Rhapsody.Algorithm.Risk.Tests\Slb.Prism.Rhapsody.Algorithm.Risk.Tests.csproj` |
+| Rhapsody.Algorithm.Udf | Slb.Prism.Rhapsody.Algorithm.Udf.Tests | PackageReference | `Shared\Rhapsody.Algorithm.Udf\Slb.Prism.Rhapsody.Algorithm.Udf.Tests\Slb.Prism.Rhapsody.Algorithm.Udf.Tests.csproj` |
+| Shared.Algorithm.Flowback | Slb.Prism.Shared.Algorithm.Flowback.Tests | PackageReference | `Shared\Shared.Algorithm.Flowback\Slb.Prism.Shared.Algorithm.Flowback.Tests\Slb.Prism.Shared.Algorithm.Flowback.Tests.csproj` |
+| Shared.Algorithm.HydraulicsTransientSimulation | Slb.Prism.Shared.HydraulicsTransient.Tests | PackageReference | `Shared\Shared.Algorithm.HydraulicsTransientSimulation\Slb.Prism.Shared.HydraulicsTransient.Tests\Slb.Prism.Shared.HydraulicsTransient.Tests.csproj` |
+| Shared.Algorithm.KillSheet | Slb.Prism.Shared.Algorithm.KillSheet.UnitTests | PackageReference | `Shared\Shared.Algorithm.KillSheet\UnitTests\KillSheet.Tests.csproj` |
+| Shared.Algorithm.OperationKpi | Slb.Prism.Shared.Algorithm.OperationKpiTest | PackageReference | `Shared\Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpiTest\Slb.Prism.Shared.Algorithm.OperationKpiTest.csproj` |
+| Shared.Algorithm.ParameterAdherence | Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests | PackageReference | `Shared\Shared.Algorithm.ParameterAdherence\Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests\Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests.csproj` |
 | Shared.Algorithm.RtRheology | Slb.Prism.Shared.Algorithm.RtRheologyTest | PackageReference | `Shared\Shared.Algorithm.RtRheology\Slb.Prism.Shared.Algorithm.RtRheologyTest\Slb.Prism.Shared.Algorithm.RtRheologyTest.csproj` |
+| Shared.Algorithm.TnDBroomstick | SharedComponents.Common.Test | PackageReference | `Shared\Shared.Algorithm.TnDBroomstick\SharedComponents.Common.Test\SharedComponents.Common.Test.csproj` |
+| Shared.Algorithm.TnDBroomstick | SharedComponents.TnDModeling.Test | PackageReference | `Shared\Shared.Algorithm.TnDBroomstick\SharedComponents.TnDSimulation.Test\SharedComponents.TnDModeling.Test.csproj` |
+| Shared.Algorithm.TnDBroomstick | Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests | PackageReference | `Shared\Shared.Algorithm.TnDBroomstick\Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests\Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests.csproj` |
 
 #### Version 18.3.0
 
@@ -669,6 +598,8 @@ Scanned project groups: Actors, Shared
 | Rhapsody.Computation.ChannelProjection | Slb.Prism.Rhapsody.Service.ChannelProjection.UnitTests | PackageReference | `Actors\Rhapsody.Computation.ChannelProjection\UnitTests\UnitTests.csproj` |
 | Rhapsody.Computation.CoreComputation | Slb.Prism.Rhapsody.Service.CoreComputation.IntegrationTests | PackageReference | `Actors\Rhapsody.Computation.CoreComputation\IntegrationTests\IntegrationTests.csproj` |
 | Rhapsody.Computation.CoreComputation | Slb.Prism.Rhapsody.Service.CoreComputation.UnitTests | PackageReference | `Actors\Rhapsody.Computation.CoreComputation\UnitTests\UnitTests.csproj` |
+| Rhapsody.Computation.DataGenerator | Slb.Prism.Rhapsody.Service.DataGenerator.IntegrationTests | PackageReference | `Actors\Rhapsody.Computation.DataGenerator\IntegrationTests\IntegrationTests.csproj` |
+| Rhapsody.Computation.DataGenerator | UnitTests | PackageReference | `Actors\Rhapsody.Computation.DataGenerator\UnitTests\UnitTests.csproj` |
 | Rhapsody.Computation.DepthJumpCorrection | Slb.Prism.Rhapsody.Service.DepthJumpCorrection.IntegrationTests | PackageReference | `Actors\Rhapsody.Computation.DepthJumpCorrection\IntegrationTests\IntegrationTests.csproj` |
 | Rhapsody.Computation.DepthJumpCorrection | UnitTests | PackageReference | `Actors\Rhapsody.Computation.DepthJumpCorrection\UnitTests\UnitTests.csproj` |
 | Rhapsody.Computation.Flowback | Slb.Prism.Rhapsody.Service.Flowback.IntegrationTests | PackageReference | `Actors\Rhapsody.Computation.Flowback\IntegrationTests\IntegrationTests.csproj` |
@@ -696,6 +627,7 @@ Scanned project groups: Actors, Shared
 | Rhapsody.Service.PressureMonitoring | Slb.Prism.Rhapsody.Service.PressureMonitoring.IntegrationTests | PackageReference | `Actors\Rhapsody.Service.PressureMonitoring\IntegrationTests\IntegrationTests.csproj` |
 | Rhapsody.Service.PressureMonitoring | Slb.Prism.Rhapsody.Service.PressureMonitoring.UnitTests | PackageReference | `Actors\Rhapsody.Service.PressureMonitoring\UnitTests\UnitTests.csproj` |
 | Shared.Algorithm.PressureMonitoring | Slb.Prism.Shared.Algorithm.PressureMonitoring.Test | PackageReference | `Shared\Shared.Algorithm.PressureMonitoring\Slb.Prism.Shared.Algorithm.PressureMonitoring.Test\Slb.Prism.Shared.Algorithm.PressureMonitoring.Test.csproj` |
+| Shared.Library.DrillingKpi | Slb.Prism.Shared.Computation.KpiComputation.UnitTest | PackageReference | `Shared\Shared.Library.DrillingKpi\UnitTest\KpiComputation.UnitTest\Slb.Prism.Shared.Computation.KpiComputation.UnitTest.csproj` |
 
 ### Microsoft.QualityTools.Testing.Fakes
 
@@ -763,16 +695,35 @@ Scanned project groups: Actors, Shared
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
-| Shared.Algorithm.KillSheet | Slb.Prism.Shared.Algorithm.KillSheet.UnitTests | PackageReference | `Shared\Shared.Algorithm.KillSheet\UnitTests\KillSheet.Tests.csproj` |
 | Shared.Library.WellBalanceRisks | Slb.Prism.Shared.WellBalanceRisks.UnitTest | PackageReference | `Shared\Shared.Library.WellBalanceRisks\Slb.Prism.Shared.WellBalanceRisks.UnitTest\Slb.Prism.Shared.WellBalanceRisks.UnitTest.csproj` |
 
-#### Version 2.1.1
+#### Version 2.1.2
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
-| Shared.Algorithm.Flowback | Slb.Prism.Shared.Algorithm.Flowback.Tests | PackageReference | `Shared\Shared.Algorithm.Flowback\Slb.Prism.Shared.Algorithm.Flowback.Tests\Slb.Prism.Shared.Algorithm.Flowback.Tests.csproj` |
+| Shared.Algorithm.Flowback | AlgoTester | PackageReference | `Shared\Shared.Algorithm.Flowback\AlgoTester\AlgoTester.csproj` |
 
-#### Version 2.1.2
+#### Version 2.2.3
+
+| Repository | Project | Reference Type | Path |
+| --- | --- | --- | --- |
+| Shared.Algorithm.CoreComputation | Slb.Prism.Shared.Algorithm.CoreComputation.UnitTest | PackageReference | `Shared\Shared.Algorithm.CoreComputation\UnitTest\Shared.Algorithm.CoreComputation.UnitTest.csproj` |
+
+#### Version 2.2.8
+
+| Repository | Project | Reference Type | Path |
+| --- | --- | --- | --- |
+| Shared.Algorithm.PackOff | Slb.Prism.Shared.Algorithm.PackOffTest | PackageReference | `Shared\Shared.Algorithm.PackOff\Slb.Prism.Shared.Algorithm.PackOffTest\Slb.Prism.Shared.Algorithm.PackOffTest.csproj` |
+
+#### Version 2.2.10
+
+| Repository | Project | Reference Type | Path |
+| --- | --- | --- | --- |
+| Shared.Library.Computation.Common | EnergisticsTypeReflector.Test | PackageReference | `Shared\Shared.Library.Computation.Common\EnergisticsTypeReflector.Test\EnergisticsTypeReflector.Test.csproj` |
+| Shared.Library.Computation.Common | Slb.Prism.Shared.Library.Computation.Common.Demo.Tests | PackageReference | `Shared\Shared.Library.Computation.Common\Slb.Prism.Shared.Library.Computation.Common.Demo.Tests\Slb.Prism.Shared.Library.Computation.Common.Demo.Tests.csproj` |
+| Shared.Library.Computation.Common | Slb.Prism.Shared.Library.Computation.Common.Tests | PackageReference | `Shared\Shared.Library.Computation.Common\Slb.Prism.Shared.Library.Computation.Common.Test\Slb.Prism.Shared.Library.Computation.Common.Tests.csproj` |
+
+#### Version 3.11.1
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
@@ -781,40 +732,15 @@ Scanned project groups: Actors, Shared
 | Rhapsody.Algorithm.DepthJumpCorrection | Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests | PackageReference | `Shared\Rhapsody.Algorithm.DepthJumpCorrection\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests.csproj` |
 | Rhapsody.Algorithm.Risk | Slb.Prism.Rhapsody.Algorithm.Risk.Tests | PackageReference | `Shared\Rhapsody.Algorithm.Risk\Slb.Prism.Rhapsody.Algorithm.Risk.Tests\Slb.Prism.Rhapsody.Algorithm.Risk.Tests.csproj` |
 | Rhapsody.Algorithm.Udf | Slb.Prism.Rhapsody.Algorithm.Udf.Tests | PackageReference | `Shared\Rhapsody.Algorithm.Udf\Slb.Prism.Rhapsody.Algorithm.Udf.Tests\Slb.Prism.Rhapsody.Algorithm.Udf.Tests.csproj` |
-| Shared.Algorithm.Flowback | AlgoTester | PackageReference | `Shared\Shared.Algorithm.Flowback\AlgoTester\AlgoTester.csproj` |
+| Shared.Algorithm.Flowback | Slb.Prism.Shared.Algorithm.Flowback.Tests | PackageReference | `Shared\Shared.Algorithm.Flowback\Slb.Prism.Shared.Algorithm.Flowback.Tests\Slb.Prism.Shared.Algorithm.Flowback.Tests.csproj` |
+| Shared.Algorithm.HydraulicsTransientSimulation | Slb.Prism.Shared.HydraulicsTransient.Tests | PackageReference | `Shared\Shared.Algorithm.HydraulicsTransientSimulation\Slb.Prism.Shared.HydraulicsTransient.Tests\Slb.Prism.Shared.HydraulicsTransient.Tests.csproj` |
+| Shared.Algorithm.KillSheet | Slb.Prism.Shared.Algorithm.KillSheet.UnitTests | PackageReference | `Shared\Shared.Algorithm.KillSheet\UnitTests\KillSheet.Tests.csproj` |
+| Shared.Algorithm.OperationKpi | Slb.Prism.Shared.Algorithm.OperationKpiTest | PackageReference | `Shared\Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpiTest\Slb.Prism.Shared.Algorithm.OperationKpiTest.csproj` |
+| Shared.Algorithm.ParameterAdherence | Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests | PackageReference | `Shared\Shared.Algorithm.ParameterAdherence\Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests\Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests.csproj` |
+| Shared.Algorithm.RtRheology | Slb.Prism.Shared.Algorithm.RtRheologyTest | PackageReference | `Shared\Shared.Algorithm.RtRheology\Slb.Prism.Shared.Algorithm.RtRheologyTest\Slb.Prism.Shared.Algorithm.RtRheologyTest.csproj` |
 | Shared.Algorithm.TnDBroomstick | SharedComponents.Common.Test | PackageReference | `Shared\Shared.Algorithm.TnDBroomstick\SharedComponents.Common.Test\SharedComponents.Common.Test.csproj` |
 | Shared.Algorithm.TnDBroomstick | SharedComponents.TnDModeling.Test | PackageReference | `Shared\Shared.Algorithm.TnDBroomstick\SharedComponents.TnDSimulation.Test\SharedComponents.TnDModeling.Test.csproj` |
 | Shared.Algorithm.TnDBroomstick | Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests | PackageReference | `Shared\Shared.Algorithm.TnDBroomstick\Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests\Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests.csproj` |
-
-#### Version 2.2.3
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Algorithm.CoreComputation | Slb.Prism.Shared.Algorithm.CoreComputation.UnitTest | PackageReference | `Shared\Shared.Algorithm.CoreComputation\UnitTest\Shared.Algorithm.CoreComputation.UnitTest.csproj` |
-| Shared.Algorithm.HydraulicsTransientSimulation | Slb.Prism.Shared.HydraulicsTransient.Tests | PackageReference | `Shared\Shared.Algorithm.HydraulicsTransientSimulation\Slb.Prism.Shared.HydraulicsTransient.Tests\Slb.Prism.Shared.HydraulicsTransient.Tests.csproj` |
-
-#### Version 2.2.8
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Algorithm.OperationKpi | Slb.Prism.Shared.Algorithm.OperationKpiTest | PackageReference | `Shared\Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpiTest\Slb.Prism.Shared.Algorithm.OperationKpiTest.csproj` |
-| Shared.Algorithm.PackOff | Slb.Prism.Shared.Algorithm.PackOffTest | PackageReference | `Shared\Shared.Algorithm.PackOff\Slb.Prism.Shared.Algorithm.PackOffTest\Slb.Prism.Shared.Algorithm.PackOffTest.csproj` |
-| Shared.Algorithm.RtRheology | Slb.Prism.Shared.Algorithm.RtRheologyTest | PackageReference | `Shared\Shared.Algorithm.RtRheology\Slb.Prism.Shared.Algorithm.RtRheologyTest\Slb.Prism.Shared.Algorithm.RtRheologyTest.csproj` |
-
-#### Version 2.2.10
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Algorithm.ParameterAdherence | Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests | PackageReference | `Shared\Shared.Algorithm.ParameterAdherence\Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests\Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests.csproj` |
-| Shared.Library.Computation.Common | EnergisticsTypeReflector.Test | PackageReference | `Shared\Shared.Library.Computation.Common\EnergisticsTypeReflector.Test\EnergisticsTypeReflector.Test.csproj` |
-| Shared.Library.Computation.Common | Slb.Prism.Shared.Library.Computation.Common.Demo.Tests | PackageReference | `Shared\Shared.Library.Computation.Common\Slb.Prism.Shared.Library.Computation.Common.Demo.Tests\Slb.Prism.Shared.Library.Computation.Common.Demo.Tests.csproj` |
-| Shared.Library.Computation.Common | Slb.Prism.Shared.Library.Computation.Common.Tests | PackageReference | `Shared\Shared.Library.Computation.Common\Slb.Prism.Shared.Library.Computation.Common.Test\Slb.Prism.Shared.Library.Computation.Common.Tests.csproj` |
-
-#### Version 3.1.1
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Library.DrillingKpi | Slb.Prism.Shared.Computation.KpiComputation.UnitTest | PackageReference | `Shared\Shared.Library.DrillingKpi\UnitTest\KpiComputation.UnitTest\Slb.Prism.Shared.Computation.KpiComputation.UnitTest.csproj` |
 
 #### Version 4.1.0
 
@@ -851,6 +777,7 @@ Scanned project groups: Actors, Shared
 | Rhapsody.Service.PressureMonitoring | Slb.Prism.Rhapsody.Service.PressureMonitoring.IntegrationTests | PackageReference | `Actors\Rhapsody.Service.PressureMonitoring\IntegrationTests\IntegrationTests.csproj` |
 | Rhapsody.Service.PressureMonitoring | Slb.Prism.Rhapsody.Service.PressureMonitoring.UnitTests | PackageReference | `Actors\Rhapsody.Service.PressureMonitoring\UnitTests\UnitTests.csproj` |
 | Shared.Algorithm.PressureMonitoring | Slb.Prism.Shared.Algorithm.PressureMonitoring.Test | PackageReference | `Shared\Shared.Algorithm.PressureMonitoring\Slb.Prism.Shared.Algorithm.PressureMonitoring.Test\Slb.Prism.Shared.Algorithm.PressureMonitoring.Test.csproj` |
+| Shared.Library.DrillingKpi | Slb.Prism.Shared.Computation.KpiComputation.UnitTest | PackageReference | `Shared\Shared.Library.DrillingKpi\UnitTest\KpiComputation.UnitTest\Slb.Prism.Shared.Computation.KpiComputation.UnitTest.csproj` |
 
 ### MSTest.TestFramework
 
@@ -858,16 +785,35 @@ Scanned project groups: Actors, Shared
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
-| Shared.Algorithm.KillSheet | Slb.Prism.Shared.Algorithm.KillSheet.UnitTests | PackageReference | `Shared\Shared.Algorithm.KillSheet\UnitTests\KillSheet.Tests.csproj` |
 | Shared.Library.WellBalanceRisks | Slb.Prism.Shared.WellBalanceRisks.UnitTest | PackageReference | `Shared\Shared.Library.WellBalanceRisks\Slb.Prism.Shared.WellBalanceRisks.UnitTest\Slb.Prism.Shared.WellBalanceRisks.UnitTest.csproj` |
 
-#### Version 2.1.1
+#### Version 2.1.2
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
-| Shared.Algorithm.Flowback | Slb.Prism.Shared.Algorithm.Flowback.Tests | PackageReference | `Shared\Shared.Algorithm.Flowback\Slb.Prism.Shared.Algorithm.Flowback.Tests\Slb.Prism.Shared.Algorithm.Flowback.Tests.csproj` |
+| Shared.Algorithm.Flowback | AlgoTester | PackageReference | `Shared\Shared.Algorithm.Flowback\AlgoTester\AlgoTester.csproj` |
 
-#### Version 2.1.2
+#### Version 2.2.3
+
+| Repository | Project | Reference Type | Path |
+| --- | --- | --- | --- |
+| Shared.Algorithm.CoreComputation | Slb.Prism.Shared.Algorithm.CoreComputation.UnitTest | PackageReference | `Shared\Shared.Algorithm.CoreComputation\UnitTest\Shared.Algorithm.CoreComputation.UnitTest.csproj` |
+
+#### Version 2.2.8
+
+| Repository | Project | Reference Type | Path |
+| --- | --- | --- | --- |
+| Shared.Algorithm.PackOff | Slb.Prism.Shared.Algorithm.PackOffTest | PackageReference | `Shared\Shared.Algorithm.PackOff\Slb.Prism.Shared.Algorithm.PackOffTest\Slb.Prism.Shared.Algorithm.PackOffTest.csproj` |
+
+#### Version 2.2.10
+
+| Repository | Project | Reference Type | Path |
+| --- | --- | --- | --- |
+| Shared.Library.Computation.Common | EnergisticsTypeReflector.Test | PackageReference | `Shared\Shared.Library.Computation.Common\EnergisticsTypeReflector.Test\EnergisticsTypeReflector.Test.csproj` |
+| Shared.Library.Computation.Common | Slb.Prism.Shared.Library.Computation.Common.Demo.Tests | PackageReference | `Shared\Shared.Library.Computation.Common\Slb.Prism.Shared.Library.Computation.Common.Demo.Tests\Slb.Prism.Shared.Library.Computation.Common.Demo.Tests.csproj` |
+| Shared.Library.Computation.Common | Slb.Prism.Shared.Library.Computation.Common.Tests | PackageReference | `Shared\Shared.Library.Computation.Common\Slb.Prism.Shared.Library.Computation.Common.Test\Slb.Prism.Shared.Library.Computation.Common.Tests.csproj` |
+
+#### Version 3.11.1
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
@@ -876,40 +822,15 @@ Scanned project groups: Actors, Shared
 | Rhapsody.Algorithm.DepthJumpCorrection | Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests | PackageReference | `Shared\Rhapsody.Algorithm.DepthJumpCorrection\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests.csproj` |
 | Rhapsody.Algorithm.Risk | Slb.Prism.Rhapsody.Algorithm.Risk.Tests | PackageReference | `Shared\Rhapsody.Algorithm.Risk\Slb.Prism.Rhapsody.Algorithm.Risk.Tests\Slb.Prism.Rhapsody.Algorithm.Risk.Tests.csproj` |
 | Rhapsody.Algorithm.Udf | Slb.Prism.Rhapsody.Algorithm.Udf.Tests | PackageReference | `Shared\Rhapsody.Algorithm.Udf\Slb.Prism.Rhapsody.Algorithm.Udf.Tests\Slb.Prism.Rhapsody.Algorithm.Udf.Tests.csproj` |
-| Shared.Algorithm.Flowback | AlgoTester | PackageReference | `Shared\Shared.Algorithm.Flowback\AlgoTester\AlgoTester.csproj` |
+| Shared.Algorithm.Flowback | Slb.Prism.Shared.Algorithm.Flowback.Tests | PackageReference | `Shared\Shared.Algorithm.Flowback\Slb.Prism.Shared.Algorithm.Flowback.Tests\Slb.Prism.Shared.Algorithm.Flowback.Tests.csproj` |
+| Shared.Algorithm.HydraulicsTransientSimulation | Slb.Prism.Shared.HydraulicsTransient.Tests | PackageReference | `Shared\Shared.Algorithm.HydraulicsTransientSimulation\Slb.Prism.Shared.HydraulicsTransient.Tests\Slb.Prism.Shared.HydraulicsTransient.Tests.csproj` |
+| Shared.Algorithm.KillSheet | Slb.Prism.Shared.Algorithm.KillSheet.UnitTests | PackageReference | `Shared\Shared.Algorithm.KillSheet\UnitTests\KillSheet.Tests.csproj` |
+| Shared.Algorithm.OperationKpi | Slb.Prism.Shared.Algorithm.OperationKpiTest | PackageReference | `Shared\Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpiTest\Slb.Prism.Shared.Algorithm.OperationKpiTest.csproj` |
+| Shared.Algorithm.ParameterAdherence | Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests | PackageReference | `Shared\Shared.Algorithm.ParameterAdherence\Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests\Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests.csproj` |
+| Shared.Algorithm.RtRheology | Slb.Prism.Shared.Algorithm.RtRheologyTest | PackageReference | `Shared\Shared.Algorithm.RtRheology\Slb.Prism.Shared.Algorithm.RtRheologyTest\Slb.Prism.Shared.Algorithm.RtRheologyTest.csproj` |
 | Shared.Algorithm.TnDBroomstick | SharedComponents.Common.Test | PackageReference | `Shared\Shared.Algorithm.TnDBroomstick\SharedComponents.Common.Test\SharedComponents.Common.Test.csproj` |
 | Shared.Algorithm.TnDBroomstick | SharedComponents.TnDModeling.Test | PackageReference | `Shared\Shared.Algorithm.TnDBroomstick\SharedComponents.TnDSimulation.Test\SharedComponents.TnDModeling.Test.csproj` |
 | Shared.Algorithm.TnDBroomstick | Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests | PackageReference | `Shared\Shared.Algorithm.TnDBroomstick\Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests\Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests.csproj` |
-
-#### Version 2.2.3
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Algorithm.CoreComputation | Slb.Prism.Shared.Algorithm.CoreComputation.UnitTest | PackageReference | `Shared\Shared.Algorithm.CoreComputation\UnitTest\Shared.Algorithm.CoreComputation.UnitTest.csproj` |
-| Shared.Algorithm.HydraulicsTransientSimulation | Slb.Prism.Shared.HydraulicsTransient.Tests | PackageReference | `Shared\Shared.Algorithm.HydraulicsTransientSimulation\Slb.Prism.Shared.HydraulicsTransient.Tests\Slb.Prism.Shared.HydraulicsTransient.Tests.csproj` |
-
-#### Version 2.2.8
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Algorithm.OperationKpi | Slb.Prism.Shared.Algorithm.OperationKpiTest | PackageReference | `Shared\Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpiTest\Slb.Prism.Shared.Algorithm.OperationKpiTest.csproj` |
-| Shared.Algorithm.PackOff | Slb.Prism.Shared.Algorithm.PackOffTest | PackageReference | `Shared\Shared.Algorithm.PackOff\Slb.Prism.Shared.Algorithm.PackOffTest\Slb.Prism.Shared.Algorithm.PackOffTest.csproj` |
-| Shared.Algorithm.RtRheology | Slb.Prism.Shared.Algorithm.RtRheologyTest | PackageReference | `Shared\Shared.Algorithm.RtRheology\Slb.Prism.Shared.Algorithm.RtRheologyTest\Slb.Prism.Shared.Algorithm.RtRheologyTest.csproj` |
-
-#### Version 2.2.10
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Algorithm.ParameterAdherence | Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests | PackageReference | `Shared\Shared.Algorithm.ParameterAdherence\Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests\Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests.csproj` |
-| Shared.Library.Computation.Common | EnergisticsTypeReflector.Test | PackageReference | `Shared\Shared.Library.Computation.Common\EnergisticsTypeReflector.Test\EnergisticsTypeReflector.Test.csproj` |
-| Shared.Library.Computation.Common | Slb.Prism.Shared.Library.Computation.Common.Demo.Tests | PackageReference | `Shared\Shared.Library.Computation.Common\Slb.Prism.Shared.Library.Computation.Common.Demo.Tests\Slb.Prism.Shared.Library.Computation.Common.Demo.Tests.csproj` |
-| Shared.Library.Computation.Common | Slb.Prism.Shared.Library.Computation.Common.Tests | PackageReference | `Shared\Shared.Library.Computation.Common\Slb.Prism.Shared.Library.Computation.Common.Test\Slb.Prism.Shared.Library.Computation.Common.Tests.csproj` |
-
-#### Version 3.1.1
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Library.DrillingKpi | Slb.Prism.Shared.Computation.KpiComputation.UnitTest | PackageReference | `Shared\Shared.Library.DrillingKpi\UnitTest\KpiComputation.UnitTest\Slb.Prism.Shared.Computation.KpiComputation.UnitTest.csproj` |
 
 #### Version 4.1.0
 
@@ -946,10 +867,18 @@ Scanned project groups: Actors, Shared
 | Rhapsody.Service.PressureMonitoring | Slb.Prism.Rhapsody.Service.PressureMonitoring.IntegrationTests | PackageReference | `Actors\Rhapsody.Service.PressureMonitoring\IntegrationTests\IntegrationTests.csproj` |
 | Rhapsody.Service.PressureMonitoring | Slb.Prism.Rhapsody.Service.PressureMonitoring.UnitTests | PackageReference | `Actors\Rhapsody.Service.PressureMonitoring\UnitTests\UnitTests.csproj` |
 | Shared.Algorithm.PressureMonitoring | Slb.Prism.Shared.Algorithm.PressureMonitoring.Test | PackageReference | `Shared\Shared.Algorithm.PressureMonitoring\Slb.Prism.Shared.Algorithm.PressureMonitoring.Test\Slb.Prism.Shared.Algorithm.PressureMonitoring.Test.csproj` |
+| Shared.Library.DrillingKpi | Slb.Prism.Shared.Computation.KpiComputation.UnitTest | PackageReference | `Shared\Shared.Library.DrillingKpi\UnitTest\KpiComputation.UnitTest\Slb.Prism.Shared.Computation.KpiComputation.UnitTest.csproj` |
 
 ### Newtonsoft.Json
 
-#### Version 13.0.1
+#### Version 13.0.3
+
+| Repository | Project | Reference Type | Path |
+| --- | --- | --- | --- |
+| Shared.Algorithm.CementingHydraulics | Slb.Prism.Shared.Algorithm.$(MSBuildProjectName) | PackageReference | `Shared\Shared.Algorithm.CementingHydraulics\CementingHydraulics\CementingHydraulics.csproj` |
+| Shared.Algorithm.CoreComputation | Slb.Prism.Shared.Algorithm.CoreComputation | PackageReference | `Shared\Shared.Algorithm.CoreComputation\Library\Shared.Algorithm.CoreComputation.csproj` |
+
+#### Version 13.0.4
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
@@ -958,25 +887,6 @@ Scanned project groups: Actors, Shared
 | Rhapsody.Algorithm.DepthJumpCorrection | Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection | PackageReference | `Shared\Rhapsody.Algorithm.DepthJumpCorrection\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.csproj` |
 | Rhapsody.Algorithm.Risk | Slb.Prism.Rhapsody.Algorithm.Risk | PackageReference | `Shared\Rhapsody.Algorithm.Risk\Slb.Prism.Rhapsody.Algorithm.Risk\Slb.Prism.Rhapsody.Algorithm.Risk.csproj` |
 | Rhapsody.Algorithm.Udf | Slb.Prism.Rhapsody.Algorithm.Udf | PackageReference | `Shared\Rhapsody.Algorithm.Udf\Slb.Prism.Rhapsody.Algorithm.Udf\Slb.Prism.Rhapsody.Algorithm.Udf.csproj` |
-| Shared.Algorithm.Flowback | Slb.Prism.Shared.Algorithm.Flowback | PackageReference | `Shared\Shared.Algorithm.Flowback\Slb.Prism.Shared.Algorithm.Flowback\Slb.Prism.Shared.Algorithm.Flowback.csproj` |
-| Shared.Algorithm.KillSheet | Slb.Prism.Shared.Algorithm.KillSheet | PackageReference | `Shared\Shared.Algorithm.KillSheet\KillSheet\KillSheet.csproj` |
-| Shared.Algorithm.TnDBroomstick | Slb.Prism.Shared.Algorithm.TnDBroomstick | PackageReference | `Shared\Shared.Algorithm.TnDBroomstick\Slb.Prism.Shared.Algorithm.TnDBroomstick\Slb.Prism.Shared.Algorithm.TnDBroomstick.csproj` |
-| Shared.Library.WellBalanceRisks | Slb.Prism.Shared.Library.WellBalanceRisks | PackageReference | `Shared\Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks.csproj` |
-
-#### Version 13.0.3
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Algorithm.CementingHydraulics | Slb.Prism.Shared.Algorithm.$(MSBuildProjectName) | PackageReference | `Shared\Shared.Algorithm.CementingHydraulics\CementingHydraulics\CementingHydraulics.csproj` |
-| Shared.Algorithm.CoreComputation | Slb.Prism.Shared.Algorithm.CoreComputation | PackageReference | `Shared\Shared.Algorithm.CoreComputation\Library\Shared.Algorithm.CoreComputation.csproj` |
-| Shared.Algorithm.OperationKpi | Slb.Prism.Shared.Algorithm.OperationKpi | PackageReference | `Shared\Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpi.csproj` |
-| Shared.Algorithm.RtRheology | Slb.Prism.Shared.Algorithm.RtRheology | PackageReference | `Shared\Shared.Algorithm.RtRheology\Slb.Prism.Shared.Algorithm.RtRheology\Slb.Prism.Shared.Algorithm.RtRheology.csproj` |
-| Shared.Library.DrillingKpi | Slb.Prism.Shared.Computation.KpiComputation | PackageReference | `Shared\Shared.Library.DrillingKpi\library\KpiComputation\Slb.Prism.Shared.Computation.KpiComputation.csproj` |
-
-#### Version 13.0.4
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
 | Rhapsody.Computation.DataGenerator | Slb.Prism.Rhapsody.Service.DataGeneratorActor | PackageReference | `Actors\Rhapsody.Computation.DataGenerator\Slb.Prism.Rhapsody.Service.DataGeneratorActor\Slb.Prism.Rhapsody.Service.DataGeneratorActor.csproj` |
 | Rhapsody.Computation.HydraulicsTransient | Slb.Prism.Rhapsody.Service.HydraulicsTransientActor | PackageReference | `Actors\Rhapsody.Computation.HydraulicsTransient\Slb.Prism.Rhapsody.Computation.HydraulicsTransientActor\Slb.Prism.Rhapsody.Computation.HydraulicsTransientActor.csproj` |
 | Rhapsody.Computation.HydraulicsTransient | Slb.Prism.Rhapsody.Service.MaxTrippingSpeedComputation | PackageReference | `Actors\Rhapsody.Computation.HydraulicsTransient\Slb.Prism.Rhapsody.Service.MaxTrippingSpeedComputation\Slb.Prism.Rhapsody.Service.MaxTrippingSpeedComputation.csproj` |
@@ -987,7 +897,15 @@ Scanned project groups: Actors, Shared
 | Rhapsody.Service.StreamSampling | Slb.Prism.Rhapsody.Service.StreamSampling | PackageReference | `Actors\Rhapsody.Service.StreamSampling\Slb.Prism.Rhapsody.Service.StreamSampling\Slb.Prism.Rhapsody.Service.StreamSampling.csproj` |
 | Rhapsody.Service.StreamSampling | Slb.Prism.Rhapsody.Service.StreamSampling.IntegrationTests | PackageReference | `Actors\Rhapsody.Service.StreamSampling\Slb.Prism.Rhapsody.Service.StreamSampling.IntegrationTests\Slb.Prism.Rhapsody.Service.StreamSampling.IntegrationTests.csproj` |
 | Rhapsody.Service.StreamSampling | Slb.Prism.Rhapsody.Service.StreamSampling.UnitTests | PackageReference | `Actors\Rhapsody.Service.StreamSampling\Slb.Prism.Rhapsody.Service.StreamSampling.UnitTests\Slb.Prism.Rhapsody.Service.StreamSampling.UnitTests.csproj` |
+| Shared.Algorithm.Flowback | Slb.Prism.Shared.Algorithm.Flowback | PackageReference | `Shared\Shared.Algorithm.Flowback\Slb.Prism.Shared.Algorithm.Flowback\Slb.Prism.Shared.Algorithm.Flowback.csproj` |
+| Shared.Algorithm.KillSheet | Slb.Prism.Shared.Algorithm.KillSheet | PackageReference | `Shared\Shared.Algorithm.KillSheet\KillSheet\KillSheet.csproj` |
+| Shared.Algorithm.KillSheet | Slb.Prism.Shared.Algorithm.KillSheet.UnitTests | PackageReference | `Shared\Shared.Algorithm.KillSheet\UnitTests\KillSheet.Tests.csproj` |
+| Shared.Algorithm.OperationKpi | Slb.Prism.Shared.Algorithm.OperationKpi | PackageReference | `Shared\Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpi.csproj` |
 | Shared.Algorithm.PackOff | Slb.Prism.Shared.Algorithm.PackOff | PackageReference | `Shared\Shared.Algorithm.PackOff\Slb.Prism.Shared.Algorithm.PackOff\Slb.Prism.Shared.Algorithm.PackOff.csproj` |
+| Shared.Algorithm.RtRheology | Slb.Prism.Shared.Algorithm.RtRheology | PackageReference | `Shared\Shared.Algorithm.RtRheology\Slb.Prism.Shared.Algorithm.RtRheology\Slb.Prism.Shared.Algorithm.RtRheology.csproj` |
+| Shared.Algorithm.TnDBroomstick | Slb.Prism.Shared.Algorithm.TnDBroomstick | PackageReference | `Shared\Shared.Algorithm.TnDBroomstick\Slb.Prism.Shared.Algorithm.TnDBroomstick\Slb.Prism.Shared.Algorithm.TnDBroomstick.csproj` |
+| Shared.Library.DrillingKpi | Slb.Prism.Shared.Computation.KpiComputation | PackageReference | `Shared\Shared.Library.DrillingKpi\library\KpiComputation\Slb.Prism.Shared.Computation.KpiComputation.csproj` |
+| Shared.Library.WellBalanceRisks | Slb.Prism.Shared.Library.WellBalanceRisks | PackageReference | `Shared\Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks.csproj` |
 
 ### NJsonSchema
 
@@ -1000,17 +918,12 @@ Scanned project groups: Actors, Shared
 
 ### NodaTime
 
-#### Version 3.0.1
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Library.DrillingKpi | Slb.Prism.Shared.Computation.KpiComputation | PackageReference | `Shared\Shared.Library.DrillingKpi\library\KpiComputation\Slb.Prism.Shared.Computation.KpiComputation.csproj` |
-
 #### Version 3.1.10
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
 | Shared.Algorithm.OperationKpi | Slb.Prism.Shared.Algorithm.OperationKpi | PackageReference | `Shared\Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpi.csproj` |
+| Shared.Library.DrillingKpi | Slb.Prism.Shared.Computation.KpiComputation | PackageReference | `Shared\Shared.Library.DrillingKpi\library\KpiComputation\Slb.Prism.Shared.Computation.KpiComputation.csproj` |
 
 ### OpenTelemetry.Exporter.OpenTelemetryProtocol
 
@@ -1175,7 +1088,7 @@ Scanned project groups: Actors, Shared
 
 ### Slb.Prism.Rhapsody.Algorithm.ChannelProjection
 
-#### Version 2.0.0.13909616
+#### Version 2.0.0.15730546
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
@@ -1183,7 +1096,7 @@ Scanned project groups: Actors, Shared
 
 ### Slb.Prism.Rhapsody.Algorithm.DataGenerator
 
-#### Version 1.0.0.14533726
+#### Version 1.0.0.15730549
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
@@ -1191,7 +1104,7 @@ Scanned project groups: Actors, Shared
 
 ### Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection
 
-#### Version 1.0.0.11904448
+#### Version 2.0.0.11724927
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
@@ -1245,14 +1158,6 @@ Scanned project groups: Actors, Shared
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
-| Rhapsody.Computation.ChannelProjection | Slb.Prism.Rhapsody.Service.ChannelProjectionActor | PackageReference | `Actors\Rhapsody.Computation.ChannelProjection\ComputationActor\Slb.Prism.Rhapsody.Service.ChannelProjectionActor.csproj` |
-| Rhapsody.Computation.DataGenerator | Slb.Prism.Rhapsody.Service.DataGeneratorActor | PackageReference | `Actors\Rhapsody.Computation.DataGenerator\Slb.Prism.Rhapsody.Service.DataGeneratorActor\Slb.Prism.Rhapsody.Service.DataGeneratorActor.csproj` |
-| Rhapsody.Computation.DepthJumpCorrection | Slb.Prism.Rhapsody.Service.DepthJumpCorrectionActor | PackageReference | `Actors\Rhapsody.Computation.DepthJumpCorrection\Slb.Prism.Rhapsody.Computation.DepthJumpCorrectionActor\Slb.Prism.Rhapsody.Computation.DepthJumpCorrectionActor.csproj` |
-| Rhapsody.Computation.Flowback | Slb.Prism.Rhapsody.Service.FlowbackActor | PackageReference | `Actors\Rhapsody.Computation.Flowback\ComputationActor\Slb.Prism.Rhapsody.Service.FlowbackActor.csproj` |
-| Rhapsody.Computation.HydraulicsTransient | Slb.Prism.Rhapsody.Service.HydraulicsTransientActor | PackageReference | `Actors\Rhapsody.Computation.HydraulicsTransient\Slb.Prism.Rhapsody.Computation.HydraulicsTransientActor\Slb.Prism.Rhapsody.Computation.HydraulicsTransientActor.csproj` |
-| Rhapsody.Computation.HydraulicsTransient | Slb.Prism.Rhapsody.Service.MaxTrippingSpeedComputation | PackageReference | `Actors\Rhapsody.Computation.HydraulicsTransient\Slb.Prism.Rhapsody.Service.MaxTrippingSpeedComputation\Slb.Prism.Rhapsody.Service.MaxTrippingSpeedComputation.csproj` |
-| rhapsody.computation.killsheet | Slb.Prism.Rhapsody.Service.KillSheetActor | PackageReference | `Actors\rhapsody.computation.killsheet\ComputationActor\Slb.Prism.Rhapsody.Service.KillSheetActor.csproj` |
-| Rhapsody.Computation.OperationKpi | Slb.Prism.Rhapsody.Service.OperationKpiActor | PackageReference | `Actors\Rhapsody.Computation.OperationKpi\ComputationActor\Slb.Prism.Rhapsody.Service.OperationKpiActor.csproj` |
 | Rhapsody.Computation.PackOff | Slb.Prism.Rhapsody.Service.PackOffActor | PackageReference | `Actors\Rhapsody.Computation.PackOff\ComputationActor\Slb.Prism.Rhapsody.Service.PackOffActor.csproj` |
 | Rhapsody.Computation.ProceduralAdherence | Slb.Prism.Rhapsody.Service.ProceduralAdherenceActor | PackageReference | `Actors\Rhapsody.Computation.ProceduralAdherence\ComputationActor\Slb.Prism.Rhapsody.Service.ProceduralAdherenceActor.csproj` |
 | Rhapsody.Computation.Risk | Slb.Prism.Rhapsody.Service.RiskActor | PackageReference | `Actors\Rhapsody.Computation.Risk\ComputationActor\Slb.Prism.Rhapsody.Service.RiskActor.csproj` |
@@ -1262,6 +1167,19 @@ Scanned project groups: Actors, Shared
 | Rhapsody.Computation.WellBalanceRisks | Slb.Prism.Rhapsody.Service.WellBalanceRisksActor | PackageReference | `Actors\Rhapsody.Computation.WellBalanceRisks\Slb.Prism.Rhapsody.Computation.WellBalanceRisksActor\Slb.Prism.Rhapsody.Computation.WellBalanceRisksActor.csproj` |
 | Rhapsody.Service.DrillingKpi | Slb.Prism.Rhapsody.Service.DrillingKpiActor | PackageReference | `Actors\Rhapsody.Service.DrillingKpi\ComputationActor\Slb.Prism.Rhapsody.Service.DrillingKpiActor.csproj` |
 | Rhapsody.Service.PressureMonitoring | Slb.Prism.Rhapsody.Service.PressureMonitoringActor | PackageReference | `Actors\Rhapsody.Service.PressureMonitoring\ComputationActor\Slb.Prism.Rhapsody.Service.PressureMonitoringActor.csproj` |
+
+#### Version 0.1.0.15723341
+
+| Repository | Project | Reference Type | Path |
+| --- | --- | --- | --- |
+| Rhapsody.Computation.ChannelProjection | Slb.Prism.Rhapsody.Service.ChannelProjectionActor | PackageReference | `Actors\Rhapsody.Computation.ChannelProjection\ComputationActor\Slb.Prism.Rhapsody.Service.ChannelProjectionActor.csproj` |
+| Rhapsody.Computation.DataGenerator | Slb.Prism.Rhapsody.Service.DataGeneratorActor | PackageReference | `Actors\Rhapsody.Computation.DataGenerator\Slb.Prism.Rhapsody.Service.DataGeneratorActor\Slb.Prism.Rhapsody.Service.DataGeneratorActor.csproj` |
+| Rhapsody.Computation.DepthJumpCorrection | Slb.Prism.Rhapsody.Service.DepthJumpCorrectionActor | PackageReference | `Actors\Rhapsody.Computation.DepthJumpCorrection\Slb.Prism.Rhapsody.Computation.DepthJumpCorrectionActor\Slb.Prism.Rhapsody.Computation.DepthJumpCorrectionActor.csproj` |
+| Rhapsody.Computation.Flowback | Slb.Prism.Rhapsody.Service.FlowbackActor | PackageReference | `Actors\Rhapsody.Computation.Flowback\ComputationActor\Slb.Prism.Rhapsody.Service.FlowbackActor.csproj` |
+| Rhapsody.Computation.HydraulicsTransient | Slb.Prism.Rhapsody.Service.HydraulicsTransientActor | PackageReference | `Actors\Rhapsody.Computation.HydraulicsTransient\Slb.Prism.Rhapsody.Computation.HydraulicsTransientActor\Slb.Prism.Rhapsody.Computation.HydraulicsTransientActor.csproj` |
+| Rhapsody.Computation.HydraulicsTransient | Slb.Prism.Rhapsody.Service.MaxTrippingSpeedComputation | PackageReference | `Actors\Rhapsody.Computation.HydraulicsTransient\Slb.Prism.Rhapsody.Service.MaxTrippingSpeedComputation\Slb.Prism.Rhapsody.Service.MaxTrippingSpeedComputation.csproj` |
+| rhapsody.computation.killsheet | Slb.Prism.Rhapsody.Service.KillSheetActor | PackageReference | `Actors\rhapsody.computation.killsheet\ComputationActor\Slb.Prism.Rhapsody.Service.KillSheetActor.csproj` |
+| Rhapsody.Computation.OperationKpi | Slb.Prism.Rhapsody.Service.OperationKpiActor | PackageReference | `Actors\Rhapsody.Computation.OperationKpi\ComputationActor\Slb.Prism.Rhapsody.Service.OperationKpiActor.csproj` |
 
 ### Slb.Prism.Rhapsody.Library.ContextSanitizer
 
@@ -1295,7 +1213,7 @@ Scanned project groups: Actors, Shared
 
 ### Slb.Prism.Shared.Algorithm.Flowback
 
-#### Version 1.0.0.15544531
+#### Version 1.0.0.15730589
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
@@ -1405,24 +1323,6 @@ Scanned project groups: Actors, Shared
 | --- | --- | --- | --- |
 | Shared.Algorithm.PackOff | Slb.Prism.Shared.Algorithm.PackOff | PackageReference | `Shared\Shared.Algorithm.PackOff\Slb.Prism.Shared.Algorithm.PackOff\Slb.Prism.Shared.Algorithm.PackOff.csproj` |
 
-#### Version 1.2.1.14190443
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Algorithm.OperationKpi | Slb.Prism.Shared.Algorithm.OperationKpi | PackageReference | `Shared\Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpi.csproj` |
-
-#### Version 1.2.1.14450271
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Algorithm.HydraulicsTransientSimulation | Slb.Prism.Shared.Algorithm.HydraulicsTransientSimulation | PackageReference | `Shared\Shared.Algorithm.HydraulicsTransientSimulation\Slb.Prism.Shared.Algorithm.HydraulicsTransientSimulation\Slb.Prism.Shared.Algorithm.HydraulicsTransientSimulation.csproj` |
-
-#### Version 1.2.1.14600193
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Library.WellBalanceRisks | Slb.Prism.Shared.Library.WellBalanceRisks | PackageReference | `Shared\Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks.csproj` |
-
 #### Version 1.2.1.14601914
 
 | Repository | Project | Reference Type | Path |
@@ -1438,10 +1338,13 @@ Scanned project groups: Actors, Shared
 | Shared.Algorithm.CoreComputation | Slb.Prism.Shared.Algorithm.CoreComputation.UnitTest | PackageReference | `Shared\Shared.Algorithm.CoreComputation\UnitTest\Shared.Algorithm.CoreComputation.UnitTest.csproj` |
 | Shared.Algorithm.Flowback | AlgoTester | PackageReference | `Shared\Shared.Algorithm.Flowback\AlgoTester\AlgoTester.csproj` |
 | Shared.Algorithm.Flowback | Slb.Prism.Shared.Algorithm.Flowback | PackageReference | `Shared\Shared.Algorithm.Flowback\Slb.Prism.Shared.Algorithm.Flowback\Slb.Prism.Shared.Algorithm.Flowback.csproj` |
+| Shared.Algorithm.HydraulicsTransientSimulation | Slb.Prism.Shared.Algorithm.HydraulicsTransientSimulation | PackageReference | `Shared\Shared.Algorithm.HydraulicsTransientSimulation\Slb.Prism.Shared.Algorithm.HydraulicsTransientSimulation\Slb.Prism.Shared.Algorithm.HydraulicsTransientSimulation.csproj` |
 | Shared.Algorithm.KillSheet | Slb.Prism.Shared.Algorithm.KillSheet | PackageReference | `Shared\Shared.Algorithm.KillSheet\KillSheet\KillSheet.csproj` |
+| Shared.Algorithm.OperationKpi | Slb.Prism.Shared.Algorithm.OperationKpi | PackageReference | `Shared\Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpi.csproj` |
 | Shared.Algorithm.ParameterAdherence | Slb.Prism.Shared.Algorithm.ParameterAdherence | PackageReference | `Shared\Shared.Algorithm.ParameterAdherence\Slb.Prism.Shared.Algorithm.ParameterAdherence\Slb.Prism.Shared.Algorithm.ParameterAdherence.csproj` |
 | Shared.Algorithm.PressureMonitoring | Slb.Prism.Shared.Algorithm.PressureMonitoring | PackageReference | `Shared\Shared.Algorithm.PressureMonitoring\Slb.Prism.Shared.Algorithm.PressureMonitoring\Slb.Prism.Shared.Algorithm.PressureMonitoring.csproj` |
 | Shared.Library.DrillingKpi | Slb.Prism.Shared.Computation.KpiComputation | PackageReference | `Shared\Shared.Library.DrillingKpi\library\KpiComputation\Slb.Prism.Shared.Computation.KpiComputation.csproj` |
+| Shared.Library.WellBalanceRisks | Slb.Prism.Shared.Library.WellBalanceRisks | PackageReference | `Shared\Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks.csproj` |
 
 ### Slb.Prism.Shared.Library.ComputationEngine
 
@@ -1451,27 +1354,10 @@ Scanned project groups: Actors, Shared
 | --- | --- | --- | --- |
 | Shared.Algorithm.PackOff | Slb.Prism.Shared.Algorithm.PackOffTest | PackageReference | `Shared\Shared.Algorithm.PackOff\Slb.Prism.Shared.Algorithm.PackOffTest\Slb.Prism.Shared.Algorithm.PackOffTest.csproj` |
 
-#### Version 4.1.0.11761377
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Rhapsody.Algorithm.DepthJumpCorrection | Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection | PackageReference | `Shared\Rhapsody.Algorithm.DepthJumpCorrection\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.csproj` |
-
-#### Version 4.1.0.11972753
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Rhapsody.Algorithm.ChannelProjection | Slb.Prism.Rhapsody.Algorithm.ChannelProjection | PackageReference | `Shared\Rhapsody.Algorithm.ChannelProjection\Slb.Prism.Rhapsody.Algorithm.ChannelProjection\Slb.Prism.Rhapsody.Algorithm.ChannelProjection.csproj` |
-| Rhapsody.Algorithm.DataGenerator | Slb.Prism.Rhapsody.Algorithm.DataGenerator | PackageReference | `Shared\Rhapsody.Algorithm.DataGenerator\Slb.Prism.Rhapsody.Algorithm.DataGenerator\Slb.Prism.Rhapsody.Algorithm.DataGenerator.csproj` |
-| Rhapsody.Algorithm.Udf | Slb.Prism.Rhapsody.Algorithm.Udf | PackageReference | `Shared\Rhapsody.Algorithm.Udf\Slb.Prism.Rhapsody.Algorithm.Udf\Slb.Prism.Rhapsody.Algorithm.Udf.csproj` |
-| Rhapsody.Algorithm.Udf | Slb.Prism.Rhapsody.Algorithm.Udf.Tests | PackageReference | `Shared\Rhapsody.Algorithm.Udf\Slb.Prism.Rhapsody.Algorithm.Udf.Tests\Slb.Prism.Rhapsody.Algorithm.Udf.Tests.csproj` |
-| Shared.Algorithm.RtRheology | Slb.Prism.Shared.Algorithm.RtRheology | PackageReference | `Shared\Shared.Algorithm.RtRheology\Slb.Prism.Shared.Algorithm.RtRheology\Slb.Prism.Shared.Algorithm.RtRheology.csproj` |
-
 #### Version 4.1.0.13859494
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
-| Rhapsody.Algorithm.Risk | Slb.Prism.Rhapsody.Algorithm.Risk | PackageReference | `Shared\Rhapsody.Algorithm.Risk\Slb.Prism.Rhapsody.Algorithm.Risk\Slb.Prism.Rhapsody.Algorithm.Risk.csproj` |
 | Shared.Algorithm.CementingHydraulics | Slb.Prism.Shared.Algorithm.$(MSBuildProjectName) | PackageReference | `Shared\Shared.Algorithm.CementingHydraulics\CementingHydraulics\CementingHydraulics.csproj` |
 
 #### Version 4.1.0.14188343
@@ -1479,11 +1365,7 @@ Scanned project groups: Actors, Shared
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
 | Shared.Algorithm.CoreComputation | Slb.Prism.Shared.Algorithm.CoreComputation.UnitTest | PackageReference | `Shared\Shared.Algorithm.CoreComputation\UnitTest\Shared.Algorithm.CoreComputation.UnitTest.csproj` |
-| Shared.Algorithm.Flowback | Slb.Prism.Shared.Algorithm.Flowback.Tests | PackageReference | `Shared\Shared.Algorithm.Flowback\Slb.Prism.Shared.Algorithm.Flowback.Tests\Slb.Prism.Shared.Algorithm.Flowback.Tests.csproj` |
-| Shared.Algorithm.KillSheet | Slb.Prism.Shared.Algorithm.KillSheet.UnitTests | PackageReference | `Shared\Shared.Algorithm.KillSheet\UnitTests\KillSheet.Tests.csproj` |
-| Shared.Algorithm.ParameterAdherence | Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests | PackageReference | `Shared\Shared.Algorithm.ParameterAdherence\Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests\Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests.csproj` |
 | Shared.Library.Computation.Common | Slb.Prism.Shared.Library.Computation.Common | PackageReference | `Shared\Shared.Library.Computation.Common\Slb.Prism.Shared.Library.Computation.Common\Slb.Prism.Shared.Library.Computation.Common.csproj` |
-| Shared.Library.DrillingKpi | Slb.Prism.Shared.Computation.KpiComputation.UnitTest | PackageReference | `Shared\Shared.Library.DrillingKpi\UnitTest\KpiComputation.UnitTest\Slb.Prism.Shared.Computation.KpiComputation.UnitTest.csproj` |
 
 #### Version 4.1.0.15250531
 
@@ -1495,7 +1377,18 @@ Scanned project groups: Actors, Shared
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
+| Rhapsody.Algorithm.ChannelProjection | Slb.Prism.Rhapsody.Algorithm.ChannelProjection | PackageReference | `Shared\Rhapsody.Algorithm.ChannelProjection\Slb.Prism.Rhapsody.Algorithm.ChannelProjection\Slb.Prism.Rhapsody.Algorithm.ChannelProjection.csproj` |
+| Rhapsody.Algorithm.DataGenerator | Slb.Prism.Rhapsody.Algorithm.DataGenerator | PackageReference | `Shared\Rhapsody.Algorithm.DataGenerator\Slb.Prism.Rhapsody.Algorithm.DataGenerator\Slb.Prism.Rhapsody.Algorithm.DataGenerator.csproj` |
+| Rhapsody.Algorithm.DepthJumpCorrection | Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection | PackageReference | `Shared\Rhapsody.Algorithm.DepthJumpCorrection\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.csproj` |
+| Rhapsody.Algorithm.Risk | Slb.Prism.Rhapsody.Algorithm.Risk | PackageReference | `Shared\Rhapsody.Algorithm.Risk\Slb.Prism.Rhapsody.Algorithm.Risk\Slb.Prism.Rhapsody.Algorithm.Risk.csproj` |
+| Rhapsody.Algorithm.Udf | Slb.Prism.Rhapsody.Algorithm.Udf | PackageReference | `Shared\Rhapsody.Algorithm.Udf\Slb.Prism.Rhapsody.Algorithm.Udf\Slb.Prism.Rhapsody.Algorithm.Udf.csproj` |
+| Rhapsody.Algorithm.Udf | Slb.Prism.Rhapsody.Algorithm.Udf.Tests | PackageReference | `Shared\Rhapsody.Algorithm.Udf\Slb.Prism.Rhapsody.Algorithm.Udf.Tests\Slb.Prism.Rhapsody.Algorithm.Udf.Tests.csproj` |
 | Rhapsody.Library.ComputationDaprAdapter | Slb.Prism.Rhapsody.Library.ComputationDaprAdapter | PackageReference | `Shared\Rhapsody.Library.ComputationDaprAdapter\ComputationDaprAdapter\Slb.Prism.Rhapsody.Library.ComputationDaprAdapter.csproj` |
+| Shared.Algorithm.Flowback | Slb.Prism.Shared.Algorithm.Flowback.Tests | PackageReference | `Shared\Shared.Algorithm.Flowback\Slb.Prism.Shared.Algorithm.Flowback.Tests\Slb.Prism.Shared.Algorithm.Flowback.Tests.csproj` |
+| Shared.Algorithm.KillSheet | Slb.Prism.Shared.Algorithm.KillSheet.UnitTests | PackageReference | `Shared\Shared.Algorithm.KillSheet\UnitTests\KillSheet.Tests.csproj` |
+| Shared.Algorithm.ParameterAdherence | Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests | PackageReference | `Shared\Shared.Algorithm.ParameterAdherence\Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests\Slb.Prism.Shared.Algorithm.ParameterAdherence.Tests.csproj` |
+| Shared.Algorithm.RtRheology | Slb.Prism.Shared.Algorithm.RtRheology | PackageReference | `Shared\Shared.Algorithm.RtRheology\Slb.Prism.Shared.Algorithm.RtRheology\Slb.Prism.Shared.Algorithm.RtRheology.csproj` |
+| Shared.Library.DrillingKpi | Slb.Prism.Shared.Computation.KpiComputation.UnitTest | PackageReference | `Shared\Shared.Library.DrillingKpi\UnitTest\KpiComputation.UnitTest\Slb.Prism.Shared.Computation.KpiComputation.UnitTest.csproj` |
 
 ### Slb.Prism.Shared.Library.Discovery
 
@@ -1605,17 +1498,13 @@ Scanned project groups: Actors, Shared
 
 ### Slb.Prism.Shared.Library.Numerics
 
-#### Version 3.0.2.2414353
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
-| Shared.Library.WellBalanceRisks | Slb.Prism.Shared.WellBalanceRisks.UnitTest | PackageReference | `Shared\Shared.Library.WellBalanceRisks\Slb.Prism.Shared.WellBalanceRisks.UnitTest\Slb.Prism.Shared.WellBalanceRisks.UnitTest.csproj` |
-
 #### Version 3.0.3.9849028
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
 | Shared.Algorithm.ParameterAdherence | Slb.Prism.Shared.Algorithm.ParameterAdherence | PackageReference | `Shared\Shared.Algorithm.ParameterAdherence\Slb.Prism.Shared.Algorithm.ParameterAdherence\Slb.Prism.Shared.Algorithm.ParameterAdherence.csproj` |
+| Shared.Library.WellBalanceRisks | Slb.Prism.Shared.Library.WellBalanceRisks | PackageReference | `Shared\Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks.csproj` |
+| Shared.Library.WellBalanceRisks | Slb.Prism.Shared.WellBalanceRisks.UnitTest | PackageReference | `Shared\Shared.Library.WellBalanceRisks\Slb.Prism.Shared.WellBalanceRisks.UnitTest\Slb.Prism.Shared.WellBalanceRisks.UnitTest.csproj` |
 
 ### Slb.Prism.Shared.Library.Numerics.Drilling
 
@@ -1714,7 +1603,7 @@ Scanned project groups: Actors, Shared
 | --- | --- | --- | --- |
 | Rhapsody.Library.ComputationDaprAdapter | Slb.Prism.Rhapsody.Library.ComputationDaprAdapter | PackageReference | `Shared\Rhapsody.Library.ComputationDaprAdapter\ComputationDaprAdapter\Slb.Prism.Rhapsody.Library.ComputationDaprAdapter.csproj` |
 
-#### Version 1.3.11
+#### Version 1.3.13
 
 | Repository | Project | Reference Type | Path |
 | --- | --- | --- | --- |
@@ -1722,17 +1611,12 @@ Scanned project groups: Actors, Shared
 | Rhapsody.Algorithm.DataGenerator | Slb.Prism.Rhapsody.Algorithm.DataGenerator.Tests | PackageReference | `Shared\Rhapsody.Algorithm.DataGenerator\Slb.Prism.Rhapsody.Algorithm.DataGenerator.Tests\Slb.Prism.Rhapsody.Algorithm.DataGenerator.Tests.csproj` |
 | Rhapsody.Algorithm.Risk | Slb.Prism.Rhapsody.Algorithm.Risk | PackageReference | `Shared\Rhapsody.Algorithm.Risk\Slb.Prism.Rhapsody.Algorithm.Risk\Slb.Prism.Rhapsody.Algorithm.Risk.csproj` |
 | Rhapsody.Algorithm.Risk | Slb.Prism.Rhapsody.Algorithm.Risk.Tests | PackageReference | `Shared\Rhapsody.Algorithm.Risk\Slb.Prism.Rhapsody.Algorithm.Risk.Tests\Slb.Prism.Rhapsody.Algorithm.Risk.Tests.csproj` |
-| Shared.Algorithm.TnDBroomstick | Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests | PackageReference | `Shared\Shared.Algorithm.TnDBroomstick\Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests\Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests.csproj` |
-| Shared.Library.WellBalanceRisks | Slb.Prism.Shared.Library.WellBalanceRisks | PackageReference | `Shared\Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks.csproj` |
-
-#### Version 1.3.13
-
-| Repository | Project | Reference Type | Path |
-| --- | --- | --- | --- |
 | Rhapsody.Service.ActorDirector | Slb.Prism.Rhapsody.Service.ActorDirector | PackageReference | `Actors\Rhapsody.Service.ActorDirector\Slb.Prism.Rhapsody.Service.ActorDirector\Slb.Prism.Rhapsody.Service.ActorDirector.csproj` |
 | Rhapsody.Service.ActorDirector | Slb.Prism.Rhapsody.Service.ActorDirector.UnitTests | PackageReference | `Actors\Rhapsody.Service.ActorDirector\Slb.Prism.Rhapsody.Service.ActorDirector.UnitTests\Slb.Prism.Rhapsody.Service.ActorDirector.UnitTests.csproj` |
 | Rhapsody.Service.StreamSampling | Slb.Prism.Rhapsody.Service.StreamSampling | PackageReference | `Actors\Rhapsody.Service.StreamSampling\Slb.Prism.Rhapsody.Service.StreamSampling\Slb.Prism.Rhapsody.Service.StreamSampling.csproj` |
+| Shared.Algorithm.TnDBroomstick | Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests | PackageReference | `Shared\Shared.Algorithm.TnDBroomstick\Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests\Slb.Prism.Shared.Algorithm.TnDBroomstick.Tests.csproj` |
 | Shared.Library.Computation.Common | EnergisticsTypeReflector.Test | PackageReference | `Shared\Shared.Library.Computation.Common\EnergisticsTypeReflector.Test\EnergisticsTypeReflector.Test.csproj` |
+| Shared.Library.WellBalanceRisks | Slb.Prism.Shared.Library.WellBalanceRisks | PackageReference | `Shared\Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks\Slb.Prism.Shared.Library.WellBalanceRisks.csproj` |
 
 ### Stateless
 
@@ -1793,6 +1677,8 @@ Scanned project groups: Actors, Shared
 | Rhapsody.Algorithm.ChannelProjection | Slb.Prism.Rhapsody.Algorithm.ChannelProjection | PackageReference | `Shared\Rhapsody.Algorithm.ChannelProjection\Slb.Prism.Rhapsody.Algorithm.ChannelProjection\Slb.Prism.Rhapsody.Algorithm.ChannelProjection.csproj` |
 | Rhapsody.Algorithm.DataGenerator | Slb.Prism.Rhapsody.Algorithm.DataGenerator | PackageReference | `Shared\Rhapsody.Algorithm.DataGenerator\Slb.Prism.Rhapsody.Algorithm.DataGenerator\Slb.Prism.Rhapsody.Algorithm.DataGenerator.csproj` |
 | Rhapsody.Algorithm.DepthJumpCorrection | Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection | PackageReference | `Shared\Rhapsody.Algorithm.DepthJumpCorrection\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.csproj` |
+| Shared.Algorithm.OperationKpi | Slb.Prism.Shared.Algorithm.OperationKpi | PackageReference | `Shared\Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpi\Slb.Prism.Shared.Algorithm.OperationKpi.csproj` |
+| Shared.Algorithm.RtRheology | Slb.Prism.Shared.Algorithm.RtRheology | PackageReference | `Shared\Shared.Algorithm.RtRheology\Slb.Prism.Shared.Algorithm.RtRheology\Slb.Prism.Shared.Algorithm.RtRheology.csproj` |
 
 ### System.Data.DataSetExtensions
 
