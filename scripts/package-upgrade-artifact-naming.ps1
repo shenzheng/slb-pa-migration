@@ -28,7 +28,16 @@ function Write-PackageUpgradeDocJsonAtomic {
     try {
         [System.IO.File]::WriteAllText($tempPath, $Content, $utf8NoBom)
         if (Test-Path -LiteralPath $TargetPath) {
-            [System.IO.File]::Replace($tempPath, $TargetPath, $null)
+            # Some Windows/.NET builds reject $null for destinationBackupFileName (ArgumentException: invalid path).
+            $backupPath = Join-Path $dir ("{0}.{1}.{2}.bak" -f $leaf, $PID, ([Guid]::NewGuid().ToString("N")))
+            try {
+                [System.IO.File]::Replace($tempPath, $TargetPath, $backupPath)
+            }
+            finally {
+                if (Test-Path -LiteralPath $backupPath) {
+                    Remove-Item -LiteralPath $backupPath -Force -ErrorAction SilentlyContinue
+                }
+            }
         }
         else {
             [System.IO.File]::Move($tempPath, $TargetPath)
