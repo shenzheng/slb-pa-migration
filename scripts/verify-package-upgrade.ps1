@@ -5,6 +5,12 @@ param(
 
     [switch]$RunTest,
 
+    # After successful restore and build, runs dotnet pack on the primary entry point. Implies Release configuration for build, test, and pack.
+    [switch]$RunPack,
+
+    # MSBuild configuration for build and test. Ignored when -RunPack is set (Release is used so output matches typical nuspec bin/Release paths).
+    [string]$Configuration = "Debug",
+
     [switch]$AsJson,
 
     [string]$OutputPath
@@ -1124,20 +1130,23 @@ foreach ($repositoryInput in $RepositoryPath) {
     $primaryEntryPoint = Get-PrimaryEntryPoint -RepositoryRoot $repositoryRoot
     $testTargets = Get-TestTargets -RepositoryRoot $repositoryRoot
 
+    $effectiveConfiguration = if ($RunPack) { "Release" } else { $Configuration }
+
     $restoreResult = $null
     $buildResult = $null
     $testResult = $null
+    $packResult = $null
 
     if ($null -ne $primaryEntryPoint) {
         $restoreResult = Invoke-DotNetCommand -WorkingDirectory $repositoryRoot -Arguments @("restore", $primaryEntryPoint.Path) -CheckName "Restore"
 
         if ($restoreResult.Status -eq "Passed") {
-            $buildResult = Invoke-DotNetCommand -WorkingDirectory $repositoryRoot -Arguments @("build", $primaryEntryPoint.Path, "--no-restore") -CheckName "Build"
+            $buildResult = Invoke-DotNetCommand -WorkingDirectory $repositoryRoot -Arguments @("build", $primaryEntryPoint.Path, "--no-restore", "-c", $effectiveConfiguration) -CheckName "Build"
         }
         else {
             $buildResult = [PSCustomObject]@{
                 CheckName = "Build"
-                Command = "dotnet build $($primaryEntryPoint.Path) --no-restore"
+                Command = "dotnet build $($primaryEntryPoint.Path) --no-restore -c $effectiveConfiguration"
                 WorkingDirectory = $repositoryRoot
                 Status = "Skipped"
                 ExitCode = $null
@@ -1184,8 +1193,33 @@ foreach ($repositoryInput in $RepositoryPath) {
     }
 
     $testEntries = New-Object System.Collections.Generic.List[object]
+    $canRunTests = $false
+    if ($null -ne $primaryEntryPoint -and $restoreResult.Status -eq "Passed" -and $buildResult.Status -eq "Passed") {
+        $canRunTests = $true
+    }
+
     if ($RunTest) {
-        if ($testTargets.Count -eq 0) {
+        if (-not $canRunTests) {
+            $reason = if ($null -eq $primaryEntryPoint) {
+                "No solution or project entry point; build and tests were not run."
+            }
+            elseif ($restoreResult.Status -ne "Passed") {
+                "Tests skipped because restore failed."
+            }
+            elseif ($buildResult.Status -ne "Passed") {
+                "Tests skipped because build failed."
+            }
+            else {
+                "Tests skipped."
+            }
+
+            $testResult = [PSCustomObject]@{
+                Status = "Skipped"
+                Reason = $reason
+                Targets = @()
+            }
+        }
+        elseif ($testTargets.Count -eq 0) {
             $testResult = [PSCustomObject]@{
                 Status = "Skipped"
                 Reason = "No test projects were detected."
@@ -1194,7 +1228,7 @@ foreach ($repositoryInput in $RepositoryPath) {
         }
         else {
             foreach ($testTarget in $testTargets) {
-                $testInvocation = Invoke-DotNetCommand -WorkingDirectory $repositoryRoot -Arguments @("test", $testTarget.Path, "--no-restore") -CheckName "Test"
+                $testInvocation = Invoke-DotNetCommand -WorkingDirectory $repositoryRoot -Arguments @("test", $testTarget.Path, "--no-restore", "-c", $effectiveConfiguration) -CheckName "Test"
                 $testEntries.Add([PSCustomObject]@{
                         Path = $testTarget.Path
                         Kind = $testTarget.Kind
@@ -1223,15 +1257,72 @@ foreach ($repositoryInput in $RepositoryPath) {
         }
     }
 
+    if ($RunPack) {
+        if ($null -eq $primaryEntryPoint) {
+            $packResult = [PSCustomObject]@{
+                CheckName = "Pack"
+                Command = "dotnet pack"
+                WorkingDirectory = $repositoryRoot
+                Status = "Skipped"
+                ExitCode = $null
+                StartedAt = $null
+                CompletedAt = $null
+                DurationMs = 0
+                OutputLineCount = 0
+                OutputExcerpt = ""
+                Summary = "Pack skipped because no primary entry point was found."
+                Reason = "No entry point found."
+            }
+        }
+        elseif ($restoreResult.Status -ne "Passed" -or $buildResult.Status -ne "Passed") {
+            $packResult = [PSCustomObject]@{
+                CheckName = "Pack"
+                Command = "dotnet pack $($primaryEntryPoint.Path)"
+                WorkingDirectory = $repositoryRoot
+                Status = "Skipped"
+                ExitCode = $null
+                StartedAt = $null
+                CompletedAt = $null
+                DurationMs = 0
+                OutputLineCount = 0
+                OutputExcerpt = ""
+                Summary = "Pack skipped because restore or build did not succeed."
+                Reason = "Restore or build failed."
+            }
+        }
+        else {
+            $packResult = Invoke-DotNetCommand -WorkingDirectory $repositoryRoot -Arguments @("pack", $primaryEntryPoint.Path, "--no-restore", "-c", $effectiveConfiguration, "--verbosity", "minimal") -CheckName "Pack"
+        }
+    }
+    else {
+        $packResult = [PSCustomObject]@{
+            CheckName = "Pack"
+            Command = "dotnet pack"
+            WorkingDirectory = $repositoryRoot
+            Status = "Skipped"
+            ExitCode = $null
+            StartedAt = $null
+            CompletedAt = $null
+            DurationMs = 0
+            OutputLineCount = 0
+            OutputExcerpt = ""
+            Summary = "Pack was not requested."
+            Reason = "RunPack switch was not set."
+        }
+    }
+
     $repositoryResult = [PSCustomObject]@{
         RepositoryPath = $repositoryRoot
         InputPath = $resolvedRepository
         PrimaryEntryPoint = if ($null -ne $primaryEntryPoint) { $primaryEntryPoint.Path } else { $null }
         EntryPointKind = if ($null -ne $primaryEntryPoint) { $primaryEntryPoint.Kind } else { $null }
         PrimaryEntryPointSearchDepth = if ($null -ne $primaryEntryPoint) { $primaryEntryPoint.SearchDepth } else { $null }
+        EffectiveConfiguration = $effectiveConfiguration
+        RunPack = [bool]$RunPack
         Restore = $restoreResult
         Build = $buildResult
         Tests = $testResult
+        Pack = $packResult
         CrLf = Get-CrlfReport -RepositoryRoot $repositoryRoot
         DependencyConsistency = Get-DependencyConsistencyPlaceholder -RepositoryRoot $repositoryRoot
     }
@@ -1243,11 +1334,26 @@ $repositoryResultsArray = @($repositoryResults.ToArray())
 
     $summary = [PSCustomObject]@{
         TotalRepositories = $repositoryResultsArray.Count
-        PassedRepositories = (@($repositoryResultsArray | Where-Object { $_.Restore.Status -eq "Passed" -and $_.Build.Status -eq "Passed" -and $_.CrLf.Status -eq "Passed" -and ($_.Tests.Status -eq "Passed" -or $_.Tests.Status -eq "Skipped") -and $_.DependencyConsistency.Status -in @("Reserved", "Passed", "Skipped") }).Count)
-    FailedRepositories = (@($repositoryResultsArray | Where-Object { $_.Restore.Status -eq "Failed" -or $_.Build.Status -eq "Failed" -or $_.CrLf.Status -eq "Failed" -or ($_.Tests.Status -eq "Failed") -or $_.DependencyConsistency.Status -eq "Failed" }).Count)
-    SkippedRepositories = (@($repositoryResultsArray | Where-Object { $_.Restore.Status -eq "Skipped" -and $_.Build.Status -eq "Skipped" }).Count)
-    RunTest = [bool]$RunTest
-}
+        PassedRepositories = (@($repositoryResultsArray | Where-Object {
+                    $_.Restore.Status -eq "Passed" -and
+                    $_.Build.Status -eq "Passed" -and
+                    $_.CrLf.Status -eq "Passed" -and
+                    ($_.Tests.Status -eq "Passed" -or $_.Tests.Status -eq "Skipped") -and
+                    ($_.Pack.Status -eq "Passed" -or $_.Pack.Status -eq "Skipped") -and
+                    $_.DependencyConsistency.Status -in @("Reserved", "Passed", "Skipped")
+                }).Count)
+        FailedRepositories = (@($repositoryResultsArray | Where-Object {
+                    $_.Restore.Status -eq "Failed" -or
+                    $_.Build.Status -eq "Failed" -or
+                    $_.CrLf.Status -eq "Failed" -or
+                    ($_.Tests.Status -eq "Failed") -or
+                    ($_.Pack.Status -eq "Failed") -or
+                    $_.DependencyConsistency.Status -eq "Failed"
+                }).Count)
+        SkippedRepositories = (@($repositoryResultsArray | Where-Object { $_.Restore.Status -eq "Skipped" -and $_.Build.Status -eq "Skipped" }).Count)
+        RunTest = [bool]$RunTest
+        RunPack = [bool]$RunPack
+    }
 
 $report = [PSCustomObject]@{
     GeneratedAt = (Get-Date).ToString("o")
@@ -1270,6 +1376,10 @@ foreach ($repository in $repositoryResultsArray) {
     Write-CheckSummary -Label "Restore" -CheckResult $repository.Restore
     Write-CheckSummary -Label "Build" -CheckResult $repository.Build
 
+    if ($null -ne $repository.EffectiveConfiguration) {
+        Write-Host ("    Configuration: {0}" -f $repository.EffectiveConfiguration)
+    }
+
     if ($repository.Tests.Status -eq "Skipped") {
         Write-Host ("    Test: Skipped: {0}" -f $repository.Tests.Reason)
     }
@@ -1279,6 +1389,8 @@ foreach ($repository in $repositoryResultsArray) {
             Write-Host ("      {0}: {1}" -f $target.Path, $target.Result.Status)
         }
     }
+
+    Write-CheckSummary -Label "Pack" -CheckResult $repository.Pack
 
     Write-Host ("    CRLF: {0} (inspected {1}, offending {2})" -f $repository.CrLf.Status, $repository.CrLf.InspectedFileCount, $repository.CrLf.OffendingFileCount)
     Write-Host ("    Dependency consistency: {0}" -f $repository.DependencyConsistency.Status)
@@ -1308,4 +1420,8 @@ else {
     }
 
     Write-Output $report
+}
+
+if ($summary.FailedRepositories -gt 0) {
+    exit 1
 }

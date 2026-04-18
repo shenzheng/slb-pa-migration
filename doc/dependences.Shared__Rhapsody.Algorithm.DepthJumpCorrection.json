@@ -1,0 +1,239 @@
+{
+    "generatedAt":  "2026-04-17T20:58:02.4871653Z",
+    "rootPath":  "D:\\SLB\\Prism\\PA",
+    "repositoryRelativePath":  "Shared\\Rhapsody.Algorithm.DepthJumpCorrection",
+    "repositoryAbsolutePath":  "D:\\SLB\\Prism\\PA\\Shared\\Rhapsody.Algorithm.DepthJumpCorrection",
+    "artifactToken":  "Shared__Rhapsody.Algorithm.DepthJumpCorrection",
+    "includeTransitive":  false,
+    "projectCount":  2,
+    "projects":  [
+                     {
+                         "projectRelativePath":  "Shared\\Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.csproj",
+                         "topLevelPackages":  [
+                                                  {
+                                                      "id":  "Newtonsoft.Json",
+                                                      "requestedVersion":  "13.0.4",
+                                                      "resolvedVersion":  "13.0.4",
+                                                      "framework":  "netstandard2.0"
+                                                  },
+                                                  {
+                                                      "id":  "Slb.Prism.Core.Library.Discovery",
+                                                      "requestedVersion":  "4.1.0.9708011",
+                                                      "resolvedVersion":  "4.1.0.9708011",
+                                                      "framework":  "netstandard2.0"
+                                                  },
+                                                  {
+                                                      "id":  "Slb.Prism.Core.Library.Logging.ServiceFabric",
+                                                      "requestedVersion":  "3.9.0.9726658",
+                                                      "resolvedVersion":  "3.9.0.9726658",
+                                                      "framework":  "netstandard2.0"
+                                                  },
+                                                  {
+                                                      "id":  "Slb.Prism.Core.Library.Security",
+                                                      "requestedVersion":  "7.1.5.9729803",
+                                                      "resolvedVersion":  "7.1.5.9729803",
+                                                      "framework":  "netstandard2.0"
+                                                  },
+                                                  {
+                                                      "id":  "Slb.Prism.Shared.Library.ComputationEngine",
+                                                      "requestedVersion":  "4.1.0.15635080",
+                                                      "resolvedVersion":  "4.1.0.15635080",
+                                                      "framework":  "netstandard2.0"
+                                                  },
+                                                  {
+                                                      "id":  "System.ComponentModel.Annotations",
+                                                      "requestedVersion":  "5.0.0",
+                                                      "resolvedVersion":  "5.0.0",
+                                                      "framework":  "netstandard2.0"
+                                                  },
+                                                  {
+                                                      "id":  "System.Configuration.ConfigurationManager",
+                                                      "requestedVersion":  "6.0.0",
+                                                      "resolvedVersion":  "6.0.0",
+                                                      "framework":  "netstandard2.0"
+                                                  },
+                                                  {
+                                                      "id":  "System.Runtime.Caching",
+                                                      "requestedVersion":  "10.0.1",
+                                                      "resolvedVersion":  "10.0.1",
+                                                      "framework":  "netstandard2.0"
+                                                  }
+                                              ]
+                     },
+                     {
+                         "projectRelativePath":  "Shared\\Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests.csproj",
+                         "topLevelPackages":  [
+                                                  {
+                                                      "id":  "Microsoft.NET.Test.Sdk",
+                                                      "requestedVersion":  "16.11.0",
+                                                      "resolvedVersion":  "16.11.0",
+                                                      "framework":  "net5.0"
+                                                  },
+                                                  {
+                                                      "id":  "MSTest.TestAdapter",
+                                                      "requestedVersion":  "3.11.1",
+                                                      "resolvedVersion":  "3.11.1",
+                                                      "framework":  "net5.0"
+                                                  },
+                                                  {
+                                                      "id":  "MSTest.TestFramework",
+                                                      "requestedVersion":  "3.11.1",
+                                                      "resolvedVersion":  "3.11.1",
+                                                      "framework":  "net5.0"
+                                                  },
+                                                  {
+                                                      "id":  "coverlet.collector",
+                                                      "requestedVersion":  "8.0.1",
+                                                      "resolvedVersion":  "8.0.1",
+                                                      "framework":  "net5.0"
+                                                  }
+                                              ]
+                     }
+                 ],
+    "packages":  {
+                     "Slb.Prism.Shared.Library.ComputationEngine":  {
+                                                                        "packageId":  "Slb.Prism.Shared.Library.ComputationEngine",
+                                                                        "requestedVersionSamples":  [
+                                                                                                        "4.1.0.15635080"
+                                                                                                    ],
+                                                                        "resolvedVersionSamples":  [
+                                                                                                       "4.1.0.15635080"
+                                                                                                   ],
+                                                                        "projectRelativePaths":  [
+                                                                                                     "Shared\\Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.csproj"
+                                                                                                 ]
+                                                                    },
+                     "Slb.Prism.Core.Library.Logging.ServiceFabric":  {
+                                                                          "packageId":  "Slb.Prism.Core.Library.Logging.ServiceFabric",
+                                                                          "requestedVersionSamples":  [
+                                                                                                          "3.9.0.9726658"
+                                                                                                      ],
+                                                                          "resolvedVersionSamples":  [
+                                                                                                         "3.9.0.9726658"
+                                                                                                     ],
+                                                                          "projectRelativePaths":  [
+                                                                                                       "Shared\\Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.csproj"
+                                                                                                   ]
+                                                                      },
+                     "Newtonsoft.Json":  {
+                                             "packageId":  "Newtonsoft.Json",
+                                             "requestedVersionSamples":  [
+                                                                             "13.0.4"
+                                                                         ],
+                                             "resolvedVersionSamples":  [
+                                                                            "13.0.4"
+                                                                        ],
+                                             "projectRelativePaths":  [
+                                                                          "Shared\\Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.csproj"
+                                                                      ]
+                                         },
+                     "System.ComponentModel.Annotations":  {
+                                                               "packageId":  "System.ComponentModel.Annotations",
+                                                               "requestedVersionSamples":  [
+                                                                                               "5.0.0"
+                                                                                           ],
+                                                               "resolvedVersionSamples":  [
+                                                                                              "5.0.0"
+                                                                                          ],
+                                                               "projectRelativePaths":  [
+                                                                                            "Shared\\Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.csproj"
+                                                                                        ]
+                                                           },
+                     "MSTest.TestAdapter":  {
+                                                "packageId":  "MSTest.TestAdapter",
+                                                "requestedVersionSamples":  [
+                                                                                "3.11.1"
+                                                                            ],
+                                                "resolvedVersionSamples":  [
+                                                                               "3.11.1"
+                                                                           ],
+                                                "projectRelativePaths":  [
+                                                                             "Shared\\Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests.csproj"
+                                                                         ]
+                                            },
+                     "coverlet.collector":  {
+                                                "packageId":  "coverlet.collector",
+                                                "requestedVersionSamples":  [
+                                                                                "8.0.1"
+                                                                            ],
+                                                "resolvedVersionSamples":  [
+                                                                               "8.0.1"
+                                                                           ],
+                                                "projectRelativePaths":  [
+                                                                             "Shared\\Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests.csproj"
+                                                                         ]
+                                            },
+                     "MSTest.TestFramework":  {
+                                                  "packageId":  "MSTest.TestFramework",
+                                                  "requestedVersionSamples":  [
+                                                                                  "3.11.1"
+                                                                              ],
+                                                  "resolvedVersionSamples":  [
+                                                                                 "3.11.1"
+                                                                             ],
+                                                  "projectRelativePaths":  [
+                                                                               "Shared\\Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests.csproj"
+                                                                           ]
+                                              },
+                     "System.Runtime.Caching":  {
+                                                    "packageId":  "System.Runtime.Caching",
+                                                    "requestedVersionSamples":  [
+                                                                                    "10.0.1"
+                                                                                ],
+                                                    "resolvedVersionSamples":  [
+                                                                                   "10.0.1"
+                                                                               ],
+                                                    "projectRelativePaths":  [
+                                                                                 "Shared\\Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.csproj"
+                                                                             ]
+                                                },
+                     "Microsoft.NET.Test.Sdk":  {
+                                                    "packageId":  "Microsoft.NET.Test.Sdk",
+                                                    "requestedVersionSamples":  [
+                                                                                    "16.11.0"
+                                                                                ],
+                                                    "resolvedVersionSamples":  [
+                                                                                   "16.11.0"
+                                                                               ],
+                                                    "projectRelativePaths":  [
+                                                                                 "Shared\\Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.Tests.csproj"
+                                                                             ]
+                                                },
+                     "Slb.Prism.Core.Library.Discovery":  {
+                                                              "packageId":  "Slb.Prism.Core.Library.Discovery",
+                                                              "requestedVersionSamples":  [
+                                                                                              "4.1.0.9708011"
+                                                                                          ],
+                                                              "resolvedVersionSamples":  [
+                                                                                             "4.1.0.9708011"
+                                                                                         ],
+                                                              "projectRelativePaths":  [
+                                                                                           "Shared\\Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.csproj"
+                                                                                       ]
+                                                          },
+                     "System.Configuration.ConfigurationManager":  {
+                                                                       "packageId":  "System.Configuration.ConfigurationManager",
+                                                                       "requestedVersionSamples":  [
+                                                                                                       "6.0.0"
+                                                                                                   ],
+                                                                       "resolvedVersionSamples":  [
+                                                                                                      "6.0.0"
+                                                                                                  ],
+                                                                       "projectRelativePaths":  [
+                                                                                                    "Shared\\Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.csproj"
+                                                                                                ]
+                                                                   },
+                     "Slb.Prism.Core.Library.Security":  {
+                                                             "packageId":  "Slb.Prism.Core.Library.Security",
+                                                             "requestedVersionSamples":  [
+                                                                                             "7.1.5.9729803"
+                                                                                         ],
+                                                             "resolvedVersionSamples":  [
+                                                                                            "7.1.5.9729803"
+                                                                                        ],
+                                                             "projectRelativePaths":  [
+                                                                                          "Shared\\Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection\\Slb.Prism.Rhapsody.Algorithm.DepthJumpCorrection.csproj"
+                                                                                      ]
+                                                         }
+                 }
+}

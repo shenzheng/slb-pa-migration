@@ -22,7 +22,7 @@
 | [git-pull-all.ps1](#git-pull-allps1) | 批量对 `Actors` / `Shared`（可配置）下各仓库执行 `git pull --ff-only` |
 | [normalize-crlf.ps1](#normalize-crlfps1) | 将指定目录下文本文件中的纯 LF 换行规范为 CRLF |
 | [upgrade-pipeline-definitions.json](#upgrade-pipeline-definitionsjson) | `get-upgrade-pipeline-status.ps1` 使用的 Pipeline 定义列表（组织、项目、definitionId） |
-| [verify-package-upgrade.ps1](#verify-package-upgradeps1) | 对指定仓库执行 restore/build（可选 test）及依赖与 CRLF 等检查 |
+| [verify-package-upgrade.ps1](#verify-package-upgradeps1) | 对指定仓库执行 restore/build（可选 test / pack）及依赖与 CRLF 等检查 |
 
 ## convert-nested-repos-to-submodules.ps1
 
@@ -308,8 +308,10 @@
 
 - 必须显式传入一个或多个 `RepositoryPath`，避免误跑全部业务仓库。
 - 自动识别仓库内的主入口文件，优先选择根目录或一层子目录下的 `.slnx`、`.sln`、项目文件。
-- 对每个目标仓库执行 `dotnet restore` 与 `dotnet build`；当 `restore` 失败时，`build` 会标记为 `Skipped`。
-- 使用 `-RunTest` 时，自动识别测试项目并执行 `dotnet test --no-restore`。
+- 对每个目标仓库执行 `dotnet restore` 与 `dotnet build`（默认 `-c Debug`，可用 `-Configuration` 指定）；当 `restore` 失败时，`build` 会标记为 `Skipped`。
+- 使用 `-RunTest` 时，仅在 **restore 与 build 均成功** 后，才对识别到的测试项目执行 `dotnet test --no-restore -c <配置>`，避免在还原/编译失败时仍用旧 `obj` 误报通过。
+- 使用 `-RunPack` 时，在 restore/build 成功后对主入口执行 `dotnet pack --no-restore`；此时 **固定使用 Release 配置** 进行 build、test 与 pack（与常见 nuspec 中 `bin\Release\...` 路径一致）。未指定 `-RunPack` 时跳过打包步骤。
+- 当任一仓库未通过上述检查（含测试失败、打包失败、依赖一致性失败等）时，进程以 **退出码 1** 结束。
 - 执行文本文件 CRLF 检查，并输出 inspected / offending 统计。
 - 执行“项目包引用 / nuspec 依赖版本一致性”基础检查：对匹配项目中的 `PackageReference`、`Directory.Packages.props`、`packages.config` 与 `.nuspec` `metadata/dependencies` 做比对。
 - 依赖一致性检查会输出 `Passed`、`Failed`、`Skipped`、`Reserved` 四类状态，并在 JSON 中带出逐项 `Checks` 明细。
@@ -322,6 +324,8 @@
 | --- | --- | --- |
 | `RepositoryPath` | 需要验证的仓库目录或仓库内文件路径。 | 必填 |
 | `RunTest` | 是否执行测试项目。 | `False` |
+| `RunPack` | 是否在 build 成功后执行 `dotnet pack`（与 `-RunTest` 可同时使用）。 | `False` |
+| `Configuration` | `build` / `test` 的 MSBuild 配置；指定 `-RunPack` 时忽略本参数，改用 **Release**。 | `Debug` |
 | `AsJson` | 是否输出 JSON。 | `False` |
 | `OutputPath` | 输出结果文件路径。 | 不写文件，仅输出到控制台 |
 
@@ -337,6 +341,10 @@
 
 ```powershell
 .\scripts\verify-package-upgrade.ps1 -RepositoryPath .\Actors\Rhapsody.Computation.HydraulicsTransient -AsJson -OutputPath .\tasks\verify-hydraulics-transient.json
+```
+
+```powershell
+.\scripts\verify-package-upgrade.ps1 -RepositoryPath .\Shared\Rhapsody.Algorithm.DepthJumpCorrection -RunTest -RunPack
 ```
 
 ## get-upgrade-pipeline-status.ps1
