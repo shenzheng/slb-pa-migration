@@ -1,4 +1,7 @@
 # Actors/, Pipeline/, Shared/: tracked as git submodules (see .gitmodules).
+# Local verification: dotnet publish outputs used with DockerfileLocal
+_verify-publish/
+
 Tools/
 .azure-validation/
 Log/
